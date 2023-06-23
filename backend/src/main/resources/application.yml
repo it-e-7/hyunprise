@@ -1,0 +1,30 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+spring:
+  main:
+    banner-mode: off
+  datasource:
+    url: ${db-url}
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    username: ${db-username}
+    password: ${db-password}
+    hikari:
+      connection-timeout: 60000
+      maximum-pool-size: 5
+  profiles:
+    include:
+      - dev
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n"
+  level:
+    org:
+      hibernate:
+        SQL: debug
