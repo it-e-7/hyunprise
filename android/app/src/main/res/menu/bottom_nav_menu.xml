@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_nav_home_24dp"
+        android:iconTint="@color/white"
+        android:title="@string/title_home"/>
+
+    <item
+        android:id="@+id/navigation_qrcode"
+        android:icon="@drawable/ic_nav_qrcode_24dp"
+        android:title="@string/title_qrcode"/>
+
+    <item
+        android:id="@+id/navigation_point_shop"
+        android:icon="@drawable/ic_nav_point_shop_24dp"
+        android:title="@string/title_shop"/>
+
+</menu>
