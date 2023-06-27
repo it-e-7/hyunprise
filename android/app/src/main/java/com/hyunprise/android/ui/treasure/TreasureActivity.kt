@@ -13,6 +13,7 @@ import com.google.zxing.integration.android.IntentIntegrator
 import com.google.zxing.integration.android.IntentResult
 import com.google.zxing.qrcode.QRCodeReader
 import com.hyunprise.android.R
+import com.hyunprise.android.TreasureFoundActivity
 import com.hyunprise.android.databinding.ActivityTreasureBinding
 import com.journeyapps.barcodescanner.BarcodeCallback
 import com.journeyapps.barcodescanner.BarcodeResult
@@ -114,6 +115,9 @@ class TreasureActivity: AppCompatActivity() {
         barcodeView.decodeSingle(object : BarcodeCallback {
             override fun barcodeResult(result: BarcodeResult?) {
                 Log.d("log.qrcode", "${result?.text}")
+                var intent = Intent(this@TreasureActivity, TreasureFoundActivity::class.java)
+                startActivity(intent)
+                finish()
                 // 쿠폰 발견 Activity 이동
             }
             override fun possibleResultPoints(resultPoints: MutableList<ResultPoint>?) {
