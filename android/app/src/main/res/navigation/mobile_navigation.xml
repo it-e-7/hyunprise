@@ -18,7 +18,7 @@
 
     <fragment
         android:id="@+id/navigation_point_shop"
-        android:name="com.hyunprise.android.ui.shop.PointShopFragment"
+        android:name="com.hyunprise.android.ui.pointshop.PointShopFragment"
         android:label="@string/title_shop"
         tools:layout="@layout/fragment_point_shop" />
 </navigation>
