@@ -1,5 +1,6 @@
 package com.hyunprise.android.ui.qrcode
 
+import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
@@ -8,11 +9,27 @@ import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.zxing.ResultPoint
+import com.google.zxing.integration.android.IntentIntegrator
+import com.google.zxing.integration.android.IntentResult
 import com.hyunprise.android.databinding.ActivityQrcodeBinding
 import com.journeyapps.barcodescanner.BarcodeCallback
 import com.journeyapps.barcodescanner.BarcodeResult
 import com.journeyapps.barcodescanner.CaptureManager
 import com.journeyapps.barcodescanner.DecoratedBarcodeView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import okhttp3.OkHttpClient
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.simplexml.SimpleXmlConverterFactory
+import retrofit2.http.GET
+import retrofit2.http.POST
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import java.lang.StringBuilder
+import java.net.HttpURLConnection
+import java.net.URL
 
 
 class QRCodeActivity: AppCompatActivity() {
@@ -31,6 +48,7 @@ class QRCodeActivity: AppCompatActivity() {
             android.Manifest.permission.CAMERA)
 
         if (camPermissionChecker == PackageManager.PERMISSION_GRANTED) {
+
             QRCodeReader(savedInstanceState)
         } else {
             ActivityCompat.requestPermissions(
@@ -89,14 +107,44 @@ class QRCodeActivity: AppCompatActivity() {
 
         barcodeView.decodeSingle(object : BarcodeCallback {
             override fun barcodeResult(result: BarcodeResult?) {
-                Log.d("log.qrcode", "${result?.text}")
+                getIssuedCouponUUID(result)
+
                 var intent = Intent(this@QRCodeActivity, CouponFoundActivity::class.java)
                 startActivity(intent)
                 finish()
-                // 쿠폰 발견 Activity 이동
             }
             override fun possibleResultPoints(resultPoints: MutableList<ResultPoint>?) {
             }
         })
+    }
+
+    fun getIssuedCouponUUID(result: BarcodeResult?) {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                var urlText=result?.text
+                val url= URL(urlText)
+                val urlConnection =url.openConnection() as HttpURLConnection
+                urlConnection.requestMethod = "GET"
+                if (urlConnection.responseCode == HttpURLConnection.HTTP_OK) {
+                    val streamReader=InputStreamReader(urlConnection.inputStream)
+                    val buffered=BufferedReader(streamReader)
+
+                    val content=StringBuilder()
+                    while(true) {
+                        val line=buffered.readLine()?:break
+                        if ("<p>" in line)
+                            content.append(line)
+                    }
+                    buffered.close()
+                    urlConnection.disconnect()
+                    launch(Dispatchers.Main) {
+                        // 쿠폰 번호로 api 요청
+                        Log.d("log.qrcode", "${content.toString().replace("[^0-9]".toRegex(),"")}")
+                    }
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
     }
 }
