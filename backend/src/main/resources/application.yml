@@ -17,6 +17,7 @@ spring:
   profiles:
     include:
       - dev
+      - mybatis
   jpa:
     hibernate:
       ddl-auto: none
