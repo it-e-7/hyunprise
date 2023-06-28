@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.hyunprise.android.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <activity
+        android:id="@+id/navigation_qrcode"
+        android:name="com.hyunprise.android.ui.qrcode.QRCodeActivity"
+        tools:layout="@layout/activity_qrcode" />
+
+    <fragment
+        android:id="@+id/navigation_point_shop"
+        android:name="com.hyunprise.android.ui.pointshop.PointShopFragment"
+        android:label="@string/title_shop"
+        tools:layout="@layout/fragment_point_shop" />
+</navigation>
