@@ -7,4 +7,6 @@
     <string name="coupon_title">쿠폰</string>
     <string name="coupon_tab_my_coupon">MY 쿠폰</string>
     <string name="coupon_tab_used_coupon">사용한 쿠폰</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
