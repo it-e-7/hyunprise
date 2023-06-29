@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/coupon_found_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+
+        app:layout_constraintBottom_toTopOf="@id/coupon_found_toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/coupon_found_exit"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/ic_back_arrow_24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="보물 찾기 이벤트"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/coupon_found_tv_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/coupon_found_btn_group"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/coupon_found_toolbar">
+
+        <TextView
+            android:id="@+id/coupon_found_tv1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="보물 발견!"
+            android:textSize="40dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/coupon_found_brand_name_tv"
+
+            app:layout_constraintEnd_toEndOf="@id/coupon_found_tv_group"
+            app:layout_constraintStart_toStartOf="@id/coupon_found_tv_group"
+            app:layout_constraintTop_toTopOf="@id/coupon_found_tv_group" />
+
+
+        <TextView
+            android:id="@+id/coupon_found_brand_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이디야"
+            android:textColor="@color/purple"
+            android:textSize="50dp"
+
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/coupon_found_tv2"
+            app:layout_constraintEnd_toStartOf="@id/coupon_found_discount_rate_tv"
+            app:layout_constraintStart_toStartOf="@id/coupon_found_tv_group"
+            app:layout_constraintTop_toBottomOf="@+id/coupon_found_tv1" />
+
+        <TextView
+            android:id="@+id/coupon_found_discount_rate_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12%"
+            android:textColor="@color/purple"
+            android:textSize="50dp"
+
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/coupon_found_tv2"
+            app:layout_constraintEnd_toEndOf="@id/coupon_found_tv_group"
+            app:layout_constraintStart_toEndOf="@id/coupon_found_brand_name_tv"
+            app:layout_constraintTop_toBottomOf="@id/coupon_found_tv1" />
+
+        <TextView
+            android:id="@+id/coupon_found_tv2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="쿠폰이 나왔습니다!"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/coupon_found_tv_group"
+
+            app:layout_constraintEnd_toEndOf="@id/coupon_found_tv_group"
+            app:layout_constraintStart_toStartOf="@id/coupon_found_tv_group"
+            app:layout_constraintTop_toBottomOf="@id/coupon_found_tv1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <LinearLayout
+        android:id="@+id/coupon_found_btn_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/coupon_found_tv_group">
+
+        <Button
+            android:id="@+id/coupon_found_receive_coupon_btn"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@color/purple"
+            android:backgroundTint="@color/purple"
+            android:text="쿠폰 받기"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="OR"
+            android:textAlignment="center"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/coupon_found_receive_points_btn"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@color/light_purple"
+            android:text="포인트 받기"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
