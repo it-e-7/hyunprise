@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class CouponTabAdaptor(activity: FragmentActivity): FragmentStateAdapter(activity) {
+class IssuedCouponTabAdaptor(activity: FragmentActivity): FragmentStateAdapter(activity) {
     private val mFragmentList: MutableList<Fragment> = ArrayList()
     private val mFragmentTitleList: MutableList<String> = ArrayList()
 
