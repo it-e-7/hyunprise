@@ -13,7 +13,7 @@ import java.sql.Date;
 public class IssuedCoupon {
     private String issuedCouponUUID;
     private String memberUUID;
-    private Long couponId;
+    private String couponUUID;
     private String couponCode;
     private Integer status;
     private Date issueDate;
