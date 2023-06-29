@@ -21,7 +21,7 @@ public class IssuedCouponController {
     }
     @GetMapping("/{id}")
     public CouponDetail getOneCouponDetailByIssueUUID(@PathVariable String id) {
-        return issuedCouponService.selectOneCouponDetailByIssueUUID(id);
+        return issuedCouponService.selectOneCouponDetailByIssuedCouponUUID(id);
     }
 
 }

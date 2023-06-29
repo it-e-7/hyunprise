@@ -11,5 +11,5 @@ import java.util.List;
 public interface IssuedCouponMapper {
     List<CouponSummary> selectAllCouponSummaryOfMemberByStatus(IssuedCoupon issuedCoupon);
 
-    CouponDetail selectOneCouponDetailByIssueUUID(String issuedCouponUUID);
+    CouponDetail selectOneCouponDetailByIssuedCouponUUID(String issuedCouponUUID);
 }
