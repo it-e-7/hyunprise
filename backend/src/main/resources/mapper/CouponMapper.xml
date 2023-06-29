@@ -11,14 +11,14 @@
             ic.status,
             ic.expiration_date
         FROM issued_coupon ic
-                 JOIN coupon c ON c.coupon_uuid = ic.coupon_uuid
+                 JOIN coupon c ON c.coupon_id = ic.coupon_id
         WHERE ic.member_uuid = #{memberUUID}
         <if test="status != null">
           AND status = #{status}
         </if>
     </select>
 
-    <select id="selectOneCouponDetailByIssuedCouponUUID" parameterType="String" resultType="CouponDetail">
+    <select id="selectOneCouponDetailByIssueUUID" parameterType="String" resultType="CouponDetail">
         SELECT
             ic.issued_coupon_uuid,
             c.coupon_name,
@@ -30,13 +30,13 @@
             c.retailer_location,
             c.terms_and_conditions,
             c.usage_instruction,
-            ic.coupon_uuid,
+            ic.coupon_id,
             ic.status,
             ic.coupon_code,
             ic.issue_date,
             ic.expiration_date
         FROM issued_coupon ic
-                 JOIN coupon c ON c.coupon_uuid = ic.coupon_uuid
+                 JOIN coupon c ON c.coupon_id = ic.coupon_id
         WHERE ic.issued_coupon_uuid = #{issuedCouponUUID}
     </select>
 

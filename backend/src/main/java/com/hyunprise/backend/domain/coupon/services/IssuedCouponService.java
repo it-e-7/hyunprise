@@ -9,5 +9,5 @@ import java.util.List;
 public interface IssuedCouponService {
     List<CouponSummary> selectAllCouponSummaryOfMemberByStatus(IssuedCoupon memberUUID);
 
-    CouponDetail selectOneCouponDetailByIssuedCouponUUID(String issuedCouponUUID);
+    CouponDetail selectOneCouponDetailByIssueUUID(String issuedCouponUUID);
 }

@@ -20,10 +20,9 @@ public class CouponDetail {
     private String retailerLocation;
     private String termsAndConditions;
     private String usageInstruction;
-    private String couponUUID;
+    private Long couponId;
     private Integer status;
     private String couponCode;
     private Date issueDate;
     private Date expirationDate;
-    private String brandName;
 }

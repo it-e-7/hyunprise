@@ -25,7 +25,7 @@ public class IssuedCouponServiceImpl implements IssuedCouponService {
     }
 
     @Override
-    public CouponDetail selectOneCouponDetailByIssuedCouponUUID(String issuedCouponUUID) {
-        return issuedCouponMapper.selectOneCouponDetailByIssuedCouponUUID(issuedCouponUUID);
+    public CouponDetail selectOneCouponDetailByIssueUUID(String issuedCouponUUID) {
+        return issuedCouponMapper.selectOneCouponDetailByIssueUUID(issuedCouponUUID);
     }
 }
