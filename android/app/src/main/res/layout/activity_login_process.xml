@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <!-- 아이디 입력칸 -->
+    <EditText
+        android:id="@+id/editTextId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="아이디를 입력하세요" />
+
+    <!-- 비밀번호 입력칸 -->
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:hint="비밀번호를 입력하세요" />
+
+    <!-- 로그인 버튼 -->
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="로그인" />
+
+    <Button
+        android:id="@+id/buttoninit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="회원가입" />
+
+    <!-- 자동로그인 체크버튼 -->
+    <CheckBox
+        android:id="@+id/checkBoxAutoLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="자동 로그인" />
+
+    <!-- 카카오로그인 버튼 -->
+    <ImageButton
+        android:id="@+id/kakao_login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/kakao_login_medium_narrow"
+        />
+
+    <!-- 구글로그인 버튼 -->
+    <Button
+        android:id="@+id/buttonGoogleLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="구글 로그인" />
+
+</LinearLayout>

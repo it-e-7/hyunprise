@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <!-- 아이디 입력칸 -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="로그인 성공했습니다."/>ㄹ
+    <!-- 로그인 버튼 -->
+    <Button
+        android:id="@+id/buttonLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="로그아웃" />
+
+    <Button
+        android:id="@+id/buttoninit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="회원가입" />
+
+
+
+</LinearLayout>

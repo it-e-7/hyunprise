@@ -3,6 +3,9 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 android {
     namespace 'com.hyunprise.android'
     compileSdk 33
@@ -13,11 +16,19 @@ android {
         targetSdk 33
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+        buildConfigField "String", "KAKAO_NATIVE_APP_KEY", properties['kakao_native_app_key']
+        resValue "string", "kakao_oauth_host", properties['kakao_oauth_host']
     }
 
+    viewBinding {
+        enabled = true
+    }
+    buildFeatures {
+        viewBinding true
+        buildConfig = true
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -31,18 +42,11 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-
-    viewBinding {
-        enabled = true
-    }
-
-    buildFeatures {
-        viewBinding true
-    }
 }
 
 dependencies {
-
+    implementation "com.kakao.sdk:v2-user:2.14.0" // 카카오 로그인
+    implementation "com.kakao.sdk:v2-share:2.14.0" // 메시지(카카오톡 공유)
     implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
@@ -55,7 +59,6 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.6.0'
     implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
     implementation 'com.google.zxing:core:3.3.0'
-
     implementation 'com.squareup.okhttp3:okhttp:4.11.0'
     implementation 'com.squareup.retrofit2:converter-simplexml:2.9.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.11.0'
