@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.hyunprise.android.MainActivity
 import com.hyunprise.android.databinding.ActivityLoginMainBinding
 import com.kakao.sdk.user.UserApiClient
 
