@@ -11,7 +11,7 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Coupon {
-    private Long couponId;
+    private String couponUUID;
     private String sellerUUID;
     private String couponName;
     private String couponDescription;
