@@ -1,5 +1,6 @@
 package com.hyunprise.backend.domain.coupon.controllers;
 
+import com.hyunprise.backend.domain.coupon.vo.Coupon;
 import com.hyunprise.backend.domain.coupon.vo.CouponSummary;
 import com.hyunprise.backend.domain.coupon.vo.IssuedCoupon;
 import com.hyunprise.backend.domain.coupon.services.IssuedCouponService;
@@ -24,4 +25,8 @@ public class IssuedCouponController {
         return issuedCouponService.selectOneCouponDetailByIssuedCouponUUID(id);
     }
 
+    @PostMapping("")
+    public Coupon getOneCoupons(@RequestBody IssuedCoupon issuedCoupon) {
+        return issuedCouponService.selectOneIssuedCoupon(issuedCoupon);
+    }
 }
