@@ -3,6 +3,7 @@ package com.hyunprise.android.ui.qrcode
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.hyunprise.android.databinding.ActivityCouponFoundBinding
 
 class CouponFoundActivity : AppCompatActivity() {
@@ -17,6 +18,11 @@ class CouponFoundActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        Log.d("couponfound.issuedCoupon", "${intent.getStringExtra("coupon_name")} ${intent.getStringExtra("coupon_description")}")
+
+        binding.couponFoundCouponNameTv.text = intent.getStringExtra("coupon_name")
+        binding.couponFoundCouponDescriptionTv.text = intent.getStringExtra("coupon_description")
 
         binding.couponFoundReceiveCouponBtn.setOnClickListener {
             // 쿠폰 받기 이벤트 연결
