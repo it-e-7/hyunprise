@@ -12,7 +12,7 @@ interface IssuedCouponClient {
     @GET("issued_coupon")
     suspend fun getAllCouponsOfMemberByStatus (
         @Query("memberUUID") memberUUID: String,
-        @Query("status") status: Int
+        @Query("available") available: Boolean
     ): Response<List<CouponSummary>>
 
 }
