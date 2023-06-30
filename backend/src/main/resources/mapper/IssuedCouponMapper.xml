@@ -3,41 +3,63 @@
 
 
 <mapper namespace="com.hyunprise.backend.domain.coupon.mappers.IssuedCouponMapper">
-
     <select id="selectAllCouponSummaryOfMemberByStatus" parameterType="IssuedCoupon" resultType="CouponSummary">
         SELECT
-            ic.issued_coupon_uuid,
-            c.coupon_name,
-            ic.status,
-            ic.expiration_date
+        ic.issued_coupon_uuid,
+        c.coupon_name,
+        ic.status,
+        ic.expiration_date
         FROM issued_coupon ic
-                 JOIN coupon c ON c.coupon_uuid = ic.coupon_uuid
+        JOIN coupon c ON c.coupon_uuid = ic.coupon_uuid
+
         WHERE ic.member_uuid = #{memberUUID}
         <if test="status != null">
-          AND status = #{status}
+            AND status = #{status}
         </if>
     </select>
 
+
     <select id="selectOneCouponDetailByIssuedCouponUUID" parameterType="String" resultType="CouponDetail">
         SELECT
-            ic.issued_coupon_uuid,
-            c.coupon_name,
-            c.coupon_description,
-            c.discount_type,
-            c.discount_amount,
-            c.discount_limit,
-            c.minimum_purchase,
-            c.retailer_location,
-            c.terms_and_conditions,
-            c.usage_instruction,
-            ic.coupon_uuid,
-            ic.status,
-            ic.coupon_code,
-            ic.issue_date,
-            ic.expiration_date
+        ic.issued_coupon_uuid,
+        c.coupon_name,
+        c.coupon_description,
+        c.discount_type,
+        c.discount_amount,
+        c.discount_limit,
+        c.minimum_purchase,
+        c.retailer_location,
+        c.terms_and_conditions,
+        c.usage_instruction,
+
+        ic.coupon_uuid,
+
+        ic.status,
+        ic.coupon_code,
+        ic.issue_date,
+        ic.expiration_date
         FROM issued_coupon ic
-                 JOIN coupon c ON c.coupon_uuid = ic.coupon_uuid
+        JOIN coupon c ON c.coupon_uuid = ic.coupon_uuid
+
+
         WHERE ic.issued_coupon_uuid = #{issuedCouponUUID}
     </select>
 
+    <select id="selectOneCoupon" parameterType="Integer" resultType="Coupon">
+        SELECT *
+        FROM coupon
+        <!--        WHERE coupon_uuid = #{couponUUID}-->
+    </select>
+
+    <insert id="createOneIssuedCoupon" parameterType="IssuedCoupon">
+        INSERT
+        INTO issued_coupon(issued_coupon_uuid, member_uuid, coupon_uuid, coupon_code, status, issue_date, expiration_date)
+        VALUES (default, #{memberUUID}, #{couponUUID}, '1234567891234567', 1, sysdate, sysdate+1)
+    </insert>
+
+    <select id="selectOneIssuedCoupon" parameterType="IssuedCoupon" resultType="Coupon">
+        SELECT coupon_name, coupon_description
+        FROM coupon
+        WHERE coupon_uuid=#{couponUUID}
+    </select>
 </mapper>
