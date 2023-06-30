@@ -16,8 +16,8 @@ public class IssuedCouponController {
     private final IssuedCouponService issuedCouponService;
 
     @GetMapping("")
-    public List<CouponSummary> getAllCouponsOfMemberByStatus(IssuedCoupon issuedCoupon) {
-        return issuedCouponService.selectAllCouponSummaryOfMemberByStatus(issuedCoupon);
+    public List<CouponSummary> getAllCouponsOfMemberByStatus(IssuedCoupon issuedCoupon, @RequestParam Boolean available) {
+        return issuedCouponService.selectAllCouponSummaryOfMemberByStatus(issuedCoupon, available);
     }
     @GetMapping("/{id}")
     public CouponDetail getOneCouponDetailByIssueUUID(@PathVariable String id) {

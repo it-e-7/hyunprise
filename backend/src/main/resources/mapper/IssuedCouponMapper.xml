@@ -12,10 +12,14 @@
             ic.expiration_date
         FROM issued_coupon ic
                  JOIN coupon c ON c.coupon_uuid = ic.coupon_uuid
-        WHERE ic.member_uuid = #{memberUUID}
-        <if test="status != null">
-          AND status = #{status}
+        WHERE ic.member_uuid = #{issuedCoupon.memberUUID}
+        <if test="available == true">
+          AND status &lt;= 2
         </if>
+        <if test="available == false">
+            AND status &gt;= 3
+        </if>
+        ORDER BY ic.expiration_date ASC
     </select>
 
     <select id="selectOneCouponDetailByIssuedCouponUUID" parameterType="String" resultType="CouponDetail">

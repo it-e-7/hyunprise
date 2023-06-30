@@ -9,7 +9,7 @@ import java.util.List;
 
 @Mapper
 public interface IssuedCouponMapper {
-    List<CouponSummary> selectAllCouponSummaryOfMemberByStatus(IssuedCoupon issuedCoupon);
+    List<CouponSummary> selectAllCouponSummaryOfMemberByStatus(IssuedCoupon issuedCoupon, Boolean available);
 
     CouponDetail selectOneCouponDetailByIssuedCouponUUID(String issuedCouponUUID);
 }
