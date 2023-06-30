@@ -1,10 +1,18 @@
 package com.hyunprise.android.api.coupon.services
 
+
+import android.util.Log
 import com.hyunprise.android.api.RetrofitConfig
 import com.hyunprise.android.api.coupon.clients.IssuedCouponClient
+import com.hyunprise.android.api.coupon.vo.Coupon
 import com.hyunprise.android.api.coupon.vo.CouponSummary
+import com.hyunprise.android.api.coupon.vo.IssuedCoupon
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import retrofit2.Response
+
 
 class IssuedCouponService {
 
@@ -16,4 +24,12 @@ class IssuedCouponService {
             response.body() ?: emptyList()
         }
     }
+
+    suspend fun postIssuedCoupon(issuedCoupon: IssuedCoupon) : Response<Coupon> {
+        val response = issuedCouponClient.postOneIssuedCoupon(issuedCoupon)
+        response.body() ?: emptyList<String>()
+
+        return  response
+    }
+
 }
