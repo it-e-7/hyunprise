@@ -22,11 +22,11 @@ public class IssuedCouponServiceImpl implements IssuedCouponService {
     private final IssuedCouponMapper issuedCouponMapper;
 
     @Override
-    public List<CouponSummary> selectAllCouponSummaryOfMemberByStatus(IssuedCoupon issuedCoupon) {
+    public List<CouponSummary> selectAllCouponSummaryOfMemberByStatus(IssuedCoupon issuedCoupon, Boolean available) {
         if (issuedCoupon.getMemberUUID() == null) {
             return new ArrayList<>();
         };
-        return issuedCouponMapper.selectAllCouponSummaryOfMemberByStatus(issuedCoupon);
+        return issuedCouponMapper.selectAllCouponSummaryOfMemberByStatus(issuedCoupon, available);
     }
 
     @Override

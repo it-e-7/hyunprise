@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface IssuedCouponService {
-    List<CouponSummary> selectAllCouponSummaryOfMemberByStatus(IssuedCoupon memberUUID);
+    List<CouponSummary> selectAllCouponSummaryOfMemberByStatus(IssuedCoupon memberUUID, Boolean available);
 
     CouponDetail selectOneCouponDetailByIssuedCouponUUID(String issuedCouponUUID);
 

@@ -2,27 +2,45 @@ package com.hyunprise.android.ui.member.coupon.adaptors
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.hyunprise.android.R
 import com.hyunprise.android.api.coupon.vo.CouponSummary
-import com.hyunprise.android.databinding.CouponItemBinding
+import com.hyunprise.android.databinding.FragmentIssuedCouponListItemBinding
+import com.hyunprise.android.global.utils.DateFormatter
+import com.hyunprise.android.ui.member.coupon.utils.IssuedCouponStatusConverter
 
-class IssuedCouponRecyclerViewAdaptor(private val dataSet: MutableList<CouponSummary>):
+class IssuedCouponRecyclerViewAdaptor(private val available: Boolean):
     RecyclerView.Adapter<IssuedCouponRecyclerViewAdaptor.CouponItemViewHolder>() {
 
-    class CouponItemViewHolder(val binding: CouponItemBinding): RecyclerView.ViewHolder(binding.root)
+    private val dataSet: MutableList<CouponSummary> = mutableListOf()
+    class CouponItemViewHolder(val binding: FragmentIssuedCouponListItemBinding): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CouponItemViewHolder {
-        return CouponItemViewHolder(CouponItemBinding.inflate(
+        return CouponItemViewHolder(FragmentIssuedCouponListItemBinding.inflate(
             LayoutInflater.from(parent.context), parent, false))
     }
-    // Replace the contents of a view (invoked by the layout manager)
+
     override fun onBindViewHolder(viewHolder: CouponItemViewHolder, position: Int) {
-        // Get element from your dataset at this position and replace the
-        // contents of the view with that element
-        viewHolder.binding.couponItemCouponName.text = dataSet[position].couponName
-        viewHolder.binding.couponItemExpirationDate.text = dataSet[position].expirationDate.toString()
+        val holder = viewHolder.binding
+        val context = holder.issuedCouponItemContainer.context
+        holder.issuedCouponItemName.text = dataSet[position].couponName
+
+        if (available) {
+            holder.issuedCouponItemExpirationDate.text =
+                DateFormatter.toIssuedCouponExpireDateString(dataSet[position].expirationDate)
+        }
+        else {
+            holder.issuedCouponItemExpirationDate.text =
+                IssuedCouponStatusConverter.getStatusString(dataSet[position].status)
+            holder.issuedCouponStatusIcon.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_back_arrow_24dp))
+            holder.issuedCouponItemContainer.setBackgroundColor(ContextCompat.getColor(context, R.color.disabled))
+        }
     }
-    // Return the size of your dataset (invoked by the layout manager)
+
     override fun getItemCount() = dataSet.size
 
+    fun addAll(data: List<CouponSummary>) {
+        dataSet.addAll(data)
+    }
 }

@@ -9,39 +9,43 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hyunprise.android.api.coupon.services.IssuedCouponService
-import com.hyunprise.android.api.coupon.vo.CouponSummary
-import com.hyunprise.android.databinding.FragmentIssuedCouponScrollingBinding
+import com.hyunprise.android.databinding.FragmentIssuedCouponListBinding
 import com.hyunprise.android.ui.member.coupon.adaptors.IssuedCouponRecyclerViewAdaptor
 import kotlinx.coroutines.launch
 
-class IssuedCouponScrollingFragment(private val memberUUID: String, private val status: Int) : Fragment() {
+class IssuedCouponScrollingFragment(private val memberUUID: String, private val available: Boolean) : Fragment() {
 
-    private lateinit var _binding: FragmentIssuedCouponScrollingBinding
+    private lateinit var _binding: FragmentIssuedCouponListBinding
     private val binding get() = _binding
     private lateinit var adaptor: IssuedCouponRecyclerViewAdaptor
-    private val dataSet: MutableList<CouponSummary> = mutableListOf()
     private val issuedCouponService = IssuedCouponService()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentIssuedCouponScrollingBinding.inflate(inflater, container, false)
+        _binding = FragmentIssuedCouponListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("sychoi", "onViewCreated $dataSet")
-        adaptor = IssuedCouponRecyclerViewAdaptor(dataSet)
-        _binding
+        adaptor = IssuedCouponRecyclerViewAdaptor(available)
         _binding.issuedCouponRecyclerView.adapter = adaptor
         _binding.issuedCouponRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
+//        val itemClickListener = object : RecyclerItemClickListener.OnItemClickListener {
+//            override fun onItemClick(view: View, position: Int) {
+//
+//            }
+//        }
+//
+//        _binding.issuedCouponRecyclerView.addOnItemTouchListener(RecyclerItemClickListener(requireContext(), itemClickListener))
+
         viewLifecycleOwner.lifecycleScope.launch {
-            val coupons = issuedCouponService.fetchData(memberUUID, status)
+            val coupons = issuedCouponService.fetchData(memberUUID, available)
             Log.d("sychoi", "lifecycle added $coupons")
-            dataSet.addAll(coupons)
+            adaptor.addAll(coupons)
             adaptor.notifyDataSetChanged()
         }
 

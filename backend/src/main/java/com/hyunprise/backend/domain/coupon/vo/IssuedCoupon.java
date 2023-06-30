@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 
 @Data
@@ -16,6 +16,6 @@ public class IssuedCoupon {
     private String couponUUID;
     private String couponCode;
     private Integer status;
-    private Date issueDate;
-    private Date expirationDate;
+    private Timestamp issueDate;
+    private Timestamp expirationDate;
 }

@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 
 @Data
@@ -17,7 +17,7 @@ public class Coupon {
     private String couponDescription;
     private Integer discountType;
     private Integer discountAmount;
-    private Date createdDate;
+    private Timestamp createdDate;
     private Integer discountLimit;
     private Integer minimumPurchase;
     private String retailerLocation;

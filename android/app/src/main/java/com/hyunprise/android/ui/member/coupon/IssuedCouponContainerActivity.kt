@@ -19,10 +19,13 @@ class IssuedCouponContainerActivity : AppCompatActivity() {
 
         val adaptor = IssuedCouponTabAdaptor(this)
         val memberUUID = "FF1342115E49E60FE05304001CACF958"
-        adaptor.addFragment(IssuedCouponScrollingFragment(memberUUID, CouponConsts.COUPON_STATUS_AVAILABLE), "MY 쿠폰")
-        adaptor.addFragment(IssuedCouponScrollingFragment(memberUUID, CouponConsts.COUPON_STATUS_USED), "사용한 쿠폰")
+        adaptor.addFragment(IssuedCouponScrollingFragment(memberUUID, CouponConsts.ISSUED_COUPON_AVAILABLE), "MY 쿠폰")
+        adaptor.addFragment(IssuedCouponScrollingFragment(memberUUID, CouponConsts.ISSUED_COUPON_UNAVAILABLE), "사용한 쿠폰")
         binding.couponViewPager.adapter = adaptor
 
+//        binding.couponBackButton.setOnClickListener {
+//            IssuedCouponDetailDialogFragment.newInstance(30).show(supportFragmentManager, "dialog")
+//        }
 
         TabLayoutMediator(binding.couponTabLayout, binding.couponViewPager) { tab, position ->
             tab.text = adaptor.getTabTitle(position)
