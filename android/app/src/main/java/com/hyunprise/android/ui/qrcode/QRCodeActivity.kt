@@ -94,19 +94,19 @@ class QRCodeActivity: AppCompatActivity() {
                 if (couponUUID != null) {
                     CoroutineScope(Dispatchers.Main).launch {
                         val couponData: Response<Coupon> = couponService.getOneCoupon(couponUUID)
-                        Log.d("log.couponData", "$couponData" )
-                        var intent = Intent(this@QRCodeActivity, CouponFoundActivity::class.java)
+                        val intent = Intent(this@QRCodeActivity, CouponFoundActivity::class.java)
 
                         intent.putExtra("coupon_name", couponData.body()?.couponName)
                         intent.putExtra("coupon_description", couponData.body()?.couponDescription)
                         intent.putExtra("coupon_uuid", couponUUID)
                         intent.putExtra("member_uuid", memberUUID)
                         startActivity(intent)
+                        finish()
                     }
                 }
-                var intent = Intent(this@QRCodeActivity, CouponFoundActivity::class.java)
-                startActivity(intent)
-                finish()
+                else {
+                    // UUID 가 없는 경우 처리
+                }
             }
 
             override fun possibleResultPoints(resultPoints: MutableList<ResultPoint>?) { }
