@@ -22,9 +22,9 @@ class CouponFoundActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.couponFoundExit.setOnClickListener {
+            finish()
             val intent = Intent(this, QRCodeActivity::class.java)
             startActivity(intent)
-            finish()
         }
 
         val coupon_name = intent.getStringExtra("coupon_name")
@@ -47,8 +47,8 @@ class CouponFoundActivity : AppCompatActivity() {
                         val intent = Intent(this@CouponFoundActivity, CouponAcquiredActivity::class.java)
                         intent.putExtra("coupon_name", coupon_name)
                         intent.putExtra("coupon_description", coupon_description)
-                        startActivity(intent)
                         finish()
+                        startActivity(intent)
                     } else {
                         Log.e("log.coupon_found_fail", "${response.errorBody()}")
                     }

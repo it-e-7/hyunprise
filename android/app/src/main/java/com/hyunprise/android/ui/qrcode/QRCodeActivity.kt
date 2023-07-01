@@ -48,7 +48,6 @@ class QRCodeActivity: AppCompatActivity() {
                 1000
             )
         }
-
         binding.qrcodeExit.setOnClickListener {
             finish()
         }
@@ -100,8 +99,8 @@ class QRCodeActivity: AppCompatActivity() {
                         intent.putExtra("coupon_description", couponData.body()?.couponDescription)
                         intent.putExtra("coupon_uuid", couponUUID)
                         intent.putExtra("member_uuid", memberUUID)
-                        startActivity(intent)
                         finish()
+                        startActivity(intent)
                     }
                 }
                 else {
