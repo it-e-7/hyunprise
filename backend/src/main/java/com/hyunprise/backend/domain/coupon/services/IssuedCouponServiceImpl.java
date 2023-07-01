@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -35,12 +36,16 @@ public class IssuedCouponServiceImpl implements IssuedCouponService {
     }
 
     @Override
-    public Integer createOneIssuedCoupon(IssuedCoupon issuedCoupon) {
-        return issuedCouponMapper.createOneIssuedCoupon(issuedCoupon);
+    public String createOneIssuedCoupon(IssuedCoupon issuedCoupon) {
+
+        Map<String, String> map = new HashMap<>();
+        map.put("memberUUID", issuedCoupon.getMemberUUID());
+        map.put("couponUUID", issuedCoupon.getCouponUUID());
+        map.put("issuedCouponUUID", null);
+        issuedCouponMapper.createOneIssuedCoupon(map);
+
+
+        return map.get("issuedCouponUUID");
     }
 
-    @Override
-    public Coupon selectOneIssuedCoupon(IssuedCoupon issuedCoupon) {
-        return issuedCouponMapper.selectOneIssuedCoupon(issuedCoupon);
-    }
 }
