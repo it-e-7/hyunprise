@@ -1,6 +1,5 @@
 package com.hyunprise.backend.domain.coupon.mappers;
 
-import com.hyunprise.backend.domain.coupon.vo.Coupon;
 import com.hyunprise.backend.domain.coupon.vo.CouponSummary;
 import com.hyunprise.backend.domain.coupon.vo.IssuedCoupon;
 import com.hyunprise.backend.domain.coupon.vo.CouponDetail;
@@ -15,7 +14,7 @@ public interface IssuedCouponMapper {
 
     CouponDetail selectOneCouponDetailByIssuedCouponUUID(String issuedCouponUUID);
 
-    Integer createOneIssuedCoupon(IssuedCoupon issuedCoupon);
+    Integer createOneIssuedCoupon(Map<String, String> map);
 
-    Coupon selectOneIssuedCoupon(IssuedCoupon issuedCoupon);
+    
 }
