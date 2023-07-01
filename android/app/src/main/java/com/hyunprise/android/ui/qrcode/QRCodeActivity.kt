@@ -8,6 +8,7 @@ import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.zxing.ResultPoint
+import com.hyunprise.android.api.coupon.services.CouponService
 import com.hyunprise.android.api.coupon.services.IssuedCouponService
 import com.hyunprise.android.api.coupon.vo.Coupon
 import com.hyunprise.android.api.coupon.vo.IssuedCoupon
@@ -27,7 +28,7 @@ class QRCodeActivity: AppCompatActivity() {
     lateinit var binding: ActivityQrcodeBinding
     lateinit var barcodeView: DecoratedBarcodeView
     lateinit var capture: CaptureManager
-    private val issuedCouponService = IssuedCouponService()
+    private val couponService = CouponService()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,16 +51,6 @@ class QRCodeActivity: AppCompatActivity() {
 
         binding.qrcodeExit.setOnClickListener {
             finish()
-        }
-
-        binding.qrcodeCouponList.setOnClickListener {
-
-        }
-
-        binding.qrcodeContinueSearching.setOnClickListener {
-            finish()
-            var intent: Intent = getIntent()
-            startActivity(intent)
         }
     }
 
@@ -102,13 +93,14 @@ class QRCodeActivity: AppCompatActivity() {
 
                 if (couponUUID != null) {
                     CoroutineScope(Dispatchers.Main).launch {
-                        val issuedCoupon = IssuedCoupon(couponUUID = couponUUID, memberUUID = memberUUID)
-
-                        val couponData: Response<Coupon> = issuedCouponService.postIssuedCoupon(issuedCoupon)
+                        val couponData: Response<Coupon> = couponService.getOneCoupon(couponUUID)
+                        Log.d("log.couponData", "$couponData" )
                         var intent = Intent(this@QRCodeActivity, CouponFoundActivity::class.java)
-                        Log.d("qrcode.issuedCoupon", "${couponData.body()?.couponName} ${couponData.body()?.couponDescription}")
+
                         intent.putExtra("coupon_name", couponData.body()?.couponName)
                         intent.putExtra("coupon_description", couponData.body()?.couponDescription)
+                        intent.putExtra("coupon_uuid", couponUUID)
+                        intent.putExtra("member_uuid", memberUUID)
                         startActivity(intent)
                     }
                 }
