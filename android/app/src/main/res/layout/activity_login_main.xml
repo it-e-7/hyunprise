@@ -9,8 +9,8 @@
     <!-- 아이디 입력칸 -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="로그인 성공했습니다."/>ㄹ
+        android:layout_height="wrap_content"
+        android:text="로그인 성공했습니다."/>
     <!-- 로그인 버튼 -->
     <Button
         android:id="@+id/buttonLogout"

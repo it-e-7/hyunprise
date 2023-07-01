@@ -10,12 +10,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response
 
-
 class IssuedCouponService {
 
     private val retrofit = RetrofitConfig.retrofit_gson
     private val issuedCouponClient = retrofit.create(IssuedCouponClient::class.java)
-    suspend fun fetchData(memberUUID: String, available: Boolean): List<CouponSummary> {
+    suspend fun fetchData(memberUUID: String, status: Int): List<CouponSummary> {
         return withContext(Dispatchers.Main) {
             val response = issuedCouponClient.getAllCouponsOfMemberByStatus(memberUUID, available)
             if (response.isSuccessful) {
@@ -27,12 +26,11 @@ class IssuedCouponService {
             }
         }
     }
-
+    
     suspend fun postIssuedCoupon(issuedCoupon: IssuedCoupon) : Response<Coupon> {
         val response = issuedCouponClient.postOneIssuedCoupon(issuedCoupon)
         response.body() ?: emptyList<String>()
 
         return  response
     }
-
 }
