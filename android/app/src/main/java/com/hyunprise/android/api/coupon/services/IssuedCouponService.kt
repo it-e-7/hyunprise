@@ -14,7 +14,7 @@ class IssuedCouponService {
 
     private val retrofit = RetrofitConfig.retrofit_gson
     private val issuedCouponClient = retrofit.create(IssuedCouponClient::class.java)
-    suspend fun fetchData(memberUUID: String, status: Int): List<CouponSummary> {
+/*    suspend fun fetchData(memberUUID: String, status: Int): List<CouponSummary> {
         return withContext(Dispatchers.Main) {
             val response = issuedCouponClient.getAllCouponsOfMemberByStatus(memberUUID, available)
             if (response.isSuccessful) {
@@ -25,12 +25,17 @@ class IssuedCouponService {
                 emptyList()
             }
         }
-    }
+    }*/
     
-    suspend fun postIssuedCoupon(issuedCoupon: IssuedCoupon) : Response<Coupon> {
+    suspend fun postIssuedCoupon(issuedCoupon: IssuedCoupon) : Response<String> {
         val response = issuedCouponClient.postOneIssuedCoupon(issuedCoupon)
         response.body() ?: emptyList<String>()
+        try {
+            Log.d("postIssuedCoupon", "${response.body()}")
+        } catch (e: Exception) {
+            Log.d("postIssuedCoupon.error", "${e.printStackTrace()}")
+        }
 
-        return  response
+        return response
     }
 }
