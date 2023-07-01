@@ -11,44 +11,55 @@ import com.hyunprise.android.databinding.ActivityCouponFoundBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import retrofit2.Response
 
 class CouponFoundActivity : AppCompatActivity() {
     private val issuedCouponService = IssuedCouponService()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        var binding = ActivityCouponFoundBinding.inflate(layoutInflater)
+        val binding = ActivityCouponFoundBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.couponFoundExit.setOnClickListener {
-            var intent = Intent(this, QRCodeActivity::class.java)
+            val intent = Intent(this, QRCodeActivity::class.java)
             startActivity(intent)
             finish()
         }
 
-        Log.d("couponfound.issuedCoupon", "${intent.getStringExtra("coupon_name")} ${intent.getStringExtra("coupon_description")}")
+        val coupon_name = intent.getStringExtra("coupon_name")
+        val coupon_description= intent.getStringExtra("coupon_description")
 
-        binding.couponFoundCouponNameTv.text = intent.getStringExtra("coupon_name")
-        binding.couponFoundCouponDescriptionTv.text = intent.getStringExtra("coupon_description")
+        binding.couponFoundCouponNameTv.text = coupon_name
+        binding.couponFoundCouponDescriptionTv.text = coupon_description
 
         binding.couponFoundReceiveCouponBtn.setOnClickListener {
             CoroutineScope(Dispatchers.Main).launch {
+                val couponUUID = intent.getStringExtra("coupon_uuid").toString()
+                val memberUUID= intent.getStringExtra("member_uuid").toString()
                 val issuedCoupon = IssuedCoupon(
-                    couponUUID = intent.getStringExtra("coupon_uuid").toString(),
-                    memberUUID = intent.getStringExtra("member_uuid").toString()
+                    couponUUID = couponUUID, memberUUID = memberUUID
                 )
-
-
-                val result = issuedCouponService.postIssuedCoupon(issuedCoupon)
-                Log.d("coupon_found_success", "$result")
-                Toast.makeText(this@CouponFoundActivity,
-                    "쿠폰이 발급 되었습니다.", Toast.LENGTH_SHORT).show()
+                try {
+                    val response: Response<String> = issuedCouponService.postIssuedCoupon(issuedCoupon)
+                    if (response.isSuccessful) {
+                        Toast.makeText(this@CouponFoundActivity, "쿠폰이 발급 되었습니다.", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this@CouponFoundActivity, CouponAcquiredActivity::class.java)
+                        intent.putExtra("coupon_name", coupon_name)
+                        intent.putExtra("coupon_description", coupon_description)
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        Log.e("log.coupon_found_fail", "${response.errorBody()}")
+                    }
+                } catch (e: Exception) {
+                    Log.e("log.coupon_found_error", "${e.message}")
+                }
             }
         }
 
         binding.couponFoundReceivePointsBtn.setOnClickListener {
             // 포인트 받기 이벤트 연결
         }
-
     }
 }
