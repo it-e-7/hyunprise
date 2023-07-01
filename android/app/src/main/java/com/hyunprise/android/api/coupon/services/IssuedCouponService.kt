@@ -6,9 +6,7 @@ import com.hyunprise.android.api.coupon.clients.IssuedCouponClient
 import com.hyunprise.android.api.coupon.vo.Coupon
 import com.hyunprise.android.api.coupon.vo.CouponSummary
 import com.hyunprise.android.api.coupon.vo.IssuedCoupon
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.Response
 
