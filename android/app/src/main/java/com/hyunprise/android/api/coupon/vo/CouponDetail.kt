@@ -1,6 +1,6 @@
 package com.hyunprise.android.api.coupon.vo
 
-import java.sql.Date
+import java.sql.Timestamp
 
 data class CouponDetail(
     val issuedCouponUUID: String? = null,
@@ -16,7 +16,7 @@ data class CouponDetail(
     val couponUUID: String? = null,
     val status: Int? = null,
     val couponCode: String? = null,
-    val issueDate: Date? = null,
-    val expirationDate: Date? = null,
+    val issueDate: Timestamp? = null,
+    val expirationDate: Timestamp? = null,
     val brandName: String? = null
 )

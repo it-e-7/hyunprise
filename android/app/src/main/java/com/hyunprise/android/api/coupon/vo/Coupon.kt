@@ -1,7 +1,5 @@
 package com.hyunprise.android.api.coupon.vo
 
-import java.sql.Date
-
 data class Coupon(
     val couponUUID: String? = null,
     val sellerUUID: String? = null,
