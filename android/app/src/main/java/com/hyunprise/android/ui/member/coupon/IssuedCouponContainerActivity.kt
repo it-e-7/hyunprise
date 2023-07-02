@@ -32,4 +32,9 @@ class IssuedCouponContainerActivity : AppCompatActivity() {
         }.attach()
 
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding.couponViewPager.adapter = null
+    }
 }

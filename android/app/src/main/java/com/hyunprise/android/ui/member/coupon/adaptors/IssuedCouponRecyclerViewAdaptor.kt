@@ -43,4 +43,5 @@ class IssuedCouponRecyclerViewAdaptor(private val available: Boolean):
     fun addAll(data: List<CouponSummary>) {
         dataSet.addAll(data)
     }
+    fun getDataSet(position: Int): CouponSummary? = dataSet.getOrNull(position)
 }

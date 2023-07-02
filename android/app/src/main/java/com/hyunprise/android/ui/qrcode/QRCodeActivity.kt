@@ -27,7 +27,7 @@ class QRCodeActivity: AppCompatActivity() {
     lateinit var binding: ActivityQrcodeBinding
     lateinit var barcodeView: DecoratedBarcodeView
     lateinit var capture: CaptureManager
-    private val issuedCouponService = IssuedCouponService()
+//    private val issuedCouponService = IssuedCouponService()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -104,7 +104,7 @@ class QRCodeActivity: AppCompatActivity() {
                     CoroutineScope(Dispatchers.Main).launch {
                         val issuedCoupon = IssuedCoupon(couponUUID = couponUUID, memberUUID = memberUUID)
 
-                        val couponData: Response<Coupon> = issuedCouponService.postIssuedCoupon(issuedCoupon)
+                        val couponData: Response<Coupon> = IssuedCouponService.postIssuedCoupon(issuedCoupon)
                         var intent = Intent(this@QRCodeActivity, CouponFoundActivity::class.java)
                         Log.d("qrcode.issuedCoupon", "${couponData.body()?.couponName} ${couponData.body()?.couponDescription}")
                         intent.putExtra("coupon_name", couponData.body()?.couponName)
