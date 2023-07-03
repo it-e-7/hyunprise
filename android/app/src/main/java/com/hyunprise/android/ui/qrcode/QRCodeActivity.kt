@@ -93,10 +93,11 @@ class QRCodeActivity: AppCompatActivity() {
                     CoroutineScope(Dispatchers.Main).launch {
                         val couponData: Response<Coupon> = CouponService.getOneCoupon(couponUUID)
                         var intent = Intent(this@QRCodeActivity, CouponFoundActivity::class.java)
-                        Log.d("qrcode.issuedCoupon", "${couponData.body()?.couponName} ${couponData.body()?.couponDescription}")
+                        Log.d("qrcode.issuedCoupon", "${couponData.body()}")
 
                         intent.putExtra("coupon_name", couponData.body()?.couponName)
                         intent.putExtra("coupon_description", couponData.body()?.couponDescription)
+                        intent.putExtra("retailer_location", couponData.body()?.retailerLocation)
                         intent.putExtra("coupon_uuid", couponUUID)
                         intent.putExtra("member_uuid", memberUUID)
                         finish()
