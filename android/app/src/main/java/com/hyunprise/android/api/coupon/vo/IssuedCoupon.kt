@@ -1,6 +1,6 @@
 package com.hyunprise.android.api.coupon.vo
 
-import java.sql.Date
+import java.sql.Timestamp
 
 
 data class IssuedCoupon(
@@ -9,8 +9,8 @@ data class IssuedCoupon(
     var couponUUID: String,
     val couponCode: String = "defaultCode",
     val status: Int = 0,
-    val issueDate: Date? = null,
-    val expirationDate: Date?= null
+    val issueDate: Timestamp? = null,
+    val expirationDate: Timestamp?= null
 ) {
     constructor(memberUUID: String, couponUUID: String)
             : this(
