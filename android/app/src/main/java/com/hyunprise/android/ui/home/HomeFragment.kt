@@ -1,5 +1,6 @@
 package com.hyunprise.android.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,7 +9,12 @@ import android.view.ViewGroup
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import com.hyunprise.android.databinding.ActivityCouponContainerBinding
+import com.hyunprise.android.databinding.ActivityPointBinding
 import com.hyunprise.android.databinding.FragmentHomeBinding
+import com.hyunprise.android.ui.member.coupon.IssuedCouponContainerActivity
+import com.hyunprise.android.ui.member.point.PointActivity
 
 
 class HomeFragment : Fragment() {
@@ -40,6 +46,20 @@ class HomeFragment : Fragment() {
             } else {
                 drawerLayout_home.openDrawer(GravityCompat.START)
             }
+        }
+
+        // 쿠폰 페이지
+        val couponBtn = binding.homeDrawerContent.drawerCouponBtn
+        couponBtn.setOnClickListener{
+            val intent = Intent(activity, IssuedCouponContainerActivity::class.java)
+            startActivity(intent)
+        }
+
+        // 포인트 페이지
+        val pointBtn = binding.homeDrawerContent.drawerPointBtn
+        pointBtn.setOnClickListener{
+            val intent = Intent(activity, PointActivity::class.java)
+            startActivity(intent)
         }
 
         return binding.root

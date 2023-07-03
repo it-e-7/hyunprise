@@ -10,35 +10,107 @@
     android:layout_gravity="start"
     android:background="@color/white"
     android:orientation="vertical"
-    android:paddingEnd="20dp">
+    android:paddingStart="15dp"
+    android:paddingEnd="15dp"
+    android:layoutDirection="ltr"
+    >
 
     <!-- 드로워 메뉴 항목들 -->
+
     <!-- 사용자 이름 -->
 
     <!-- 포인트 내역 확인 버튼 -->
+
+    <ImageButton
+        android:id="@+id/btn_close_drawer1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FF0000"
+        android:src="@drawable/ic_x_button_32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="15dp"/>
 
     <TextView
         android:id="@+id/drawer_textView_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="사용자 회원님"
-        android:textSize="25dp"
         android:layout_marginTop="10dp"
+        android:text="사용자 회원님"
+        android:textColor="@color/myblack"
+        android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp" />
 
     <!-- 아이콘들 -->
 
-    <Button
+    <GridLayout
         android:id="@+id/drawer_point_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="포인트 내역 확인"
+        android:layout_height="60dp"
+        android:columnCount="3"
+        android:rowCount="1"
         app:layout_constraintTop_toBottomOf="@+id/btn_close_drawer1"
-        android:layout_marginTop="10dp"
-        tools:layout_editor_absoluteX="0dp"
-        />
+        android:layout_marginTop="10dp">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/myblack"
+            android:gravity="start"
+            android:text="MY.H" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/drawer_in_point"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="105dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:drawableLeft="@drawable/ic_barcode_black_32dp"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="@color/myblack"
+                android:text=" 4,321P" />
+        </LinearLayout>
+
+
+
+    </GridLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/myblack"
+        app:layout_constraintTop_toBottomOf="@+id/drawer_point_button"
+        tools:layout_editor_absoluteX="13dp" />
 
     <TextView
         android:id="@+id/drawer_textView_floor1"
@@ -47,7 +119,8 @@
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/drawer_point_button"
-        android:text="Smart Life"
+        android:text="My Menu"
+        android:textColor="@color/myblack"
         android:layout_marginTop="10dp"
         />
 
@@ -61,6 +134,7 @@
         android:layout_marginTop="10dp"
         >
         <LinearLayout
+            android:id="@+id/drawer_coupon_btn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
@@ -70,13 +144,34 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_nav_point_shop_24dp" />
+                android:src="@drawable/ic_coupon_32dp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Image 1" />
+                android:text="할인 쿠폰" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/drawer_point_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_point_32dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="내 포인트" />
 
         </LinearLayout>
 
@@ -89,14 +184,13 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_nav_point_shop_24dp" />
+                android:layout_height="wrap_content"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Image 2" />
+                android:text="" />
 
         </LinearLayout>
 
@@ -109,43 +203,17 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_nav_point_shop_24dp" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Image 3" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_nav_point_shop_24dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Image 4" />
+                android:text="" />
 
         </LinearLayout>
 
     </GridLayout>
     <!-- X 버튼 -->
-    <ImageButton
-        android:id="@+id/btn_close_drawer1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@android:drawable/btn_dialog"
-        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

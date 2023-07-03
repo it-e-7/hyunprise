@@ -90,12 +90,12 @@
                 android:id="@+id/barcode_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
                 android:background="#00FF0000"
                 android:src="@drawable/ic_barcode_32"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                tools:layout_editor_absoluteY="16dp" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
                 android:id="@+id/menu_bar_button"
