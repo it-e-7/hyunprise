@@ -22,7 +22,7 @@ public class AuthenticationConfig {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/auth").anonymous()
-                .antMatchers("/issued_coupon").hasAuthority("Admin")
+                .antMatchers("/issued_coupon").anonymous()
                 .anyRequest().authenticated()
                 .and()
 //                .sessionManagement()
