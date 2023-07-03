@@ -11,7 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response
 
-class CouponService {
+object CouponService {
 
     private val retrofit = RetrofitConfig.retrofit_gson
     private val issuedCouponClient = retrofit.create(CouponClient::class.java)
