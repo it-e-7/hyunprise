@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:backgroundTint="@color/white">
 
     <LinearLayout
         android:id="@+id/coupon_acquired_toolbar"
@@ -14,7 +15,6 @@
         android:gravity="center_vertical"
         android:orientation="horizontal"
 
-        app:layout_constraintBottom_toTopOf="@id/coupon_acquired_toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -35,6 +35,20 @@
             android:textStyle="bold" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/coupon_acquired_title_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="보물 획득!"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="20dp"
+
+        app:layout_constraintBottom_toTopOf="@id/coupon_acquired_tv_group"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/coupon_acquired_toolbar" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/coupon_acquired_tv_group"
         android:layout_width="match_parent"
@@ -43,20 +57,20 @@
         android:layout_marginRight="25dp"
         android:layout_marginBottom="182dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/coupon_acquired_btn_group"
+        app:layout_constraintTop_toBottomOf="@id/coupon_acquired_title_tv"
+        app:layout_constraintBottom_toTopOf="@+id/coupon_acquired_barcode_iv"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coupon_acquired_toolbar">
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
-            android:id="@+id/coupon_acquired_tv1"
-            android:layout_width="match_parent"
+            android:id="@+id/coupon_acquired_coupon_retail_location_tv"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="보물 획득!"
-            android:textSize="40dp"
+            android:text="[현대백화점 신촌점]"
+            android:textColor="@color/black"
+            android:textSize="20dp"
             android:textStyle="bold"
-
-            app:layout_constraintBottom_toTopOf="@id/coupon_acquired_coupon_name_tv"
+            app:layout_constraintBottom_toTopOf="@+id/coupon_acquired_coupon_name_tv"
             app:layout_constraintEnd_toEndOf="@id/coupon_acquired_tv_group"
             app:layout_constraintStart_toStartOf="@id/coupon_acquired_tv_group"
             app:layout_constraintTop_toTopOf="@id/coupon_acquired_tv_group" />
@@ -65,43 +79,49 @@
             android:id="@+id/coupon_acquired_coupon_name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="이디야"
-            android:textColor="@color/purple"
-            android:textSize="40dp"
-
+            android:text="샤넬 90% 할인쿠폰"
+            android:textColor="@color/black"
+            android:textSize="20dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/coupon_acquired_coupon_description_tv"
             app:layout_constraintEnd_toEndOf="@id/coupon_acquired_tv_group"
             app:layout_constraintStart_toStartOf="@id/coupon_acquired_tv_group"
-            app:layout_constraintTop_toBottomOf="@+id/coupon_acquired_tv1" />
+            app:layout_constraintTop_toTopOf="@+id/coupon_acquired_tv_group" />
 
         <TextView
             android:id="@+id/coupon_acquired_coupon_description_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="12%"
-            android:textColor="@color/purple"
-            android:textSize="20dp"
-
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/coupon_acquired_tv2"
+            android:text="샤넬 양말 90% 할인쿠폰"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            app:layout_constraintBottom_toTopOf="@id/coupon_acquired_expiration_date_tv"
             app:layout_constraintEnd_toEndOf="@id/coupon_acquired_tv_group"
             app:layout_constraintStart_toStartOf="@id/coupon_acquired_tv_group"
             app:layout_constraintTop_toBottomOf="@id/coupon_acquired_coupon_name_tv" />
 
         <TextView
-            android:id="@+id/coupon_acquired_tv2"
+            android:id="@+id/coupon_acquired_expiration_date_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="쿠폰을 받았습니다!"
-            android:textSize="30dp"
+            android:gravity="center_horizontal"
+            android:text="2023.07.03"
+            android:textSize="20dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/coupon_acquired_tv_group"
             app:layout_constraintEnd_toEndOf="@id/coupon_acquired_tv_group"
             app:layout_constraintStart_toStartOf="@id/coupon_acquired_tv_group"
             app:layout_constraintTop_toBottomOf="@id/coupon_acquired_coupon_description_tv" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/coupon_acquired_barcode_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/barcode_sample"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/coupon_acquired_tv_group" />
 
     <LinearLayout
         android:id="@+id/coupon_acquired_btn_group"
@@ -112,7 +132,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coupon_acquired_tv_group">
+        app:layout_constraintTop_toBottomOf="@+id/coupon_acquired_barcode_iv">
 
         <LinearLayout
             android:id="@+id/coupon_acquired_coupon_list"
