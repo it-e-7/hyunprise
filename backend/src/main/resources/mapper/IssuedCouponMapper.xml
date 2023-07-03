@@ -51,21 +51,13 @@
     <select id="selectOneCoupon" parameterType="Integer" resultType="Coupon">
         SELECT *
         FROM coupon
-        <!--        WHERE coupon_uuid = #{couponUUID}-->
     </select>
 
-    <insert id="createOneIssuedCoupon" parameterType="java.util.HashMap" useGeneratedKeys="true" keyProperty="issuedCouponUUID">
-        INSERT
-        INTO issued_coupon(issued_coupon_uuid, member_uuid, coupon_uuid, coupon_code, status, issue_date, expiration_date)
-        VALUES (default, #{memberUUID}, #{couponUUID}, '1234567891234567', 1, sysdate, sysdate+1)
-
-        <selectKey keyProperty="issuedCouponUUID" order="AFTER" resultType="java.lang.String">
-            SELECT issued_coupon_uuid FROM issued_coupon
-            WHERE issue_date = (
-                SELECT MAX(issue_date)
-                FROM issued_coupon
-                WHERE member_uuid=#{memberUUID}
-            ) AND member_uuid=#{memberUUID}
-        </selectKey>
+    <insert id="createOneIssuedCoupon" statementType="CALLABLE" parameterType="map">
+        {call insert_issued_coupon(
+            #{memberUUID},
+            #{couponUUID},
+            #{issuedCouponUUID, mode=OUT, jdbcType=VARCHAR})
+        }
     </insert>
 </mapper>
