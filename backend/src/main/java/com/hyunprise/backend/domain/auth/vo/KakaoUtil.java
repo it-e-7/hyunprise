@@ -2,8 +2,10 @@ package com.hyunprise.backend.domain.auth.vo;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.http.HttpHeaders;
+import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
+@Service
 public class KakaoUtil {
 
     public KakaoResponse getUserInfo(String kakaoToken) throws JsonProcessingException {
