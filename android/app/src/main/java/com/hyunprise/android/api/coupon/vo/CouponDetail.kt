@@ -1,22 +1,24 @@
 package com.hyunprise.android.api.coupon.vo
 
-import java.sql.Date
+import java.util.Date
 
 data class CouponDetail(
-    val issuedCouponUUID: String? = null,
-    val couponName: String? = null,
-    val couponDescription: String? = null,
-    val discountType: Int? = null,
-    val discountAmount: Int? = null,
-    val discountLimit: Int? = null,
-    val minimumPurchase: Int? = null,
-    val retailerLocation: String? = null,
-    val termsAndConditions: String? = null,
-    val usageInstruction: String? = null,
-    val couponUUID: String? = null,
-    val status: Int? = null,
-    val couponCode: String? = null,
-    val issueDate: Date? = null,
-    val expirationDate: Date? = null,
-    val brandName: String? = null
+    val couponUuid: String,
+    val sellerUuid: String,
+    val couponName: String,
+    val couponDescription: String,
+    val discountType: Int,
+    val discountAmount: Int,
+    val creationDate: Date,
+    val discountLimit: Int,
+    val minumumPurchase: Int,
+    val retailerLocation: String,
+    val termsAndConditons: String,
+    val usageInstruction: String,
+    val issuedCouponUuid: String,
+    val memberUuid: String,
+    val couponCode: String,
+    val status: Int,
+    val issueDate: Date,
+    val expirationDate: Date
 )
