@@ -10,6 +10,7 @@
     android:orientation="vertical"
     tools:context=".ui.qrcode.QRCodeActivity" >
 
+
     <LinearLayout
         android:id="@+id/qrcode_toolbar"
         android:layout_width="match_parent"
@@ -19,8 +20,10 @@
         app:layout_constraintBottom_toTopOf="@id/qrcode_toolbar"
         app:layout_constraintEnd_toEndOf="parent"
 
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <ImageView
             android:id="@+id/qrcode_exit"
@@ -38,19 +41,15 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-
     <com.journeyapps.barcodescanner.DecoratedBarcodeView
         android:id="@+id/qrcode_view_scan_qrcode"
         android:layout_width="match_parent"
         android:layout_height="450dp"
         android:layout_gravity="center_horizontal"
 
-        app:layout_constraintBottom_toTopOf="@id/qrcode_tv_group"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/qrcode_toolbar"
-        android:layout_marginTop="30dp"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/qrcode_toolbar">
 
     </com.journeyapps.barcodescanner.DecoratedBarcodeView>
 
@@ -58,12 +57,11 @@
         android:id="@+id/qrcode_tv_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/qrcode_btn_group"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/qrcode_view_scan_qrcode"
-        android:gravity="center_vertical">
+        app:layout_constraintTop_toBottomOf="@id/qrcode_view_scan_qrcode">
 
         <TextView
             android:layout_width="match_parent"
@@ -77,60 +75,8 @@
             android:layout_height="wrap_content"
             android:text="어떤 보물이 기다리고 있을까요?"
             android:textAlignment="center" />
-
     </LinearLayout>
 
 
-    <LinearLayout
-        android:id="@+id/qrcode_btn_group"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/qrcode_tv_group">
-
-        <LinearLayout
-            android:id="@+id/qrcode_coupon_list"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_coupon_24dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="내 쿠폰함 가기" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/qrcode_continue_searching"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_nav_qrcode_24dp"
-                app:tint="@color/black" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="계속 찾기" />
-        </LinearLayout>
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

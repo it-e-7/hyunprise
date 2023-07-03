@@ -8,6 +8,7 @@ import com.hyunprise.backend.domain.coupon.vo.CouponDetail;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -30,12 +31,16 @@ public class IssuedCouponServiceImpl implements IssuedCouponService {
     }
 
     @Override
-    public Integer createOneIssuedCoupon(IssuedCoupon issuedCoupon) {
-        return issuedCouponMapper.createOneIssuedCoupon(issuedCoupon);
+    public String createOneIssuedCoupon(IssuedCoupon issuedCoupon) {
+
+        Map<String, String> map = new HashMap<>();
+        map.put("memberUUID", issuedCoupon.getMemberUUID());
+        map.put("couponUUID", issuedCoupon.getCouponUUID());
+        map.put("issuedCouponUUID", null);
+        issuedCouponMapper.createOneIssuedCoupon(map);
+
+
+        return map.get("issuedCouponUUID");
     }
 
-    @Override
-    public Coupon selectOneIssuedCoupon(IssuedCoupon issuedCoupon) {
-        return issuedCouponMapper.selectOneIssuedCoupon(issuedCoupon);
-    }
 }

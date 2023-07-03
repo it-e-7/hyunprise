@@ -8,6 +8,7 @@ import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.zxing.ResultPoint
+import com.hyunprise.android.api.coupon.services.CouponService
 import com.hyunprise.android.api.coupon.services.IssuedCouponService
 import com.hyunprise.android.api.coupon.vo.Coupon
 import com.hyunprise.android.api.coupon.vo.IssuedCoupon
@@ -27,7 +28,6 @@ class QRCodeActivity: AppCompatActivity() {
     lateinit var binding: ActivityQrcodeBinding
     lateinit var barcodeView: DecoratedBarcodeView
     lateinit var capture: CaptureManager
-//    private val issuedCouponService = IssuedCouponService()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,19 +47,8 @@ class QRCodeActivity: AppCompatActivity() {
                 1000
             )
         }
-
         binding.qrcodeExit.setOnClickListener {
             finish()
-        }
-
-        binding.qrcodeCouponList.setOnClickListener {
-
-        }
-
-        binding.qrcodeContinueSearching.setOnClickListener {
-            finish()
-            var intent: Intent = getIntent()
-            startActivity(intent)
         }
     }
 
@@ -102,19 +91,22 @@ class QRCodeActivity: AppCompatActivity() {
 
                 if (couponUUID != null) {
                     CoroutineScope(Dispatchers.Main).launch {
-                        val issuedCoupon = IssuedCoupon(couponUUID = couponUUID, memberUUID = memberUUID)
-
-                        val couponData: Response<Coupon> = IssuedCouponService.postIssuedCoupon(issuedCoupon)
+                        val couponData: Response<Coupon> = CouponService.getOneCoupon(couponUUID)
                         var intent = Intent(this@QRCodeActivity, CouponFoundActivity::class.java)
-                        Log.d("qrcode.issuedCoupon", "${couponData.body()?.couponName} ${couponData.body()?.couponDescription}")
+                        Log.d("qrcode.issuedCoupon", "${couponData.body()}")
+
                         intent.putExtra("coupon_name", couponData.body()?.couponName)
                         intent.putExtra("coupon_description", couponData.body()?.couponDescription)
+                        intent.putExtra("retailer_location", couponData.body()?.retailerLocation)
+                        intent.putExtra("coupon_uuid", couponUUID)
+                        intent.putExtra("member_uuid", memberUUID)
+                        finish()
                         startActivity(intent)
                     }
                 }
-                var intent = Intent(this@QRCodeActivity, CouponFoundActivity::class.java)
-                startActivity(intent)
-                finish()
+                else {
+                    // UUID 가 없는 경우 처리
+                }
             }
 
             override fun possibleResultPoints(resultPoints: MutableList<ResultPoint>?) { }

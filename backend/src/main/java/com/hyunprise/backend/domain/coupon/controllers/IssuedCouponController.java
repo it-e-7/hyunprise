@@ -26,7 +26,7 @@ public class IssuedCouponController {
     }
 
     @PostMapping("")
-    public Coupon getOneCoupons(@RequestBody IssuedCoupon issuedCoupon) {
-        return issuedCouponService.selectOneIssuedCoupon(issuedCoupon);
+    public String postOneCoupon(@RequestBody IssuedCoupon issuedCoupon) {
+        return issuedCouponService.createOneIssuedCoupon(issuedCoupon);
     }
 }

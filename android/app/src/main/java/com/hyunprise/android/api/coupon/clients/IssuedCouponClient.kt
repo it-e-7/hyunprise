@@ -28,5 +28,12 @@ interface IssuedCouponClient {
 
     @Headers("Content-Type: application/json")
     @POST("issued_coupon")
-    suspend fun postOneIssuedCoupon(@Body issuedCoupon: IssuedCoupon): Response<Coupon>
+    suspend fun postOneIssuedCoupon(@Body issuedCoupon: IssuedCoupon): Response<String>
+
+    @Headers("Content-Type: application/json")
+    @GET("issued_coupon/{issuedCouponUUID}")
+    suspend fun getOneIssuedCoupon (
+        @Path("issuedCouponUUID") issuedCouponUUID: String,
+    ): Response<CouponDetail>
+
 }
