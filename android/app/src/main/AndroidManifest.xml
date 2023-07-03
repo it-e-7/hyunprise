@@ -23,10 +23,14 @@
         android:theme="@style/Theme.Android"
         tools:targetApi="31">
         <activity
+            android:name=".ui.member.point.PointActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.member.coupon.IssuedCouponContainerActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.home.TestMainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".ui.qrcode.CouponFoundActivity"
             android:exported="false" />
@@ -41,7 +45,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
