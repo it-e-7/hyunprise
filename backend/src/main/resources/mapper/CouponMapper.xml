@@ -4,7 +4,7 @@
 
 <mapper namespace="com.hyunprise.backend.domain.coupon.mappers.CouponMapper">
     <select id="selectOneCoupon" parameterType="String" resultType="Coupon">
-        SELECT coupon_name, coupon_description
+        SELECT *
         FROM coupon
         WHERE coupon_uuid=#{couponUUID}
     </select>
