@@ -19,6 +19,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         buildConfigField "String", "KAKAO_NATIVE_APP_KEY", properties['kakao_native_app_key']
+        buildConfigField "String", "BACKEND_BASE_URL", properties['BACKEND_BASE_URL']
         resValue "string", "kakao_oauth_host", properties['kakao_oauth_host']
     }
 

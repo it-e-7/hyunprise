@@ -9,4 +9,7 @@
     <string name="coupon_tab_used_coupon">사용한 쿠폰</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="issued_coupon_placeholder_expiration_date">사용기한 | %s 까지</string>
+    <string name="issued_coupon_placeholder_expiration_period">%s - %s</string>
 </resources>

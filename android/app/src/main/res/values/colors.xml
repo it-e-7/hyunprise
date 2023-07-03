@@ -7,4 +7,5 @@
     <color name="disabled">#CCCAD8</color>
     <color name="invisible">#00FF0000</color>
     <color name="myblack">#101010</color>
+    <color name="red">#E91E63</color>
 </resources>
