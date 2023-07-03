@@ -67,7 +67,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/issued_coupon_item_icon" />
 
     <View
-            style="@style/CouponItemDivider"
+            style="@style/style_item_divider"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout >
