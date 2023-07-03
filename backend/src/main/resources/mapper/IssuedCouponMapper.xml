@@ -51,18 +51,13 @@
     <select id="selectOneCoupon" parameterType="Integer" resultType="Coupon">
         SELECT *
         FROM coupon
-        <!--        WHERE coupon_uuid = #{couponUUID}-->
     </select>
 
-    <insert id="createOneIssuedCoupon" parameterType="IssuedCoupon">
-        INSERT
-        INTO issued_coupon(issued_coupon_uuid, member_uuid, coupon_uuid, coupon_code, status, issue_date, expiration_date)
-        VALUES (default, #{memberUUID}, #{couponUUID}, '1234567891234567', 1, sysdate, sysdate+1)
+    <insert id="createOneIssuedCoupon" statementType="CALLABLE" parameterType="map">
+        {call insert_issued_coupon(
+            #{memberUUID},
+            #{couponUUID},
+            #{issuedCouponUUID, mode=OUT, jdbcType=VARCHAR})
+        }
     </insert>
-
-    <select id="selectOneIssuedCoupon" parameterType="IssuedCoupon" resultType="Coupon">
-        SELECT coupon_name, coupon_description
-        FROM coupon
-        WHERE coupon_uuid=#{couponUUID}
-    </select>
 </mapper>

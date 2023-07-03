@@ -5,6 +5,7 @@ import com.hyunprise.backend.domain.coupon.vo.CouponSummary;
 import com.hyunprise.backend.domain.coupon.vo.IssuedCoupon;
 import com.hyunprise.backend.domain.coupon.vo.CouponDetail;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,8 +14,6 @@ public interface IssuedCouponService {
 
     CouponDetail selectOneCouponDetailByIssuedCouponUUID(String issuedCouponUUID);
 
-    Integer createOneIssuedCoupon(IssuedCoupon issuedCoupon);
-
-    Coupon selectOneIssuedCoupon(IssuedCoupon issuedCoupon);
+    String createOneIssuedCoupon(IssuedCoupon issuedCoupon);
 
 }
