@@ -1,4 +1,4 @@
-package com.hyunprise.backend.domain.auth.vo;
+package com.hyunprise.backend.domain.member.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,7 +13,6 @@ public class Member {
     private String memberUUID;
     private Long authenticationId;
     private String memberEmail;
-//    private String memberPasswordHash;
     private String memberName;
     private Integer hPoint;
     private Integer gender;
