@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -45,6 +46,15 @@ class HomeFragment : Fragment() {
                 drawerLayout_home.closeDrawer(GravityCompat.START)
             } else {
                 drawerLayout_home.openDrawer(GravityCompat.START)
+            }
+        }
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            if (drawerLayout_home.isDrawerOpen(GravityCompat.START)) {
+                drawerLayout_home.closeDrawer(GravityCompat.START)
+            } else {
+                isEnabled = false
+                requireActivity().onBackPressed()
             }
         }
 
