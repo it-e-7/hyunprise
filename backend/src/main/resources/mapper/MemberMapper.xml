@@ -13,7 +13,9 @@
             gender,
             birthdate,
             address,
-            contact
+            contact,
+            account_type,
+            brand_id
         FROM member
         WHERE member_uuid = #{memberUUID}
     </select>
@@ -28,7 +30,9 @@
             gender,
             birthdate,
             address,
-            contact
+            contact,
+            account_type,
+            brand_id
         FROM member
         WHERE member_email = #{memberEmail}
     </select>

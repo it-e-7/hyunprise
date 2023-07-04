@@ -19,4 +19,6 @@ public class Member {
     private Timestamp birthdate;
     private String address;
     private String contact;
+    private Integer accountType;
+    private Long brandId;
 }
