@@ -23,7 +23,7 @@ public class MemberServiceImpl implements MemberService{
     
     @Override
     @Transactional
-    public int insertOneMember(Member member) {
-        return memberMapper.insertOneMember(member);
+    public int upsertOneMember(Member member) {
+        return memberMapper.upsertOneMember(member);
     }
 }
