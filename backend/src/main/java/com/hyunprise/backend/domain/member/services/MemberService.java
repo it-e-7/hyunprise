@@ -5,5 +5,5 @@ import com.hyunprise.backend.domain.member.vo.Member;
 public interface MemberService {
     Member selectOneMemberByMemberUUID(String memberUUID);
     Member selectOneMemberByMemberEmail(String email);
-    int insertOneMember(Member member);
+    int upsertOneMember(Member member);
 }

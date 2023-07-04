@@ -8,6 +8,6 @@ import org.apache.ibatis.annotations.Mapper;
 public interface MemberMapper {
     Member selectOneMemberByMemberUUID(String memberUUID);
     Member selectOneMemberByMemberEmail(String email);
-    int insertOneMember(Member member);
+    int upsertOneMember(Member member);
 
 }
