@@ -47,9 +47,9 @@
             INSERT (member_email, member_name, gender, h_point, account_type)
             VALUES (p.member_email, p.member_name, p.gender, default, default)
 
-        <selectKey keyProperty="memberUUID" resultType="String" order="AFTER">
+        <selectKey keyColumn="memberUUID,accountType" keyProperty="memberUUID,accountType" resultType="Member" order="AFTER">
             SELECT
-                member_uuid
+                member_uuid, account_type
             FROM member
             WHERE member_email = #{memberEmail}
         </selectKey>

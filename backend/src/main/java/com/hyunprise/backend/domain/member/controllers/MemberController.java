@@ -17,7 +17,7 @@ public class MemberController {
 
 
     @PostMapping("")
-    public ResponseEntity<Member> createOneMember(@RequestBody Member member) {
+    public ResponseEntity<Member> upsertOneMember(@RequestBody Member member) {
         memberService.upsertOneMember(member);
         return ResponseEntity.ok().body(member);
     }
