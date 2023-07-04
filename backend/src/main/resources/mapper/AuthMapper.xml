@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 
-<mapper namespace="com.hyunprise.backend.domain.auth.dao.AuthMapper">
+<mapper namespace="com.hyunprise.backend.domain.auth.mapper.AuthMapper">
 
     <insert id="insertToken">
         insert into authentication ( access_token, refresh_token )
