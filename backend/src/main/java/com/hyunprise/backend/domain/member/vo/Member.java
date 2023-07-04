@@ -1,6 +1,6 @@
 package com.hyunprise.backend.domain.member.vo;
 
-import com.hyunprise.backend.domain.auth.vo.OAuthResponse;
+import com.hyunprise.backend.global.security.vo.OAuthResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,7 +25,7 @@ public class Member {
     private Integer accountType;
     private Long brandId;
 
-    public static Member fromOAuth(OAuthResponse response) {
+    public static Member fromOAuthResponse(OAuthResponse response) {
         return Member.builder()
                 .memberEmail(response.getEmail())
                 .memberName(response.getName())
