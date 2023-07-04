@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<mapper namespace="com.hyunprise.backend.domain.member.mappers.MemberMapper">
+    <select id="selectOneMemberByMemberUUID" parameterType="String" resultType="Member">
+        SELECT
+            member_uuid,
+            authentication_id,
+            member_email,
+            member_name,
+            h_point,
+            gender,
+            birthdate,
+            address,
+            contact,
+            account_type,
+            brand_id
+        FROM member
+        WHERE member_uuid = #{memberUUID}
+    </select>
+
+    <select id="selectOneMemberByMemberEmail" parameterType="String" resultType="Member">
+        SELECT
+            member_uuid,
+            authentication_id,
+            member_email,
+            member_name,
+            h_point,
+            gender,
+            birthdate,
+            address,
+            contact,
+            account_type,
+            brand_id
+        FROM member
+        WHERE member_email = #{memberEmail}
+    </select>
+
+    <insert id="upsertOneMember" parameterType="Member">
+        MERGE INTO member m
+        USING (SELECT #{memberEmail} AS member_email, #{memberName} AS member_name, #{gender} AS gender FROM dual) p
+        ON (m.member_email = p.member_email)
+        WHEN MATCHED THEN
+            UPDATE SET m.member_name = p.member_name
+        WHEN NOT MATCHED THEN
+            INSERT (member_email, member_name, gender, h_point, account_type)
+            VALUES (p.member_email, p.member_name, p.gender, default, default)
+
+        <selectKey keyColumn="memberUUID,accountType" keyProperty="memberUUID,accountType" resultType="Member" order="AFTER">
+            SELECT
+                member_uuid, account_type
+            FROM member
+            WHERE member_email = #{memberEmail}
+        </selectKey>
+    </insert>
+</mapper>
