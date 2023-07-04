@@ -70,12 +70,26 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/coupon_generate_form_group"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/coupon_generate_tv_group"
-        app:layout_constraintBottom_toTopOf="@id/coupon_generate_coupon_issue_request_btn">
+        app:layout_constraintBottom_toTopOf="@id/coupon_generate_coupon_issue_request_btn"
+        android:layout_margin="20dp">
+
+        <TextView
+            android:id="@+id/coupon_generate_coupon_name_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/coupon_generate_form_group"
+            app:layout_constraintEnd_toEndOf="@id/coupon_generate_form_group"
+            app:layout_constraintTop_toTopOf="@id/coupon_generate_form_group"
+            app:layout_constraintBottom_toTopOf="@id/coupon_generate_target_item_ed"
+            android:text="대상 품목"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            />
 
         <EditText
             android:id="@+id/coupon_generate_target_item_ed"
@@ -85,41 +99,153 @@
             app:layout_constraintEnd_toEndOf="@id/coupon_generate_form_group"
             app:layout_constraintTop_toTopOf="@id/coupon_generate_form_group"
             app:layout_constraintBottom_toTopOf="@id/coupon_generate_coupon_type"
-            android:text="대상 품목"
+            android:hint="아메리카노 교환권"
+            android:background="@drawable/coupon_edge"
+            android:padding="15dp"
+            android:layout_marginBottom="10dp"
             />
 
-        <Button
+        <TextView
             android:id="@+id/coupon_generate_coupon_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/coupon_generate_form_group"
             app:layout_constraintEnd_toEndOf="@id/coupon_generate_form_group"
             app:layout_constraintTop_toBottomOf="@id/coupon_generate_target_item_ed"
-            app:layout_constraintBottom_toTopOf="@id/coupon_generate_coupon_usage_condition"
-            android:text="쿠폰 종류 (고정할인 / 비율할인)"
+            app:layout_constraintBottom_toTopOf="@id/coupon_generate_radio_btn_group"
+            android:text="쿠폰 종류"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
             />
 
-        <Button
-            android:id="@+id/coupon_generate_coupon_usage_condition"
+        <RadioGroup
+            android:id="@+id/coupon_generate_radio_btn_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="@id/coupon_generate_form_group"
             app:layout_constraintEnd_toEndOf="@id/coupon_generate_form_group"
             app:layout_constraintTop_toBottomOf="@id/coupon_generate_coupon_type"
-            app:layout_constraintBottom_toTopOf="@id/coupon_generate_validity_period"
-            android:text="조건 (할인한도, 최소금액)"
-            />
+            app:layout_constraintBottom_toTopOf="@id/coupon_generate_coupon_condition_group"
+            android:background="@drawable/coupon_edge"
+            android:padding="15dp"
+            android:layout_marginBottom="10dp">
+            <RadioButton
+                android:layout_weight="1"
+                android:text="고정할인"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
 
-        <Button
-            android:id="@+id/coupon_generate_validity_period"
+            <RadioButton
+                android:layout_weight="1"
+                android:text="비율할인"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <RadioButton
+                android:layout_weight="1"
+                android:text="교환권"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+        </RadioGroup>
+
+        <LinearLayout
+            android:id="@+id/coupon_generate_coupon_condition_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/coupon_generate_radio_btn_group"
+            app:layout_constraintBottom_toTopOf="@id/coupon_generate_validity_period_group">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="조건"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:background="@drawable/coupon_edge"
+                android:padding="15dp"
+                android:layout_marginBottom="10dp">
+
+                <EditText
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:hint="10,000원"/>
+
+                <EditText
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:hint="20,000원"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/coupon_generate_validity_period_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/coupon_generate_form_group"
             app:layout_constraintEnd_toEndOf="@id/coupon_generate_form_group"
-            app:layout_constraintTop_toBottomOf="@id/coupon_generate_coupon_usage_condition"
-            app:layout_constraintBottom_toTopOf="@id/coupon_generate_coupon_quantity"
-            android:text="기한"
-            />
+            app:layout_constraintTop_toBottomOf="@id/coupon_generate_coupon_condition_group"
+            app:layout_constraintBottom_toTopOf="@id/coupon_found_period_group"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/coupon_generate_validity_period"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="기한"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/coupon_edge"
+                android:padding="15dp"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="개월"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="주"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="일"/>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/coupon_found_period_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/coupon_generate_validity_period_group"
+            app:layout_constraintBottom_toTopOf="@id/coupon_generate_coupon_quantity">
+
+        </LinearLayout>
+
 
         <Button
             android:id="@+id/coupon_generate_coupon_quantity"
@@ -127,10 +253,9 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/coupon_generate_form_group"
             app:layout_constraintEnd_toEndOf="@id/coupon_generate_form_group"
-            app:layout_constraintTop_toBottomOf="@id/coupon_generate_validity_period"
+            app:layout_constraintTop_toBottomOf="@id/coupon_found_period_group"
             app:layout_constraintBottom_toBottomOf="@id/coupon_generate_form_group"
-            android:text="수량"
-            />
+            android:text="수량" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -138,11 +263,13 @@
     <Button
         android:id="@+id/coupon_generate_coupon_issue_request_btn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:text="쿠폰 발급"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:backgroundTint="@color/purple"
+        android:textColor="@color/white"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,8 @@
 package com.hyunprise.android.ui.admin.coupon
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.hyunprise.android.CodeGenerate
-import com.hyunprise.android.R
 import com.hyunprise.android.databinding.ActivityCouponGenerateBinding
 
 class CouponGenerateActivity : AppCompatActivity() {
@@ -13,9 +12,9 @@ class CouponGenerateActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-
-//        var qr = CodeGenerate()
-//        var img = qr.generateBitmapQRCode("EF1342115E49E60FE05304001CACF958")
-//        qrview.setImageBitmap(img)
+        binding.couponGenerateValidityPeriodGroup.setOnClickListener {
+            val intent = Intent(this@CouponGenerateActivity, NumberPickerFragment::class.java)
+            startActivity(intent)
+        }
     }
 }
