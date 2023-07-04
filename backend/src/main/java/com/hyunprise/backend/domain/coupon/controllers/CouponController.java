@@ -17,6 +17,12 @@ import java.util.List;
 public class CouponController {
     private final CouponService couponService;
 
+    @PostMapping("")
+    public Integer postOneCoupon(@RequestBody Coupon coupon) {
+        System.out.println("coupon = " + coupon);
+        return couponService.createOneCoupon(coupon);
+    }
+
     @GetMapping("/{couponUUID}")
     public Coupon getOneCoupon(@PathVariable String couponUUID) {
         return couponService.selectOneCoupon(couponUUID);
