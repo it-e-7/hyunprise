@@ -36,4 +36,16 @@
         FROM member
         WHERE member_email = #{memberEmail}
     </select>
+
+    <insert id="insertOneMember" parameterType="Member">
+        INSERT INTO member (member_email, member_name, gender, h_point, account_type)
+        VALUES (#{memberEmail}, #{memberName}, #{gender}, default, default)
+
+        <selectKey keyProperty="memberUUID" resultType="String" order="AFTER">
+            SELECT
+                member_uuid
+            FROM member
+            WHERE member_email = #{memberEmail}
+        </selectKey>
+    </insert>
 </mapper>

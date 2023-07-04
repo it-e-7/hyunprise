@@ -16,6 +16,12 @@ public class MemberController {
     private final MemberService memberService;
 
 
+    @PostMapping("")
+    public ResponseEntity<Member> createOneMember(@RequestBody Member member) {
+        int result = memberService.insertOneMember(member);
+        return ResponseEntity.ok().body(member);
+    }
+
     @GetMapping("/{memberUUID}")
     public ResponseEntity<Member> getMemberByMemberUUID(@PathVariable String memberUUID) {
         Member member = memberService.selectOneMemberByMemberUUID(memberUUID);
