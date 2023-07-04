@@ -23,4 +23,5 @@ public class Coupon {
     private String retailerLocation;
     private String termsAndConditions;
     private String usageInstruction;
+    private Integer expirationDays;
 }
