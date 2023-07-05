@@ -12,4 +12,13 @@
 
     <string name="issued_coupon_placeholder_expiration_date">사용기한 | %s 까지</string>
     <string name="issued_coupon_placeholder_expiration_period">%s - %s</string>
+
+    <string name="permission_guide_accept_button_text">내용을 모두 확인함</string>
+    <string name="permission_guide_title_text">앱 접근 권한 안내</string>
+    <string name="permission_guide_subtitle_text">서비스 이용을 위해 선택적 권한 허용이 필요합니다.</string>
+    <string name="permission_guide_permission_name_camera_text">카메라</string>
+    <string name="permission_guide_permission_description_camera_text">쿠폰 찾기 서비스 이용 시 사용</string>
+    <string name="permission_guide_permission_help_message_text">접근권한 변경 : 휴대폰 설정 > Hyunprise</string>
+    <string name="permission_guide_permission_guidance_message_text">선택적 접근 권한은 해당 기능을 사용할 때 허용이 필요하며, 사용하지 않아도 해당 기능 외 서비스 이용이 가능합니다.</string>
+
 </resources>

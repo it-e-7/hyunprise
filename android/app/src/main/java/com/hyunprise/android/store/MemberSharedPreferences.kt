@@ -4,8 +4,7 @@ import android.content.Context
 import androidx.preference.PreferenceManager
 import com.hyunprise.android.api.oauth.vo.OAuthProvider
 
-const val KEY_LOGIN_TYPE = "key_login"
-
+private const val KEY_LOGIN_TYPE = "key_login"
 class MemberSharedPreferences(context: Context) {
 
     private val preferences = PreferenceManager.getDefaultSharedPreferences(context)

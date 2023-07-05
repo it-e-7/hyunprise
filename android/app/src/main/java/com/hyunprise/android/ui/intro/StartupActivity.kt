@@ -10,17 +10,19 @@ import android.util.Log
 import androidx.lifecycle.lifecycleScope
 import com.hyunprise.android.HomeActivity
 import com.hyunprise.android.api.RetrofitConfig
-import com.hyunprise.android.databinding.ActivityIntroBinding
 import com.hyunprise.android.api.oauth.managers.AuthManagerResolver
+import com.hyunprise.android.databinding.ActivityStartupBinding
 import com.hyunprise.android.store.MemberSharedPreferences
+import com.hyunprise.android.ui.auth.LoginActivity
 import kotlinx.coroutines.launch
 
-class IntroActivity : AppCompatActivity() {
+class StartupActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding = ActivityIntroBinding.inflate(layoutInflater)
+        val binding = ActivityStartupBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        // Create a ValueAnimator that will animate the progress from 0 to 100
 
         Handler(Looper.getMainLooper()).postDelayed({
             Log.d("login.log", "[Intro] start looper")
@@ -40,15 +42,19 @@ class IntroActivity : AppCompatActivity() {
                 oAuthResult.accessToken?.let { token ->
                     RetrofitConfig.patchAuthorizationHeader(token)
                     Log.d("login.log", "[Intro] Header token successfully patched")
-                    nextActivity(context)
+                    toHomeActivity(context)
                 }
             }
         } ?: run {
             Log.d("login.log", "[Intro] Not Logged In")
-            nextActivity(context)
+            toLoginActivity(context)
         }
     }
-    private fun nextActivity(context: Context) {
+    private fun toLoginActivity(context: Context) {
+        val intent = Intent(context, LoginActivity::class.java)
+        startActivity(intent)
+    }
+    private fun toHomeActivity(context: Context) {
         val intent = Intent(context, HomeActivity::class.java)
         startActivity(intent)
     }
