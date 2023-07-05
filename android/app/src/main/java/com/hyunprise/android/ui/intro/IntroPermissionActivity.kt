@@ -3,19 +3,14 @@ package com.hyunprise.android.ui.intro
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Bundle
-import android.provider.Settings
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 import com.hyunprise.android.R
-import com.hyunprise.android.ui.member.LoginProcessActivity
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.hyunprise.android.ui.auth.LoginActivity
+
 
 class IntroPermissionActivity : AppCompatActivity() {
 
@@ -57,7 +52,7 @@ class IntroPermissionActivity : AppCompatActivity() {
     }
 
     fun nextActivity() {
-        val intent = Intent(this@IntroPermissionActivity, LoginProcessActivity::class.java)
+        val intent = Intent(this@IntroPermissionActivity, LoginActivity::class.java)
         startActivity(intent)
     }
 }
