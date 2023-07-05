@@ -3,6 +3,7 @@ package com.hyunprise.android.ui.home
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -12,14 +13,13 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.bottomnavigation.BottomNavigationMenuView
-import com.hyunprise.android.databinding.ActivityHomeBinding
 import com.hyunprise.android.HomeActivity
 import com.hyunprise.android.api.RetrofitConfig
 import com.hyunprise.android.databinding.FragmentHomeBinding
-import com.hyunprise.android.oauth.KakaoAuthManager
+import com.hyunprise.android.api.oauth.managers.KakaoAuthManager
 import com.hyunprise.android.store.MemberSharedPreferences
 import com.hyunprise.android.ui.auth.LoginActivity
+import com.hyunprise.android.ui.member.LoginProcessActivity
 import com.hyunprise.android.ui.member.coupon.IssuedCouponContainerActivity
 import com.hyunprise.android.ui.member.point.PointActivity
 import com.kakao.sdk.user.UserApiClient
@@ -34,7 +34,7 @@ class HomeFragment : Fragment() {
     private lateinit var adapter: HomeFragmentAdapter
 
     private lateinit var timer: Timer
-    private val handler = Handler()
+    private val handler = Handler(Looper.getMainLooper())
     // 자동 슬라이드 간격 (밀리초)
     private val SLIDE_INTERVAL: Long = 2000
     override fun onCreateView(
@@ -89,7 +89,7 @@ class HomeFragment : Fragment() {
         // 자동 슬라이드 시작
         startAutoSlide()
 
-        binding.homeDrawerContent.homeDrawerLogoutButton.setOnClickListener{
+        binding.homeDrawerContent.homeDrawerLogoutButton.setOnClickListener {
             UserApiClient.instance.unlink { error ->
                 if (error != null) {
                     Log.e("Hello", "로그아웃 실패. SDK에서 토큰 삭제됨", error)
@@ -97,7 +97,9 @@ class HomeFragment : Fragment() {
                     Log.i("Hello", "로그아웃 성공. SDK에서 토큰 삭제됨")
                     val intent = Intent(requireContext(), LoginProcessActivity::class.java)
                     startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
-                    
+                }
+            }
+        }
         binding.homeDrawerContent.homeDrawerGotoLoginButton.setOnClickListener{
             val intent = Intent(requireContext(), LoginActivity::class.java)
             startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
@@ -117,6 +119,7 @@ class HomeFragment : Fragment() {
         }
         return binding.root
     }
+
 
     private fun toggleDrawerOpenStatus(drawer: DrawerLayout) {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -148,7 +151,8 @@ class HomeFragment : Fragment() {
             override fun run() {
                 handler.post {
                     // 다음 슬라이드로 이동
-                    binding.homeViewPager.currentItem = (binding.homeViewPager.currentItem + 1) % adapter.itemCount
+                    binding.homeViewPager.currentItem =
+                        (binding.homeViewPager.currentItem + 1) % adapter.itemCount
                 }
             }
         }, SLIDE_INTERVAL, SLIDE_INTERVAL)
@@ -157,5 +161,4 @@ class HomeFragment : Fragment() {
     private fun stopAutoSlide() {
         timer.cancel()
     }
-
 }
