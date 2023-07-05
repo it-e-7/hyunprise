@@ -4,9 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import androidx.core.app.ActivityCompat
 import com.hyunprise.android.HomeActivity
 import com.hyunprise.android.R
 import com.hyunprise.android.databinding.ActivityIntroBinding
+import com.hyunprise.android.ui.member.LoginProcessActivity
 
 class IntroActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +19,7 @@ class IntroActivity : AppCompatActivity() {
 
         var handler= Handler()
         handler.postDelayed(Runnable {
-            var intent = Intent(this, HomeActivity::class.java)
+            var intent = Intent(this, IntroPermissionActivity::class.java)
             startActivity(intent)
         }, 2000)
     }
