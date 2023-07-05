@@ -21,4 +21,10 @@ interface CouponClient {
     @Headers("Content-Type: application/json")
     @POST("coupon")
     suspend fun postOneCoupon(@Body coupon: Coupon): Response<Int>
+
+    @Headers("Content-Type: application/json")
+    @GET("coupon/admin/{sellerUUID}")
+    suspend fun getAllAdminIssuedCoupons(
+        @Path("sellerUUID") sellerUUID: String
+    ): Response<List<Coupon>>
 }
