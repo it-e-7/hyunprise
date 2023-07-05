@@ -2,6 +2,7 @@ package com.hyunprise.backend.domain.member.services;
 
 import com.hyunprise.backend.domain.member.mappers.MemberMapper;
 import com.hyunprise.backend.domain.member.vo.Member;
+import com.hyunprise.backend.global.security.utils.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class MemberServiceImpl implements MemberService{
     private final MemberMapper memberMapper;
+    private final JwtUtil jwtUtil;
 
     @Override
     public Member selectOneMemberByMemberUUID(String memberUUID) {
@@ -25,5 +27,12 @@ public class MemberServiceImpl implements MemberService{
     @Transactional
     public int upsertOneMember(Member member) {
         return memberMapper.upsertOneMember(member);
+    }
+
+    @Override
+    public Member getMemberFromJwt(String header) {
+        String accessToken = jwtUtil.parseTokenFromAuthorizationHeader(header);
+        String memberUUID = jwtUtil.getMemberUUIDFromToken(accessToken);
+        return memberMapper.selectOneMemberByMemberUUID(memberUUID);
     }
 }
