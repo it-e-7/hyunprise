@@ -10,7 +10,7 @@ import com.hyunprise.android.HomeActivity
 import com.hyunprise.android.api.RetrofitConfig
 import com.hyunprise.android.api.oauth.vo.OAuthProvider
 import com.hyunprise.android.databinding.ActivityLoginProcessBinding
-import com.hyunprise.android.oauth.AuthManagerResolver
+import com.hyunprise.android.api.oauth.managers.AuthManagerResolver
 import com.hyunprise.android.store.MemberSharedPreferences
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -28,8 +28,6 @@ class LoginActivity : AppCompatActivity() {
                 binding.loginProcessProgressOverlay.visibility = if (status) View.VISIBLE else View.GONE
                 binding.loginProcessButtonKakaoLogin.isEnabled = !status
                 binding.loginProcessButtonGoogleLogin.isEnabled = !status
-                binding.loginProcessButtonLogin.isEnabled = !status
-                binding.loginProcessButtonSignup.isEnabled = !status
             }
         }
     }
