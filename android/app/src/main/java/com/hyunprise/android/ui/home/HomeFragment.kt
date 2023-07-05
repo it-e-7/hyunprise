@@ -68,12 +68,6 @@ class HomeFragment : Fragment() {
                 drawerLayout_home.openDrawer(GravityCompat.START)
             }
         }
-        // nav 부분 클릭하면 닫힘
-//        val navBtn = homeBinding.na
-//        navBtn.setOnClickListener {
-//            drawerLayout_home.closeDrawer(GravityCompat.START)
-//        }
-
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             if (drawerLayout_home.isDrawerOpen(GravityCompat.START)) {
@@ -97,6 +91,13 @@ class HomeFragment : Fragment() {
             val intent = Intent(activity, PointActivity::class.java)
             startActivity(intent)
         }
+
+        val homePointBtn = binding.barcodeButton
+        homePointBtn.setOnClickListener{
+            val intent = Intent(activity, PointActivity::class.java)
+            startActivity(intent)
+        }
+
         // 자동 슬라이드 시작
         startAutoSlide()
 
