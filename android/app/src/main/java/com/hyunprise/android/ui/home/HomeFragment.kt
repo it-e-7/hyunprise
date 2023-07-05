@@ -107,13 +107,13 @@ class HomeFragment : Fragment() {
         binding.homeDrawerContent.homeDrawerLogoutButton.setOnClickListener{
             KakaoAuthManager.logout {
                 clearClientAndLoginData()
-                gotoHome()
+                gotoLoginPage()
             }
         }
         binding.homeDrawerContent.homeDrawerUnlinkButton.setOnClickListener{
             KakaoAuthManager.unlink {
                 clearClientAndLoginData()
-                gotoHome()
+                gotoLoginPage()
             }
         }
         return binding.root
@@ -131,8 +131,8 @@ class HomeFragment : Fragment() {
         RetrofitConfig.resetRetrofitClient()
         MemberSharedPreferences(requireContext()).clearLoginType()
     }
-    private fun gotoHome() {
-        val intent = Intent(requireContext(), HomeActivity::class.java)
+    private fun gotoLoginPage() {
+        val intent = Intent(requireContext(), LoginActivity::class.java)
         startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
     }
 
