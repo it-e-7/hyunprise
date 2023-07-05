@@ -5,5 +5,9 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.Android" parent="Base.Theme.Android" />
+    <style name="Theme.Android" parent="Base.Theme.Android">
+        <item name="fontFamily">
+            @font/project_font
+        </item>
+    </style>
 </resources>
