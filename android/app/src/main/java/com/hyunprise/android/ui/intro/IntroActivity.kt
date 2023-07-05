@@ -11,7 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import com.hyunprise.android.HomeActivity
 import com.hyunprise.android.api.RetrofitConfig
 import com.hyunprise.android.databinding.ActivityIntroBinding
-import com.hyunprise.android.oauth.AuthManagerResolver
+import com.hyunprise.android.api.oauth.managers.AuthManagerResolver
 import com.hyunprise.android.store.MemberSharedPreferences
 import kotlinx.coroutines.launch
 
