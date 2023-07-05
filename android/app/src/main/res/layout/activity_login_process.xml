@@ -8,83 +8,106 @@
     android:gravity="center"
     android:orientation="vertical">
 
+    <View
+        android:id="@+id/login_circle"
+        android:layout_width="500dp"
+        android:layout_height="500dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="60dp"
+        android:background="@drawable/background_circle"
+        android:foregroundGravity="center_vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <!-- 텍스트 -->
+
     <!-- 아이디 입력칸 -->
-    <EditText
-            android:id="@+id/login_process_edit_text_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="아이디를 입력하세요"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
 
     <!-- 비밀번호 입력칸 -->
-    <EditText
-            android:id="@+id/login_process_edit_text_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:hint="비밀번호를 입력하세요"
-            app:layout_constraintTop_toBottomOf="@+id/login_process_edit_text_id" />
 
     <!-- 로그인 버튼 -->
 
     <!-- 자동로그인 체크버튼 -->
-    <Button
-            android:id="@+id/login_process_button_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="로그인"
-            app:layout_constraintTop_toBottomOf="@+id/login_process_edit_text_password"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-            android:id="@+id/login_process_button_signup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="회원가입"
-            app:layout_constraintTop_toBottomOf="@+id/login_process_button_login"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- 카카오로그인 버튼 -->
 
     <!-- 구글로그인 버튼 -->
+
+    <TextView
+        android:id="@+id/login_first_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="164dp"
+        android:text="H.Point와 함께하는"
+        android:textColor="@color/white"
+        android:textSize="35sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/login_second_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="40dp"
+        android:text="새 로 운"
+        android:textColor="@color/white"
+        android:textSize="60sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_first_text" />
+
+    <TextView
+        android:id="@+id/login_third_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="40dp"
+        android:text="할 / 인 / 습 / 관"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_second_text" />
+
     <CheckBox
-            android:id="@+id/login_process_checkbox_auto_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="자동 로그인"
-            app:layout_constraintTop_toBottomOf="@+id/login_process_button_signup"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+        android:id="@+id/login_process_checkbox_auto_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="자동 로그인"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="330dp"
+        android:visibility="invisible"
+        />
 
     <ImageButton
-            android:id="@+id/login_process_button_kakao_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/kakao_login_medium_narrow"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_process_checkbox_auto_login" />
+        android:id="@+id/login_process_button_kakao_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="144dp"
+        android:background="@color/invisible"
+        android:src="@drawable/kakao_login_medium_wide"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_third_text" />
 
     <Button
             android:id="@+id/login_process_button_google_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="구글 로그인"
+            android:visibility="invisible"
             app:layout_constraintTop_toBottomOf="@+id/login_process_button_kakao_login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
     <View
-            android:id="@+id/login_process_progress_overlay"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#56000000"
-            />
+        android:id="@+id/login_process_progress_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#56000000"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <ProgressBar
             android:id="@+id/login_process_progress_bar"
