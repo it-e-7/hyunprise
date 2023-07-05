@@ -4,8 +4,27 @@
 
 <mapper namespace="com.hyunprise.backend.domain.coupon.mappers.CouponMapper">
     <select id="selectOneCoupon" parameterType="String" resultType="Coupon">
-        SELECT *
-        FROM coupon
+        SELECT
+            c.coupon_uuid,
+            c.seller_uuid,
+            c.coupon_name,
+            c.coupon_description,
+            c.discount_type,
+            c.discount_amount,
+            c.discount_limit,
+            c.minimum_purchase,
+            c.retailer_location,
+            c.terms_and_conditions,
+            c.usage_instruction,
+            c.equivalent_point,
+            c.creation_date,
+            c.expiration_days,
+            c.equivalent_point,
+            b.brand_name
+
+        FROM coupon c
+        JOIN member m ON c.seller_uuid = m.member_uuid
+        JOIN brand b ON m.brand_id = b.brand_id
         WHERE coupon_uuid=#{couponUUID}
     </select>
 

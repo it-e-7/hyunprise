@@ -15,5 +15,7 @@ data class Coupon(
     val retailerLocation: String? = null,
     val termsAndConditions: String? = null,
     val usageInstruction: String? = null,
-    var expirationDays: Int? = null
+    var expirationDays: Int? = null,
+    val equivalentPoint: Int? = null,
+    val brandName: String? = null
 )
