@@ -1,7 +1,7 @@
 package com.hyunprise.backend.global.security;
 
 import com.hyunprise.backend.global.security.filters.JwtFilterFactory;
-import com.hyunprise.backend.global.security.types.MemberRoles;
+import com.hyunprise.backend.global.security.types.MemberRole;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,10 +31,9 @@ public class SecurityConfig {
                     .antMatchers("/auth").permitAll()
                 .and()
                 .authorizeRequests()
-                    .antMatchers("/**").hasRole(MemberRoles.DEV.role())
-                    .antMatchers("/member/**").hasRole(MemberRoles.MEMBER.role())
-                    .antMatchers("/coupon/**").hasRole(MemberRoles.SELLER.role())
-                    .antMatchers("/issued_coupon/**").hasRole(MemberRoles.MEMBER.role())
+                    .antMatchers("/member/**", "/issued_coupon/**").hasAnyRole(MemberRole.MEMBER.role(), MemberRole.SELLER.role(), MemberRole.DEV.role())
+                    .antMatchers("/coupon/**").hasAnyRole(MemberRole.SELLER.role(), MemberRole.DEV.role())
+                    .anyRequest().hasRole(MemberRole.DEV.role())
                 .and()
                 .addFilterBefore(filterFactory.testAuthorization(), BasicAuthenticationFilter.class)
                 .sessionManagement()
