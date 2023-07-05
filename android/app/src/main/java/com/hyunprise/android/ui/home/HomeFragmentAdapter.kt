@@ -3,6 +3,7 @@ package com.hyunprise.android.ui.home
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
 import com.hyunprise.android.ui.home.ui.Banner_one_Fragment
 
 
