@@ -16,6 +16,8 @@ import androidx.viewpager2.widget.ViewPager2
 import com.hyunprise.android.HomeActivity
 import com.hyunprise.android.api.RetrofitConfig
 import com.hyunprise.android.databinding.FragmentHomeBinding
+
+import com.hyunprise.android.ui.admin.coupon.CouponGenerateActivity
 import com.hyunprise.android.api.oauth.managers.KakaoAuthManager
 import com.hyunprise.android.store.MemberSharedPreferences
 import com.hyunprise.android.ui.auth.LoginActivity
@@ -102,6 +104,22 @@ class HomeFragment : Fragment() {
         binding.homeDrawerContent.homeDrawerGotoLoginButton.setOnClickListener{
             val intent = Intent(requireContext(), LoginActivity::class.java)
             startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+        }
+
+        var loginInfo: String = "admin"
+
+        val adminBtn = binding.homeAdminBtnContainer
+
+        if (loginInfo=="admin") {
+            adminBtn.visibility = View.VISIBLE
+
+            binding.adminHomeCouponIssuerBtn.setOnClickListener {
+                val intent = Intent(this@HomeFragment.activity, CouponGenerateActivity::class.java)
+                startActivity(intent)
+            }
+
+        } else {
+            adminBtn.visibility = View.GONE
         }
 
         binding.homeDrawerContent.homeDrawerLogoutButton.setOnClickListener{

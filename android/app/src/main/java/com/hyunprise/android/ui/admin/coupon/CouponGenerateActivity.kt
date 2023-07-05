@@ -27,6 +27,13 @@ class CouponGenerateActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCouponGenerateBinding.inflate(layoutInflater)
 
+
+        binding.couponGenerateExit.setOnClickListener {
+            val intent = Intent(this@CouponGenerateActivity, HomeActivity::class.java)
+            finish()
+            startActivity(intent)
+        }
+
         var discountType = -1
 
         couponConditionDisplay(GONE, GONE, GONE, GONE)
@@ -40,12 +47,12 @@ class CouponGenerateActivity : AppCompatActivity() {
                 }
                 binding.couponGeneratePercentageDiscountRb.id -> {
                     discountType = 1
-                    couponConditionDisplay(GONE, VISIBLE, VISIBLE, VISIBLE)
+                    couponConditionDisplay(VISIBLE, VISIBLE, VISIBLE, VISIBLE)
                     Unit
                 }
                 binding.couponGenerateExchangeRb.id -> {
                     discountType = 2
-                    couponConditionDisplay(GONE, GONE, GONE, GONE)
+                    couponConditionDisplay(VISIBLE, GONE, GONE, VISIBLE)
                     Unit
                 }
             }
@@ -118,13 +125,13 @@ class CouponGenerateActivity : AppCompatActivity() {
                 1-> {   // 비율 할인
                     coupon.minimumPurchase = binding.couponGenerateMinimumPurchaseEt.text.toString().toInt()
                     coupon.discountLimit = binding.couponGenerateDiscountLimitEt.text.toString().toInt()
-                    coupon.discountAmount = 0
+                    coupon.discountAmount = binding.couponGenerateDiscountAmountEt.text.toString().toInt()
                 }
 
                 2-> {
                     coupon.minimumPurchase = 0
                     coupon.discountLimit = 0
-                    coupon.discountAmount = 0
+                    coupon.discountAmount = binding.couponGenerateDiscountAmountEt.text.toString().toInt()
                 }
             }
 
@@ -142,7 +149,7 @@ class CouponGenerateActivity : AppCompatActivity() {
                     finish()
                     startActivity(intent)
                 }
-                else {
+                else {  // 0
                     Toast.makeText(
                         this@CouponGenerateActivity, "쿠폰 생성 실패",
                         Toast.LENGTH_SHORT
@@ -162,7 +169,7 @@ class CouponGenerateActivity : AppCompatActivity() {
     }
 
     private fun getSellerUUID(): String {   // 카카오 땡겨오기
-        return "FFA389A84E159E61E0530400A8C017BA"
+        return "FFB8508C0599302DE0530400A8C0E652"
     }
 
     fun couponConditionDisplay(discountAmount: Int, discountLimit: Int, minimumPurchase: Int, conditionGroup: Int) {
@@ -171,6 +178,4 @@ class CouponGenerateActivity : AppCompatActivity() {
         binding.couponGenerateMinimumPurchaseEt.visibility = minimumPurchase
         binding.couponGenerateCouponConditionGroup.visibility = conditionGroup
     }
-
-
 }

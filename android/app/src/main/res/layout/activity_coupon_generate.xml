@@ -158,7 +158,7 @@
                 android:orientation="horizontal"
                 android:background="@drawable/coupon_edge"
                 android:padding="15dp"
-                android:layout_marginBottom="10dp">
+                android:layout_marginBottom="10dp" >
 
                 <RadioButton
                     android:id="@+id/coupon_generate_fixed_discount_rb"
@@ -210,20 +210,29 @@
 
                 <EditText
                     android:id="@+id/coupon_generate_discount_limit_et"
-                    android:layout_width="100dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:hint="할인한도"/>
+                    android:layout_weight="1"
+                    android:textAlignment="center"
+                    android:inputType="number"
+                    android:hint="할인한도" />
 
                 <EditText
                     android:id="@+id/coupon_generate_minimum_purchase_et"
-                    android:layout_width="100dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:hint="최소금액"/>
+                    android:layout_weight="1"
+                    android:textAlignment="center"
+                    android:inputType="number"
+                    android:hint="최소금액" />
 
                 <EditText
                     android:id="@+id/coupon_generate_discount_amount_et"
-                    android:layout_width="100dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:inputType="number"
                     android:hint="할인금액"/>
 
             </LinearLayout>
@@ -261,9 +270,10 @@
                     android:layout_marginLeft="30dp" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
                     android:text="개월"/>
 
                 <TextView
@@ -273,9 +283,10 @@
                     android:layout_marginLeft="30dp" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
                     android:text="주"/>
 
                 <TextView
@@ -285,9 +296,10 @@
                     android:layout_marginLeft="30dp" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
                     android:text="일"/>
             </LinearLayout>
         </LinearLayout>

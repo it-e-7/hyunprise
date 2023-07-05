@@ -31,18 +31,8 @@ class QRCodeActivity: AppCompatActivity() {
         binding = ActivityQrcodeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val camPermissionChecker = ContextCompat.checkSelfPermission(this@QRCodeActivity,
-            android.Manifest.permission.CAMERA)
+        QRCodeReader(savedInstanceState)
 
-        if (camPermissionChecker == PackageManager.PERMISSION_GRANTED) {
-            QRCodeReader(savedInstanceState)
-        } else {
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(android.Manifest.permission.CAMERA),
-                1000
-            )
-        }
         binding.qrcodeExit.setOnClickListener {
             finish()
         }
