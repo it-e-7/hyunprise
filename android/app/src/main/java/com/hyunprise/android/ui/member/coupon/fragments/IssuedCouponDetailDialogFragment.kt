@@ -29,6 +29,8 @@ class IssuedCouponDetailDialogFragment : BottomSheetDialogFragment() {
     private var _binding: FragmentIssuedCouponDetailBottomDialogBinding? = null
     private val binding get() = _binding!!
 
+    private val issuedCouponService = IssuedCouponService()
+
     companion object {
         fun withCouponSummary(couponSummary: CouponSummary): IssuedCouponDetailDialogFragment =
             IssuedCouponDetailDialogFragment().apply {
@@ -117,7 +119,7 @@ class IssuedCouponDetailDialogFragment : BottomSheetDialogFragment() {
             Thread.sleep(1000)
             val arguments = requireArguments()
             arguments.getString(ARG_ISSUED_COUPON_UUID)?.let { uuid ->
-                IssuedCouponService.getIssuedCouponByIssuedCouponUUID(uuid).let { coupon ->
+                issuedCouponService.getIssuedCouponByIssuedCouponUUID(uuid).let { coupon ->
                     withContext(Dispatchers.Main) {
                         updateViews(coupon)
                     }

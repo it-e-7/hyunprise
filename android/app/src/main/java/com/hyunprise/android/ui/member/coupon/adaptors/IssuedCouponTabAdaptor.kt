@@ -22,4 +22,9 @@ class IssuedCouponTabAdaptor(activity: FragmentActivity): FragmentStateAdapter(a
     override fun createFragment(position: Int): Fragment {
        return mFragmentList[position]
     }
+
+    fun clearFragment() {
+        mFragmentList.clear()
+        mFragmentTitleList.clear()
+    }
 }

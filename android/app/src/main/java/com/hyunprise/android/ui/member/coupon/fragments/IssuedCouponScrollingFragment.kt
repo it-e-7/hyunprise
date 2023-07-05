@@ -1,6 +1,7 @@
 package com.hyunprise.android.ui.member.coupon.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,19 +16,32 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class IssuedCouponScrollingFragment(private val memberUUID: String, private val available: Boolean) : Fragment() {
+class IssuedCouponScrollingFragment() : Fragment() {
+
+    private lateinit var memberUUID: String
+    private var available: Boolean = false
 
     private var _binding: FragmentIssuedCouponListBinding? = null
     private val binding get() = _binding!!
 
-    private var _adaptor: IssuedCouponRecyclerViewAdaptor? = IssuedCouponRecyclerViewAdaptor(available)
+    private var _adaptor: IssuedCouponRecyclerViewAdaptor? = null
     private val adaptor get() = _adaptor!!
+    private val issuedCouponService: IssuedCouponService = IssuedCouponService()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            memberUUID = it.getString(ARG_MEMBER_UUID, "")
+            available = it.getBoolean(ARG_AVAILABLE, false)
+        }
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentIssuedCouponListBinding.inflate(inflater, container, false)
+        _adaptor = IssuedCouponRecyclerViewAdaptor(available)
         return binding.root
     }
 
@@ -40,7 +54,9 @@ class IssuedCouponScrollingFragment(private val memberUUID: String, private val 
         }
 
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-            val coupons = IssuedCouponService.getAllCouponsOfMemberByStatus(memberUUID, available)
+            Log.d("login.log", "fetch coupons.")
+            val coupons = issuedCouponService.getAllCouponsOfMemberByStatus(memberUUID, available)
+
             withContext(Dispatchers.Main) {
                 adaptor.addAll(coupons)
                 adaptor.notifyDataSetChanged()
@@ -68,5 +84,20 @@ class IssuedCouponScrollingFragment(private val memberUUID: String, private val 
         binding.issuedCouponRecyclerView.addOnItemTouchListener(
             RecyclerItemClickListener(requireContext(), itemClickListener)
         )
+    }
+
+    companion object {
+        private const val ARG_MEMBER_UUID = "memberUUID"
+        private const val ARG_AVAILABLE = "available"
+
+        fun newInstance(memberUUID: String, available: Boolean): IssuedCouponScrollingFragment {
+            val fragment = IssuedCouponScrollingFragment()
+            val args = Bundle().apply {
+                putString(ARG_MEMBER_UUID, memberUUID)
+                putBoolean(ARG_AVAILABLE, available)
+            }
+            fragment.arguments = args
+            return fragment
+        }
     }
 }

@@ -8,7 +8,7 @@ import com.hyunprise.android.api.oauth.vo.OAuthProvider
 import com.hyunprise.android.api.oauth.vo.OAuthResult
 import com.hyunprise.android.global.api.ApiHandler
 
-object OAuthService {
+class OAuthService {
     private val retrofit = RetrofitConfig.retrofit_gson
     private val oAuthClient = retrofit.create(OAuthClient::class.java)
 
