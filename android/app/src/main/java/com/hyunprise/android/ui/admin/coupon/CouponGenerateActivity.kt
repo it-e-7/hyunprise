@@ -27,6 +27,13 @@ class CouponGenerateActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCouponGenerateBinding.inflate(layoutInflater)
 
+
+        binding.couponGenerateExit.setOnClickListener {
+            val intent = Intent(this@CouponGenerateActivity, HomeActivity::class.java)
+            finish()
+            startActivity(intent)
+        }
+
         var discountType = -1
 
         couponConditionDisplay(GONE, GONE, GONE, GONE)
@@ -45,7 +52,7 @@ class CouponGenerateActivity : AppCompatActivity() {
                 }
                 binding.couponGenerateExchangeRb.id -> {
                     discountType = 2
-                    couponConditionDisplay(GONE, GONE, GONE, GONE)
+                    couponConditionDisplay(VISIBLE, GONE, GONE, VISIBLE)
                     Unit
                 }
             }
@@ -173,4 +180,7 @@ class CouponGenerateActivity : AppCompatActivity() {
     }
 
 
+    fun onFailure() {
+
+    }
 }
