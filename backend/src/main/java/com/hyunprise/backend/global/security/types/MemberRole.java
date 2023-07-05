@@ -3,21 +3,21 @@ package com.hyunprise.backend.global.security.types;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum MemberRoles {
+public enum MemberRole {
     MEMBER("MEMBER", 1),
     SELLER("SELLER", 10),
     DEV("DEV", 99);
 
-    private static final Map<Integer, MemberRoles> BY_TYPE = new HashMap<>();
+    private static final Map<Integer, MemberRole> BY_TYPE = new HashMap<>();
     static {
-        for (MemberRoles r : values()) {
+        for (MemberRole r : values()) {
             BY_TYPE.put(r.type(), r);
         }
     }
     private final String role;
     private final Integer type;
 
-    MemberRoles(String role, Integer type) {
+    MemberRole(String role, Integer type) {
         this.role = role;
         this.type = type;
     }
@@ -27,7 +27,7 @@ public enum MemberRoles {
         return type;
     }
 
-    public static MemberRoles roleOfType(Integer value) {
+    public static MemberRole roleOfType(Integer value) {
         return BY_TYPE.get(value);
     }
 }
