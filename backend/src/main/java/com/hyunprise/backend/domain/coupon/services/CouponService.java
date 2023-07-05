@@ -9,4 +9,5 @@ import java.util.List;
 
 public interface CouponService {
     Coupon selectOneCoupon(String couponUUID);
+    Integer createOneCoupon(Coupon coupon);
 }

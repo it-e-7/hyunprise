@@ -49,7 +49,7 @@ class CouponFoundActivity : AppCompatActivity() {
 
 //        binding.couponFoundCouponDescriptionTv.text = intent.getStringExtra("coupon_description")
 
-            binding.couponFoundReceiveCouponBtn.setOnClickListener {
+        binding.couponFoundReceiveCouponBtn.setOnClickListener {
                 CoroutineScope(Dispatchers.Main).launch {
                     val couponUUID = intent.getStringExtra("coupon_uuid").toString()
                     val memberUUID= intent.getStringExtra("member_uuid").toString()
@@ -57,13 +57,15 @@ class CouponFoundActivity : AppCompatActivity() {
                         couponUUID = couponUUID, memberUUID = memberUUID
                     )
                     try {
-                        val response: Response<String> = IssuedCouponService.postIssuedCoupon(issuedCoupon)
-                        if (response.isSuccessful) {
+                        val response = IssuedCouponService.postIssuedCoupon(issuedCoupon)
+                        Log.d("log.response", "${response}")
+
+                        if (response.isNotEmpty()) {
                             Toast.makeText(this@CouponFoundActivity, "쿠폰이 발급 되었습니다.", Toast.LENGTH_SHORT).show()
                             val intent = Intent(this@CouponFoundActivity, CouponAcquiredActivity::class.java)
-                            val issuedCoupon: Response<CouponDetail> = IssuedCouponService.getIssuedCoupon(response.body().toString())
+                            val issuedCouponDetail = IssuedCouponService.getIssuedCoupon(response)
 
-                            val issuedCouponDetail = issuedCoupon.body()
+                            Log.d("log.issuedCouponDetail", "${issuedCouponDetail}")
 
                             val expirationDate = issuedCouponDetail?.expirationDate
                             val formatter = SimpleDateFormat("yyyy.MM.dd", Locale.KOREA)
@@ -74,14 +76,10 @@ class CouponFoundActivity : AppCompatActivity() {
                             intent.putExtra("coupon_expiration_date", formattedDate)
                             intent.putExtra("coupon_coupon_code", issuedCouponDetail?.couponCode)
                             intent.putExtra("coupon_description", issuedCouponDetail?.couponDescription)
-
-                            Log.d("log.expirationDate.day", "${formattedDate}")
-                            Log.d("log.issuedCoupon", "${issuedCoupon.body()}")
-
                             finish()
                             startActivity(intent)
                         } else {
-                            Log.e("log.coupon_found_fail", "${response.errorBody()}")
+                            Log.e("log.coupon_found_fail", "${response}")
                         }
                     } catch (e: Exception) {
                         Log.e("log.coupon_found_error", "${e.message}")
