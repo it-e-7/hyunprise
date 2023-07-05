@@ -8,4 +8,18 @@
         FROM coupon
         WHERE coupon_uuid=#{couponUUID}
     </select>
+
+    <insert id="createOneCoupon" statementType="CALLABLE" parameterType="map">
+        {call insert_generate_coupon(
+        #{sellerUUID, mode=IN, jdbcType=VARCHAR, javaType=String},
+        #{couponName, mode=IN, jdbcType=VARCHAR, javaType=String},
+        #{couponDescription, mode=IN, jdbcType=VARCHAR, javaType=String},
+        #{discountType, mode=IN, jdbcType=NUMERIC, javaType=Integer},
+        #{discountAmount, mode=IN, jdbcType=NUMERIC, javaType=Integer},
+        #{discountLimit, mode=IN, jdbcType=NUMERIC, javaType=Integer},
+        #{minimumPurchase, mode=IN, jdbcType=NUMERIC, javaType=Integer},
+        #{expirationDays, mode=IN, jdbcType=NUMERIC, javaType=Integer},
+        #{state, mode=OUT, jdbcType=NUMERIC, javaType=Integer}
+        )}
+    </insert>
 </mapper>

@@ -27,29 +27,15 @@ object IssuedCouponService {
         } ?: CouponDetail()
     }
     
-    suspend fun postIssuedCoupon(issuedCoupon: IssuedCoupon) : Response<String> {
-
-        val response = issuedCouponClient.postOneIssuedCoupon(issuedCoupon)
-        response.body() ?: emptyList<String>()
-        try {
-            Log.d("postIssuedCoupon", "${response.body()}")
-        } catch (e: Exception) {
-            Log.d("postIssuedCoupon.error", "${e.printStackTrace()}")
-        }
-
-        return response
+    suspend fun postIssuedCoupon(issuedCoupon: IssuedCoupon) : String {
+        return ApiHandler.safeAPICall {
+            issuedCouponClient.postOneIssuedCoupon(issuedCoupon)
+        } ?: toString()
     }
 
-    suspend fun getIssuedCoupon(issuedCouponUUID: String) : Response<CouponDetail> {
-
-        val response = issuedCouponClient.getOneIssuedCoupon(issuedCouponUUID)
-        response.body() ?: emptyList<String>()
-        try {
-            Log.d("getIssuedCoupon", "${response.body()}")
-        } catch (e: Exception) {
-            Log.d("getIssuedCoupon.error", "${e.printStackTrace()}")
-        }
-
-        return response
+    suspend fun getIssuedCoupon(issuedCouponUUID: String) : CouponDetail {
+        return ApiHandler.safeAPICall {
+            issuedCouponClient.getOneIssuedCoupon(issuedCouponUUID)
+        } ?: CouponDetail()
     }
 }

@@ -6,8 +6,7 @@
     android:id="@+id/drawer_layout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layoutDirection="rtl"
-    >
+    android:layoutDirection="rtl">
     <FrameLayout
         android:id="@+id/home_main_content"
         android:layout_width="match_parent"
@@ -113,13 +112,45 @@
                 android:src="@drawable/ic_menu_32"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/home_admin_btn_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/progressBar"
+                android:paddingBottom="50dp"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/admin_home_coupon_issuer_btn"
+                    android:layout_width="250dp"
+                    android:layout_height="80dp"
+                    android:backgroundTint="@color/purple"
+                    android:text="쿠폰 발급하기"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/admin_home_show_issued_coupons_btn"
+                    android:layout_width="250dp"
+                    android:layout_height="80dp"
+                    android:backgroundTint="@color/purple"
+                    android:text="쿠폰 발급현황 보기"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </FrameLayout>
 
     <!-- 드로워 레이아웃 영역 -->
     <include
         android:id="@+id/home_drawer_content"
         layout="@layout/home_drawer"/>
+
+
+
 
 </androidx.drawerlayout.widget.DrawerLayout>
 

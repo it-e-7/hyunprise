@@ -29,3 +29,11 @@ logging:
     org:
       hibernate:
         SQL: debug
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.hyunprise.backend.domain
+  configuration:
+    jdbc-type-for-null: VARCHAR
+    map-underscore-to-camel-case: true
