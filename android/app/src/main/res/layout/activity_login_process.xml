@@ -7,13 +7,16 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical">
-
+<!--
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="60dp"
+        android:background="@drawable/background_circle" -->
     <View
         android:id="@+id/login_circle"
-        android:layout_width="500dp"
-        android:layout_height="500dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="60dp"
+        android:layout_width="480dp"
+        android:layout_height="480dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="30dp"
         android:background="@drawable/background_circle"
         android:foregroundGravity="center_vertical"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,11 +39,13 @@
         android:id="@+id/login_first_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
         android:layout_marginTop="164dp"
+        android:layout_marginEnd="15dp"
+        android:gravity="end"
         android:text="H.Point와 함께하는"
         android:textColor="@color/white"
         android:textSize="35sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,11 +53,13 @@
         android:id="@+id/login_second_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:gravity="end"
         android:text="새 로 운"
         android:textColor="@color/white"
         android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_first_text" />
 
@@ -60,11 +67,13 @@
         android:id="@+id/login_third_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:gravity="end"
         android:text="할 / 인 / 습 / 관"
         android:textColor="@color/white"
         android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_second_text" />
 
@@ -83,13 +92,13 @@
         android:id="@+id/login_process_button_kakao_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="144dp"
         android:background="@color/invisible"
         android:src="@drawable/kakao_login_medium_wide"
+        android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_third_text" />
+        app:layout_constraintTop_toBottomOf="@+id/login_circle" />
 
     <Button
             android:id="@+id/login_process_button_google_login"

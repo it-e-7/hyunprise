@@ -11,7 +11,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:background="#C2E7F2"
+        android:background="#A8DBEA"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp" />
@@ -32,7 +32,7 @@
             android:layout_width="303dp"
             android:layout_height="267dp"
             android:layout_gravity="center"
-            android:src="@drawable/banner" />
+            android:src="@drawable/banner2" />
 
     </androidx.cardview.widget.CardView>
 
@@ -43,7 +43,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="에스파의 SPICY한 플레이리스트 \n 지금 Apple Music 에서"
+        android:text="국내 최초 디즈니스토어 \n 온라인 사전판매 오픈 🎶"
         android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -56,7 +56,7 @@
         android:id="@+id/text_home2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Apple Music 3개월 무료"
+        android:text="한정 판매부터 래플 응모까지!"
         android:textAlignment="center"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
