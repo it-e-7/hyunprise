@@ -73,19 +73,24 @@ class QRCodeActivity: AppCompatActivity() {
         barcodeView.decodeSingle(object : BarcodeCallback {
             override fun barcodeResult(result: BarcodeResult?) {
                 val couponUUID = result.toString()
+                Log.d("log.couponUUID", "$couponUUID")
                 val memberUUID = "FF1342115E49E60FE05304001CACF958"
 
                 if (couponUUID != null) {
                     CoroutineScope(Dispatchers.Main).launch {
                         val couponData = couponService.getOneCoupon(couponUUID)
                         var intent = Intent(this@QRCodeActivity, CouponFoundActivity::class.java)
-                        Log.d("qrcode.issuedCoupon", "${couponData}")
+                        Log.d("qrcode.issuedCoupon", "$couponData")
 
                         intent.putExtra("coupon_name", couponData?.couponName)
                         intent.putExtra("coupon_description", couponData?.couponDescription)
                         intent.putExtra("retailer_location", couponData?.retailerLocation)
                         intent.putExtra("coupon_uuid", couponUUID)
                         intent.putExtra("member_uuid", memberUUID)
+                        intent.putExtra("equivalent_point", couponData?.equivalentPoint)
+                        Log.d("log.putExtra.brandName", "${couponData?.brandName}")
+                        intent.putExtra("brand_name", couponData?.brandName)
+
                         finish()
                         startActivity(intent)
                     }
