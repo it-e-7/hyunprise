@@ -19,7 +19,6 @@ import com.hyunprise.android.databinding.FragmentHomeBinding
 import com.hyunprise.android.api.oauth.managers.KakaoAuthManager
 import com.hyunprise.android.store.MemberSharedPreferences
 import com.hyunprise.android.ui.auth.LoginActivity
-import com.hyunprise.android.ui.member.LoginProcessActivity
 import com.hyunprise.android.ui.member.coupon.IssuedCouponContainerActivity
 import com.hyunprise.android.ui.member.point.PointActivity
 import com.kakao.sdk.user.UserApiClient
@@ -95,7 +94,7 @@ class HomeFragment : Fragment() {
                     Log.e("Hello", "로그아웃 실패. SDK에서 토큰 삭제됨", error)
                 } else {
                     Log.i("Hello", "로그아웃 성공. SDK에서 토큰 삭제됨")
-                    val intent = Intent(requireContext(), LoginProcessActivity::class.java)
+                    val intent = Intent(requireContext(), LoginActivity::class.java)
                     startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
                 }
             }

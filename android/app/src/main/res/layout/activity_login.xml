@@ -77,19 +77,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_second_text" />
 
-    <CheckBox
-        android:id="@+id/login_process_checkbox_auto_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="자동 로그인"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="330dp"
-        android:visibility="invisible"
-        />
 
     <ImageButton
-        android:id="@+id/login_process_button_kakao_login"
+        android:id="@+id/login_button_kakao_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/invisible"
@@ -101,17 +91,17 @@
         app:layout_constraintTop_toBottomOf="@+id/login_circle" />
 
     <Button
-            android:id="@+id/login_process_button_google_login"
+            android:id="@+id/login_button_google_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="구글 로그인"
-            android:visibility="invisible"
-            app:layout_constraintTop_toBottomOf="@+id/login_process_button_kakao_login"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/login_button_kakao_login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
     <View
-        android:id="@+id/login_process_progress_overlay"
+        android:id="@+id/login_progress_overlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#56000000"
@@ -119,7 +109,7 @@
         tools:layout_editor_absoluteY="0dp" />
 
     <ProgressBar
-            android:id="@+id/login_process_progress_bar"
+            android:id="@+id/login_progress_bar"
             style="?android:attr/progressBarStyle"
             android:layout_width="80dp"
             android:layout_height="80dp"
