@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.hyunprise.android.R
 
-class Banner_one_Fragment : Fragment() {
+class Banner_five_Fragment : Fragment() {
 
 
 
@@ -16,6 +16,6 @@ class Banner_one_Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Fragment에 표시할 레이아웃 파일을 inflate하여 반환합니다.
-        return inflater.inflate(R.layout.fragment_banner_one, container, false)
+        return inflater.inflate(R.layout.fragment_banner_five, container, false)
     }
 }

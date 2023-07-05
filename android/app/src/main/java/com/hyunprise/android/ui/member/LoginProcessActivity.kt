@@ -4,9 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.hyunprise.android.HomeActivity
+import com.hyunprise.android.R
 import com.hyunprise.android.api.RetrofitConfig
 import com.hyunprise.android.api.oauth.services.OAuthService
 import com.hyunprise.android.api.oauth.vo.OAuth
@@ -31,8 +34,8 @@ class LoginProcessActivity : AppCompatActivity() {
                 binding.loginProcessProgressOverlay.visibility = if (status) View.VISIBLE else View.GONE
                 binding.loginProcessButtonKakaoLogin.isEnabled = !status;
                 binding.loginProcessButtonGoogleLogin.isEnabled = !status;
-                binding.loginProcessButtonLogin.isEnabled = !status;
-                binding.loginProcessButtonSignup.isEnabled = !status;
+//                binding.loginProcessButtonLogin.isEnabled = !status;
+//                binding.loginProcessButtonSignup.isEnabled = !status;
             }
         }
     }
@@ -79,6 +82,47 @@ class LoginProcessActivity : AppCompatActivity() {
                 UserApiClient.instance.loginWithKakaoAccount(this, callback = kakaoAccountLoginCallback)
             }
         }
+
+        // animation 처리
+        // slid up 떠오르기
+        var slideUpAnimation: Animation = AnimationUtils.loadAnimation(this, R.anim.slide_up)
+        var slideUpAnimation2: Animation = AnimationUtils.loadAnimation(this, R.anim.slide_up2)
+        var slideUpAnimation3: Animation = AnimationUtils.loadAnimation(this, R.anim.slide_up3)
+        // 반짝이기 애니메이션
+        var blinkAnimation: Animation = AnimationUtils.loadAnimation(this, R.anim.blink_animation)
+        // 원 커지기
+        var scaleUpAnimation: Animation = AnimationUtils.loadAnimation(this, R.anim.scale_animation)
+        var scaleUpLateAnimation: Animation = AnimationUtils.loadAnimation(this, R.anim.scale_late_animation)
+        var slideUpAnimation4: Animation = AnimationUtils.loadAnimation(this, R.anim.slide_up4)
+
+        binding.loginFirstText.startAnimation(slideUpAnimation)
+        binding.loginSecondText.startAnimation(slideUpAnimation2)
+        binding.loginThirdText.startAnimation(slideUpAnimation3)
+        binding.loginCircle.startAnimation(scaleUpAnimation)
+
+        slideUpAnimation2.setAnimationListener(object : Animation.AnimationListener {
+            override fun onAnimationStart(animation: Animation) {
+                // 애니메이션이 시작될 때 호출됩니다.
+            }
+            override fun onAnimationEnd(animation: Animation) {
+                // 애니메이션이 종료된 후 호출됩니다.
+                binding.loginSecondText.startAnimation(blinkAnimation)
+            }
+            override fun onAnimationRepeat(animation: Animation) {
+                // 애니메이션이 반복될 때 호출됩니다.
+            }
+        })
+        binding.loginProcessButtonKakaoLogin.startAnimation(slideUpAnimation4)
+//        slideUpAnimation3.setAnimationListener(object : Animation.AnimationListener {
+//            override fun onAnimationStart(animation: Animation?) {
+//            }
+//            override fun onAnimationEnd(animation: Animation) {
+//                binding.loginProcessButtonKakaoLogin.startAnimation(scaleUpLateAnimation)
+//            }
+//            override fun onAnimationRepeat(animation: Animation) {
+//            }
+//        })
+
     }
 
     private fun sendMemberInfoAndFinish(token: String) {
