@@ -19,6 +19,7 @@ data class CouponDetail(
     val couponCode: String? = null,
     val issueDate: Timestamp? = null,
     val expirationDate: Timestamp? = null,
-    val brandName: String? = null
+    val brandName: String? = null,
+    val equivalentPoint: Int? = null
 
 )

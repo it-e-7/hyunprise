@@ -3,9 +3,11 @@ package com.hyunprise.android.ui.qrcode
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.hyunprise.android.CodeGenerate
 import com.hyunprise.android.HomeActivity
 import com.hyunprise.android.databinding.ActivityCouponAcquiredBinding
+import com.hyunprise.android.ui.member.coupon.IssuedCouponContainerActivity
 
 class CouponAcquiredActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,11 +18,10 @@ class CouponAcquiredActivity : AppCompatActivity() {
 
         var barcode = CodeGenerate()
 
-
-        binding.couponAcquiredCouponRetailLocationTv.text = intent.getStringExtra("coupon_retail_location")
+        binding.couponAcquiredBrandNameTv.text = intent.getStringExtra("brand_name")
+        binding.couponAcquiredRetailerLocation.text = intent.getStringExtra("coupon_retail_location")
         binding.couponAcquiredCouponNameTv.text = intent.getStringExtra("coupon_name")
-        binding.couponAcquiredCouponDescriptionTv.text = intent.getStringExtra("coupon_description")
-        binding.couponAcquiredExpirationDateTv.text = intent.getStringExtra("coupon_expiration_date")
+        binding.couponAcquiredExpirationPeriodTv.text = intent.getStringExtra("coupon_expiration_date")
         var couponCode = barcode.generateBitmapBarCode(intent.getStringExtra("coupon_coupon_code").toString())
         binding.couponAcquiredBarcodeIv.setImageBitmap(couponCode)
 
@@ -37,7 +38,9 @@ class CouponAcquiredActivity : AppCompatActivity() {
         }
 
         binding.couponAcquiredCouponList.setOnClickListener {
-            // 쿠폰리스트 연결
+            finish()
+            val intent = Intent(this@CouponAcquiredActivity, IssuedCouponContainerActivity::class.java)
+            startActivity(intent)
         }
     }
 }

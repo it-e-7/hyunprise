@@ -53,65 +53,101 @@
         android:id="@+id/coupon_acquired_tv_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginBottom="182dp"
-        android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/coupon_acquired_title_tv"
-        app:layout_constraintBottom_toTopOf="@+id/coupon_acquired_barcode_iv"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_marginHorizontal="30sp"
+        android:layout_marginTop="30sp"
+        android:padding="10dp"
+        >
 
-        <TextView
-            android:id="@+id/coupon_acquired_coupon_retail_location_tv"
+        <ImageView
+            android:id="@+id/coupon_acquired_coupon_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="[현대백화점 신촌점]"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/coupon_acquired_brand_name_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/coupon_acquired_coupon_iv"
+            app:layout_constraintStart_toStartOf="@+id/coupon_acquired_coupon_iv"
+            app:layout_constraintEnd_toEndOf="@+id/coupon_acquired_coupon_iv"
+
+            android:text="[Cafe H]"
             android:textColor="@color/black"
-            android:textSize="20dp"
+            android:gravity="center"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/coupon_acquired_coupon_name_tv"
-            app:layout_constraintEnd_toEndOf="@id/coupon_acquired_tv_group"
-            app:layout_constraintStart_toStartOf="@id/coupon_acquired_tv_group"
-            app:layout_constraintTop_toTopOf="@id/coupon_acquired_tv_group" />
+            android:textSize="20sp"
+            android:layout_marginTop="20sp"
+            />
 
         <TextView
             android:id="@+id/coupon_acquired_coupon_name_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="샤넬 90% 할인쿠폰"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/coupon_acquired_coupon_description_tv"
-            app:layout_constraintEnd_toEndOf="@id/coupon_acquired_tv_group"
-            app:layout_constraintStart_toStartOf="@id/coupon_acquired_tv_group"
-            app:layout_constraintTop_toTopOf="@+id/coupon_acquired_tv_group" />
-
-        <TextView
-            android:id="@+id/coupon_acquired_coupon_description_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="샤넬 양말 90% 할인쿠폰"
-            android:textColor="@color/black"
-            android:textSize="15dp"
-            app:layout_constraintBottom_toTopOf="@id/coupon_acquired_expiration_date_tv"
-            app:layout_constraintEnd_toEndOf="@id/coupon_acquired_tv_group"
-            app:layout_constraintStart_toStartOf="@id/coupon_acquired_tv_group"
-            app:layout_constraintTop_toBottomOf="@id/coupon_acquired_coupon_name_tv" />
-
-        <TextView
-            android:id="@+id/coupon_acquired_expiration_date_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="2023.07.03"
-            android:textSize="20dp"
+            android:text="웰컴음료 1잔 이용권"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="@+id/coupon_acquired_brand_name_tv"
+            app:layout_constraintEnd_toEndOf="@+id/coupon_acquired_brand_name_tv"
+            app:layout_constraintTop_toBottomOf="@+id/coupon_acquired_brand_name_tv"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/coupon_acquired_tv_group"
-            app:layout_constraintEnd_toEndOf="@id/coupon_acquired_tv_group"
-            app:layout_constraintStart_toStartOf="@id/coupon_acquired_tv_group"
-            app:layout_constraintTop_toBottomOf="@id/coupon_acquired_coupon_description_tv" />
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <View
+            android:id="@+id/coupon_acquired_divider"
+            style="@style/style_item_divider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/coupon_acquired_coupon_name_tv"
+            android:layout_marginTop="30sp"
+            />
+
+        <TextView
+            android:id="@+id/coupon_found_title_expiration_period_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="[유효기간]"
+            app:layout_constraintTop_toBottomOf="@+id/coupon_acquired_divider"
+            app:layout_constraintStart_toStartOf="@+id/coupon_acquired_divider"
+            android:layout_marginTop="20sp"
+            />
+
+        <TextView
+            android:id="@+id/coupon_acquired_expiration_period_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2023.06.01 - 2023.06.31"
+            app:layout_constraintTop_toBottomOf="@+id/coupon_found_title_expiration_period_tv"
+            android:textSize="13sp"
+            android:layout_marginTop="5sp"
+            app:layout_constraintStart_toStartOf="@+id/coupon_found_title_expiration_period_tv" />
+
+        <TextView
+            android:id="@+id/coupon_acquired_title_retailer_location_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="[사용처]"
+            app:layout_constraintTop_toBottomOf="@+id/coupon_acquired_expiration_period_tv"
+            android:layout_marginTop="20sp"
+            app:layout_constraintStart_toStartOf="@+id/coupon_acquired_tv_group" />
+
+        <TextView
+            android:id="@+id/coupon_acquired_retailer_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="현대백화점 신촌점 본관 11F Cafe H"
+            app:layout_constraintTop_toBottomOf="@+id/coupon_acquired_title_retailer_location_tv"
+            android:textSize="13sp"
+            android:layout_marginTop="5sp"
+            app:layout_constraintStart_toStartOf="@+id/coupon_acquired_tv_group" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
@@ -149,8 +185,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="내 쿠폰함 가기" />
-
         </LinearLayout>
+
 
         <LinearLayout
             android:id="@+id/coupon_acquired_continue_searching"
