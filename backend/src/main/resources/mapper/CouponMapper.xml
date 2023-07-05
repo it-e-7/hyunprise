@@ -41,4 +41,29 @@
         #{state, mode=OUT, jdbcType=NUMERIC, javaType=Integer}
         )}
     </insert>
+
+    <select id="selectAllAdminIssuedCoupons" parameterType="String" resultType="Coupon">
+        SELECT
+        c.coupon_uuid,
+        c.seller_uuid,
+        c.coupon_name,
+        c.coupon_description,
+        c.discount_type,
+        c.discount_amount,
+        c.discount_limit,
+        c.minimum_purchase,
+        c.retailer_location,
+        c.terms_and_conditions,
+        c.usage_instruction,
+        c.equivalent_point,
+        c.creation_date,
+        c.expiration_days,
+        c.equivalent_point,
+        b.brand_name
+
+        FROM coupon c
+        JOIN member m ON c.seller_uuid = m.member_uuid
+        JOIN brand b ON m.brand_id = b.brand_id
+        WHERE seller_uuid = #{sellerUUID}
+    </select>
 </mapper>

@@ -44,4 +44,9 @@ public class CouponServiceImpl implements CouponService {
 
         return (Integer) coupon.get("state");
     }
+
+    @Override
+    public List<Coupon> selectAllAdminIssuedCoupons(String sellerUUID) {
+        return couponMapper.selectAllAdminIssuedCoupons(sellerUUID);
+    }
 }
