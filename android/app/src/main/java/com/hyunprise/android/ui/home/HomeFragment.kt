@@ -11,6 +11,7 @@ import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.hyunprise.android.databinding.FragmentHomeBinding
+import com.hyunprise.android.ui.admin.coupon.CouponGenerateActivity
 import com.hyunprise.android.ui.member.LoginProcessActivity
 import com.hyunprise.android.ui.member.coupon.IssuedCouponContainerActivity
 import com.hyunprise.android.ui.member.point.PointActivity
@@ -92,6 +93,24 @@ class HomeFragment : Fragment() {
 
                 }
             }
+        }
+
+
+        var loginInfo: String = "admin"
+
+        val adminBtn = binding.homeAdminBtnContainer
+
+        if (loginInfo=="admin") {
+            adminBtn.visibility = View.VISIBLE
+
+            binding.adminHomeCouponIssuerBtn.setOnClickListener {
+                val intent = Intent(this@HomeFragment.activity, CouponGenerateActivity::class.java)
+                startActivity(intent)
+            }
+
+
+        } else {
+            adminBtn.visibility = View.GONE
         }
 
         return binding.root
