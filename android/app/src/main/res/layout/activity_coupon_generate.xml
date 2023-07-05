@@ -214,6 +214,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textAlignment="center"
+                    android:inputType="number"
                     android:hint="할인한도" />
 
                 <EditText
@@ -222,6 +223,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textAlignment="center"
+                    android:inputType="number"
                     android:hint="최소금액" />
 
                 <EditText
@@ -230,6 +232,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
+                    android:inputType="number"
                     android:hint="할인금액"/>
 
             </LinearLayout>
