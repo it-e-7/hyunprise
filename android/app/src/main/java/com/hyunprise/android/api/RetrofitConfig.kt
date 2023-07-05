@@ -13,6 +13,7 @@ object RetrofitConfig {
     private val gsonFactory: GsonConverterFactory = GsonConverterFactory.create(GsonBuilder()
         .setLenient()
         .create())
+
     var retrofit_gson: Retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(gsonFactory)
@@ -27,7 +28,12 @@ object RetrofitConfig {
             return chain.proceed(newRequest)
         }
     }
-
+    fun resetRetrofitClient() {
+        retrofit_gson = Retrofit.Builder()
+        .baseUrl(BASE_URL)
+            .addConverterFactory(gsonFactory)
+            .build()
+    }
     fun patchAuthorizationHeader(token: String) {
         retrofit_gson = Retrofit.Builder()
             .baseUrl(BASE_URL)

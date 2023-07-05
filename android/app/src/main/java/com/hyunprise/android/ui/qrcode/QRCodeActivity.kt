@@ -9,9 +9,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.zxing.ResultPoint
 import com.hyunprise.android.api.coupon.services.CouponService
-import com.hyunprise.android.api.coupon.services.IssuedCouponService
-import com.hyunprise.android.api.coupon.vo.Coupon
-import com.hyunprise.android.api.coupon.vo.IssuedCoupon
 import com.hyunprise.android.databinding.ActivityQrcodeBinding
 import com.journeyapps.barcodescanner.BarcodeCallback
 import com.journeyapps.barcodescanner.BarcodeResult
@@ -20,7 +17,6 @@ import com.journeyapps.barcodescanner.DecoratedBarcodeView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.Response
 
 
 class QRCodeActivity: AppCompatActivity() {
@@ -28,7 +24,7 @@ class QRCodeActivity: AppCompatActivity() {
     lateinit var binding: ActivityQrcodeBinding
     lateinit var barcodeView: DecoratedBarcodeView
     lateinit var capture: CaptureManager
-
+    private val couponService = CouponService()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -91,7 +87,7 @@ class QRCodeActivity: AppCompatActivity() {
 
                 if (couponUUID != null) {
                     CoroutineScope(Dispatchers.Main).launch {
-                        val couponData = CouponService.getOneCoupon(couponUUID)
+                        val couponData = couponService.getOneCoupon(couponUUID)
                         var intent = Intent(this@QRCodeActivity, CouponFoundActivity::class.java)
                         Log.d("qrcode.issuedCoupon", "${couponData}")
 

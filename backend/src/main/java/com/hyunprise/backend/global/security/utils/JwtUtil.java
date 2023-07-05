@@ -2,7 +2,7 @@ package com.hyunprise.backend.global.security.utils;
 
 import com.hyunprise.backend.domain.auth.vo.OAuth;
 import com.hyunprise.backend.domain.member.vo.Member;
-import com.hyunprise.backend.global.security.types.MemberRoles;
+import com.hyunprise.backend.global.security.types.MemberRole;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -107,7 +107,7 @@ public class JwtUtil {
         return claims.get("memberUUID").toString();
     }
 
-    public List<GrantedAuthority> authorityOf(MemberRoles role) {
+    public List<GrantedAuthority> authorityOf(MemberRole role) {
         if (role == null) return Collections.emptyList();
         return Stream.of(new SimpleGrantedAuthority("ROLE_" + role.name())).collect(Collectors.toList());
     }
@@ -120,7 +120,7 @@ public class JwtUtil {
         Claims claims = getClaimsFromToken(token);
         String memberUUID = claims.get("memberUUID", String.class);
         Integer accountType = claims.get("accountType", Integer.class);
-        MemberRoles role = MemberRoles.roleOfType(accountType);
+        MemberRole role = MemberRole.roleOfType(accountType);
 
         return new UsernamePasswordAuthenticationToken(memberUUID, token, authorityOf(role));
     }
