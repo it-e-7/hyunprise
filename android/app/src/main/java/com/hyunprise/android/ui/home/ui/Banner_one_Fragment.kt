@@ -18,5 +18,4 @@ class Banner_one_Fragment : Fragment() {
         // Fragment에 표시할 레이아웃 파일을 inflate하여 반환합니다.
         return inflater.inflate(R.layout.fragment_banner_one, container, false)
     }
-
 }
