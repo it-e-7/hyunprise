@@ -63,6 +63,10 @@ public class JwtUtil {
         if (header == null || !header.startsWith("Bearer ")) {
             return null;
         }
+        return parseTokenFromAuthorizationHeader(header);
+    }
+
+    public String parseTokenFromAuthorizationHeader(String header) {
         return header.split(" ")[1];
     }
 
