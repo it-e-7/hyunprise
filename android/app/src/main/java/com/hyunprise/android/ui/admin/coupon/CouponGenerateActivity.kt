@@ -22,7 +22,7 @@ class CouponGenerateActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityCouponGenerateBinding
 
-
+    private val couponService = CouponService()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCouponGenerateBinding.inflate(layoutInflater)
@@ -129,7 +129,7 @@ class CouponGenerateActivity : AppCompatActivity() {
             }
 
             CoroutineScope(Dispatchers.Main).launch {
-                val success = CouponService.postOneCoupon(coupon)
+                val success = couponService.postOneCoupon(coupon)
 
                 Log.d("log.success", "$success")
 

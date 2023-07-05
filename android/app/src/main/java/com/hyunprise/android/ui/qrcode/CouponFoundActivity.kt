@@ -6,20 +6,17 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.hyunprise.android.api.coupon.services.IssuedCouponService
-import com.hyunprise.android.api.coupon.vo.CouponDetail
 import com.hyunprise.android.api.coupon.vo.IssuedCoupon
 import com.hyunprise.android.databinding.ActivityCouponFoundBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.Response
 import java.text.SimpleDateFormat
-import java.time.LocalDate
 import java.util.Calendar
-import java.util.Date
 import java.util.Locale
 
 class CouponFoundActivity : AppCompatActivity() {
+    private val issuedCouponService = IssuedCouponService()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -57,13 +54,13 @@ class CouponFoundActivity : AppCompatActivity() {
                         couponUUID = couponUUID, memberUUID = memberUUID
                     )
                     try {
-                        val response = IssuedCouponService.postIssuedCoupon(issuedCoupon)
+                        val response = issuedCouponService.postIssuedCoupon(issuedCoupon)
                         Log.d("log.response", "${response}")
 
                         if (response.isNotEmpty()) {
                             Toast.makeText(this@CouponFoundActivity, "쿠폰이 발급 되었습니다.", Toast.LENGTH_SHORT).show()
                             val intent = Intent(this@CouponFoundActivity, CouponAcquiredActivity::class.java)
-                            val issuedCouponDetail = IssuedCouponService.getIssuedCoupon(response)
+                            val issuedCouponDetail = issuedCouponService.getIssuedCoupon(response)
 
                             Log.d("log.issuedCouponDetail", "${issuedCouponDetail}")
 
