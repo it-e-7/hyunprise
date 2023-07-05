@@ -3,15 +3,15 @@
     android:fillAfter="true">
 
     <translate
-        android:startOffset="3500"
+        android:startOffset="1000"
         android:fromYDelta="100%p"
         android:toYDelta="0"
-        android:duration="3000" />
+        android:duration="2000" />
 
     <alpha
         android:fromAlpha="0"
         android:toAlpha="1"
-        android:duration="3000" />
+        android:duration="2000" />
 
 </set>
 <!--
