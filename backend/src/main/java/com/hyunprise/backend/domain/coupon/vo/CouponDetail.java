@@ -26,4 +26,5 @@ public class CouponDetail {
     private Timestamp issueDate;
     private Timestamp expirationDate;
     private String brandName;
+    private Integer equivalentPoint;
 }
