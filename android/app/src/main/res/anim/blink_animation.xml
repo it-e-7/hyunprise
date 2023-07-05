@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <alpha
+        android:fromAlpha="1.0"
+        android:interpolator="@android:anim/accelerate_interpolator"
+        android:repeatCount="infinite"
+        android:repeatMode="reverse"
+        android:toAlpha="0.0"
+        android:duration="1000"/>
+</set>
+
+<!--
+duration : 애니메이션 시간 (1/1000초)
+fromAlpha : 시작투명도 (0 = 안보임, 1 = 다보임)
+interpolator = 애니메이션 시작과 끝의 사이를 어떻게 표현할 것인가? (애니메이션이 어떻게 진행될 것인가)
+
+interpolator 옵션
+accelerate_interpolator : 점점 빠르게 (가속)
+decelerate_interpolator : 점점 느리게 (감속)
+accelerate_decelerate_interpolator : 가속 + 감속
+anticipate_interpolator : 시작 위치에서 조금 뒤로 당겼다가 이동
+overshoot_interpolator : 도착 위치를 조금 지나쳤다가 도착위치로 이동
+bounce_interpolator : 도착 위치에서 튕김
+등의 옵션이 있다.
+
+위 예시에서는 가속을 사용하였다.
+
+repeatCount = 실행 횟수 (infinite : 무한반복)
+repeatMode = repeat (처음 반복) / reverse (순환)
+toAlpha : 도착투명도 (0 = 안보임, 1 = 다보임)
+
+
+-->
