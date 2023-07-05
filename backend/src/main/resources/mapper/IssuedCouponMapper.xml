@@ -24,26 +24,29 @@
 
     <select id="selectOneCouponDetailByIssuedCouponUUID" parameterType="String" resultType="CouponDetail">
         SELECT
-        ic.issued_coupon_uuid,
-        c.coupon_name,
-        c.coupon_description,
-        c.discount_type,
-        c.discount_amount,
-        c.discount_limit,
-        c.minimum_purchase,
-        c.retailer_location,
-        c.terms_and_conditions,
-        c.usage_instruction,
+            ic.issued_coupon_uuid,
+            c.coupon_name,
+            c.coupon_description,
+            c.discount_type,
+            c.discount_amount,
+            c.discount_limit,
+            c.minimum_purchase,
+            c.retailer_location,
+            c.terms_and_conditions,
+            c.usage_instruction,
+            c.equivalent_point,
 
-        ic.coupon_uuid,
+            ic.coupon_uuid,
 
-        ic.status,
-        ic.coupon_code,
-        ic.issue_date,
-        ic.expiration_date
+            ic.status,
+            ic.coupon_code,
+            ic.issue_date,
+            ic.expiration_date,
+            b.brand_name
         FROM issued_coupon ic
         JOIN coupon c ON c.coupon_uuid = ic.coupon_uuid
-
+        JOIN member m ON m.member_uuid=c.seller_uuid
+        JOIN brand b ON b.brand_id=m.brand_id
 
         WHERE ic.issued_coupon_uuid = #{issuedCouponUUID}
     </select>
