@@ -7,25 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import com.hyunprise.android.R
-import com.hyunprise.android.databinding.ActivityCouponContainerBinding
-import com.hyunprise.android.databinding.ActivityPointBinding
 import com.hyunprise.android.databinding.FragmentHomeBinding
-import com.hyunprise.android.ui.admin.coupon.CouponGenerateActivity
-import com.hyunprise.android.ui.admin.home.AdminHomeFragment
+import com.hyunprise.android.ui.member.LoginProcessActivity
 import com.hyunprise.android.ui.member.coupon.IssuedCouponContainerActivity
 import com.hyunprise.android.ui.member.point.PointActivity
-import kotlinx.coroutines.NonCancellable.start
+import com.kakao.sdk.user.UserApiClient
 
 
 class HomeFragment : Fragment() {
 
     var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    var loginInfo: String = "admin"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -67,20 +60,19 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
-        val adminBtn = binding.homeAdminBtnContainer
+        binding.homeDrawerContent.homeDrawerLogoutButton.setOnClickListener{
+            UserApiClient.instance.unlink { error ->
+                if (error != null) {
+                    Log.e("Hello", "로그아웃 실패. SDK에서 토큰 삭제됨", error)
+                } else {
+                    Log.i("Hello", "로그아웃 성공. SDK에서 토큰 삭제됨")
+                    val intent = Intent(requireContext(), LoginProcessActivity::class.java)
+                    startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
 
-        if (loginInfo=="admin") {
-            adminBtn.visibility = View.VISIBLE
-
-            binding.adminHomeCouponIssuerBtn.setOnClickListener {
-                val intent = Intent(this@HomeFragment.activity, CouponGenerateActivity::class.java)
-                startActivity(intent)
+                }
             }
-
-
-        } else {
-            adminBtn.visibility = View.GONE
         }
+
         return binding.root
     }
 
