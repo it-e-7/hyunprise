@@ -31,10 +31,16 @@ class IssuedCouponContainerActivity : AppCompatActivity() {
             tab.text = adaptor.getTabTitle(position)
         }.attach()
 
+        binding.couponBackButton.setOnClickListener {
+            onBackPressed()
+        }
+
     }
 
     override fun onDestroy() {
         super.onDestroy()
         binding.couponViewPager.adapter = null
     }
+
+
 }

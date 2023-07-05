@@ -18,5 +18,8 @@ class PointActivity : AppCompatActivity() {
 
         binding.pointBarcodeImg.setImageBitmap(pointBarcodeInfo)
 
+        binding.pointBackButton.setOnClickListener {
+            onBackPressed()
+        }
     }
 }
