@@ -47,8 +47,6 @@ class HomeActivity : AppCompatActivity() {
 //        }
 
 
-        Log.d("log.home", "$navController.")
-
         navView.setupWithNavController(navController)
     }
 }

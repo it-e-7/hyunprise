@@ -53,7 +53,7 @@ class AdminIssuedCouponDetailDialogFragment : BottomSheetDialogFragment() {
     ): View {
         _binding =
             FragmentAdminIssuedCouponDetailBottomDialogBinding.inflate(inflater, container, false)
-        showLoadingSkeleton()
+        setLoadingSkeletonStatue(true)
         fetchData()
         Log.d("log.detail", "실행?")
         return binding.root
@@ -96,14 +96,19 @@ class AdminIssuedCouponDetailDialogFragment : BottomSheetDialogFragment() {
         _binding = null
     }
 
-    private fun showLoadingSkeleton() {
-        binding.adminIssuedCouponSkeletonLayout.visibility = View.VISIBLE
-        binding.adminIssuedCouponDetailContainerScrollView.visibility = View.GONE
+    private fun setLoadingSkeletonStatue(status: Boolean) {
+        if (status) {
+            binding.adminCouponDetailShimmerContainer.issuedCouponShimmerContainer.visibility = View.VISIBLE
+            binding.adminCouponDetailShimmerContainer.issuedCouponShimmer.startShimmer()
+            binding.adminIssuedCouponDetailContainerScrollView.visibility = View.GONE
+        }
+        else {
+            binding.adminCouponDetailShimmerContainer.issuedCouponShimmerContainer.visibility = View.GONE
+            binding.adminCouponDetailShimmerContainer.issuedCouponShimmer.stopShimmer()
+            binding.adminIssuedCouponDetailContainerScrollView.visibility = View.VISIBLE
+        }
     }
-
     private fun updateViews(coupon: CouponDetail) {
-
-        binding.adminIssuedCouponSkeletonLayout.visibility = View.GONE
 
         val sdf = SimpleDateFormat("yyyy.MM.dd", Locale.KOREA)
         val adminIssuedDateString = coupon.creationDate?.let {
@@ -125,11 +130,10 @@ class AdminIssuedCouponDetailDialogFragment : BottomSheetDialogFragment() {
         binding.adminIssuedCouponDetailUsageInstruction.text = coupon.usageInstruction
         binding.adminIssuedCouponDetailCouponDescription.text = coupon.couponDescription
         binding.adminIssuedCouponDetailTermsAndConditions.text = coupon.termsAndConditions
-        binding.adminIssuedCouponDetailContainerScrollView.visibility = View.VISIBLE
         binding.adminIssuedCouponBrandName.text = coupon.brandName
         val qrBitmap = CodeGenerate()
-
         binding.adminIssuedCouponQrIv.setImageBitmap(qrBitmap.generateBitmapQRCode(coupon.couponCode.toString()))
+        setLoadingSkeletonStatue(false)
     }
 
     private fun fetchData() {

@@ -95,14 +95,14 @@ class LoginActivity : AppCompatActivity() {
         setProgressBar(true)
         lifecycleScope.launch(Dispatchers.IO) {
             val oAuthResult = AuthManagerResolver.resolve(provider).authorize()
-            Log.d("login.log", "${provider.name} authorization result $oAuthResult")
+            Log.d("log.login", "${provider.name} authorization result $oAuthResult")
             oAuthResult.accessToken?.let { token ->
                 RetrofitConfig.patchAuthorizationHeader(token)
                 MemberService().updateLoggedInMemberData(this@LoginActivity)
                 MemberSharedPreferences(this@LoginActivity).saveOAuthProvider(provider)
                 setProgressBar(false)
                 withContext(Dispatchers.Main) {
-                    Log.d("login.log", "Moving in to HomeActivity")
+                    Log.d("log.login", "Moving in to HomeActivity")
                     val intent = Intent(baseContext, HomeActivity::class.java)
                     startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
                     finish()
@@ -112,7 +112,7 @@ class LoginActivity : AppCompatActivity() {
                 withContext(Dispatchers.Main) {
                     Toast.makeText(this@LoginActivity, "로그인에 실패했습니다.", Toast.LENGTH_SHORT).show()
                 }
-                Log.d("login.log", "Login Failed.")
+                Log.d("log.login", "Login Failed.")
             }
 
         }

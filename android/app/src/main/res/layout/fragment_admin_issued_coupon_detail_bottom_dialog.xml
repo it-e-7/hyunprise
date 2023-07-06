@@ -6,8 +6,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
-        android:paddingBottom="@dimen/list_item_spacing_half"
-        android:paddingTop="@dimen/list_item_spacing_half"
         tools:context=".ui.member.coupon.fragments.IssuedCouponDetailDialogFragment"
         android:orientation="vertical"
         android:layout_gravity="center_horizontal"
@@ -228,15 +226,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    <ProgressBar
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/admin_issued_coupon_skeleton_layout"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
+    <include
+            android:id="@+id/admin_coupon_detail_shimmer_container"
+            layout="@layout/fragment_bottom_dialog_shimmer"
+            android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
