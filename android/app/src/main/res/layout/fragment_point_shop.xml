@@ -83,7 +83,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="29,900원" />
+                        android:text="29,900P" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -104,7 +104,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="14,900원" />
+                        android:text="14,900P" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -134,7 +134,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="129,900원" />
+                        android:text="129,900P" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -155,7 +155,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="149,000원" />
+                        android:text="149,000P" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -181,7 +181,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="39,900원" />
+                        android:text="39,900P" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -201,7 +201,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="54,900원" />
+                        android:text="54,900P" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -227,7 +227,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="64,900원" />
+                        android:text="64,900P" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -247,7 +247,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="129,900원" />
+                        android:text="129,900P" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -273,7 +273,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="129,900원" />
+                        android:text="129,900P" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -293,7 +293,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="28,900원" />
+                        android:text="28,900P" />
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -318,7 +318,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="23,900원" />
+                        android:text="23,900P" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -338,7 +338,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="129,900원" />
+                        android:text="129,900P" />
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -363,7 +363,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="29,900원" />
+                        android:text="29,900P" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -384,7 +384,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="14,900원" />
+                        android:text="14,900P" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -414,7 +414,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="129,900원" />
+                        android:text="129,900P" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -435,7 +435,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="149,000원" />
+                        android:text="149,000P" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -461,7 +461,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="39,900원" />
+                        android:text="39,900P" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -481,7 +481,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="54,900원" />
+                        android:text="54,900P" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -507,7 +507,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="64,900원" />
+                        android:text="64,900P" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -527,7 +527,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="129,900원" />
+                        android:text="129,900P" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -553,7 +553,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="129,900원" />
+                        android:text="129,900P" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -573,7 +573,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="28,900원" />
+                        android:text="28,900P" />
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -598,7 +598,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="23,900원" />
+                        android:text="23,900P" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -618,7 +618,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="129,900원" />
+                        android:text="129,900P" />
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -643,7 +643,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="29,900원" />
+                        android:text="29,900P" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -664,7 +664,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="14,900원" />
+                        android:text="14,900P" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -694,7 +694,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="129,900원" />
+                        android:text="129,900P" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -715,7 +715,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="149,000원" />
+                        android:text="149,000P" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -741,7 +741,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="39,900원" />
+                        android:text="39,900P" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -761,7 +761,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="54,900원" />
+                        android:text="54,900P" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -787,7 +787,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="64,900원" />
+                        android:text="64,900P" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -807,7 +807,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="129,900원" />
+                        android:text="129,900P" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -833,7 +833,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="129,900원" />
+                        android:text="129,900P" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -853,7 +853,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="28,900원" />
+                        android:text="28,900P" />
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -878,7 +878,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="23,900원" />
+                        android:text="23,900P" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -898,7 +898,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="129,900원" />
+                        android:text="129,900P" />
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -923,7 +923,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="29,900원" />
+                        android:text="29,900P" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -944,7 +944,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="14,900원" />
+                        android:text="14,900P" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -974,7 +974,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="129,900원" />
+                        android:text="129,900P" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -995,7 +995,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="149,000원" />
+                        android:text="149,000P" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -1021,7 +1021,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="39,900원" />
+                        android:text="39,900P" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1041,7 +1041,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="54,900원" />
+                        android:text="54,900P" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -1067,7 +1067,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="64,900원" />
+                        android:text="64,900P" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1087,7 +1087,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="129,900원" />
+                        android:text="129,900P" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -1113,7 +1113,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="129,900원" />
+                        android:text="129,900P" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1133,7 +1133,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="28,900원" />
+                        android:text="28,900P" />
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -1158,7 +1158,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="23,900원" />
+                        android:text="23,900P" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1178,7 +1178,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="129,900원" />
+                        android:text="129,900P" />
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -1203,7 +1203,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="29,900원" />
+                        android:text="29,900P" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1224,7 +1224,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="14,900원" />
+                        android:text="14,900P" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -1254,7 +1254,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="129,900원" />
+                        android:text="129,900P" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1275,7 +1275,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="149,000원" />
+                        android:text="149,000P" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -1301,7 +1301,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="39,900원" />
+                        android:text="39,900P" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1321,7 +1321,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="54,900원" />
+                        android:text="54,900P" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -1347,7 +1347,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="64,900원" />
+                        android:text="64,900P" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1367,7 +1367,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="129,900원" />
+                        android:text="129,900P" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -1393,7 +1393,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="129,900원" />
+                        android:text="129,900P" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1413,7 +1413,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="28,900원" />
+                        android:text="28,900P" />
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -1438,7 +1438,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="23,900원" />
+                        android:text="23,900P" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1458,7 +1458,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="129,900원" />
+                        android:text="129,900P" />
                 </LinearLayout>
             </LinearLayout>
 
