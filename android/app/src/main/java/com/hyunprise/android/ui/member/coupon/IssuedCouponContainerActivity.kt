@@ -70,12 +70,6 @@ class IssuedCouponContainerActivity : AppCompatActivity() {
                         CouponConsts.ISSUED_COUPON_AVAILABLE
                     ), "발급 쿠폰"
                 )
-                adminAdaptor.addFragment(
-                    AdminIssuedCouponScrollingFragment.newInstance(
-                        sellerUUID,
-                        CouponConsts.ISSUED_COUPON_UNAVAILABLE
-                    ), "만기 쿠폰"
-                )
             }
             binding.couponViewPager.adapter = adminAdaptor
 
