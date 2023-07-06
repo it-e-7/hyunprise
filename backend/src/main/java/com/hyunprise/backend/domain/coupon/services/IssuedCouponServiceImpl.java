@@ -34,14 +34,14 @@ public class IssuedCouponServiceImpl implements IssuedCouponService {
     @Override
     public String createOneIssuedCoupon(IssuedCoupon issuedCoupon) {
 
-        Map<String, String> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>();
         map.put("memberUUID", issuedCoupon.getMemberUUID());
         map.put("couponUUID", issuedCoupon.getCouponUUID());
+        map.put("membershipPoint", issuedCoupon.getMembershipPoint());
         map.put("issuedCouponUUID", null);
         issuedCouponMapper.createOneIssuedCoupon(map);
 
-
-        return map.get("issuedCouponUUID");
+        return map.get("issuedCouponUUID").toString();
     }
 
 }

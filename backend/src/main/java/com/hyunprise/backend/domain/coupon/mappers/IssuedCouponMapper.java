@@ -14,7 +14,7 @@ public interface IssuedCouponMapper {
 
     CouponDetail selectOneCouponDetailByIssuedCouponUUID(String issuedCouponUUID);
 
-    Integer createOneIssuedCoupon(Map<String, String> map);
+    Integer createOneIssuedCoupon(Map<String, Object> map);
 
     
 }
