@@ -6,8 +6,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
-        android:paddingBottom="@dimen/list_item_spacing_half"
-        android:paddingTop="@dimen/list_item_spacing_half"
         tools:context=".ui.member.coupon.fragments.IssuedCouponDetailDialogFragment"
         android:orientation="vertical"
         android:layout_gravity="center_horizontal"
@@ -41,24 +39,40 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginHorizontal="30sp"
                 >
-
-            <ImageView
-                    android:id="@+id/issued_coupon_detail_coupon_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_launcher"
+            
+            <LinearLayout
+                    android:id="@+id/issued_coupon_detail_coupon_image_container"
+                    android:layout_height="60sp"
+                    android:layout_width="60sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    />
+                    android:layout_marginVertical="30sp"
+                    android:gravity="center"
+                    android:background="@drawable/coupon_edge_circular"
+                    >
 
+                <TextView
+                        android:padding="5sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textAlignment="center"
+                        android:gravity="center"
+                        android:text="CHANNEL"
+                        android:maxLines="1"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="5sp"
+                        android:autoSizeMaxTextSize="40sp"
+                        android:autoSizeStepGranularity="5sp" />
+            </LinearLayout>
+            
             <TextView
                     android:id="@+id/issued_coupon_detail_location"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/issued_coupon_detail_coupon_image"
-                    app:layout_constraintStart_toStartOf="@+id/issued_coupon_detail_coupon_image"
-                    app:layout_constraintEnd_toEndOf="@+id/issued_coupon_detail_coupon_image"
+                    app:layout_constraintTop_toBottomOf="@+id/issued_coupon_detail_coupon_image_container"
+                    app:layout_constraintStart_toStartOf="@+id/issued_coupon_detail_coupon_image_container"
+                    app:layout_constraintEnd_toEndOf="@+id/issued_coupon_detail_coupon_image_container"
                     android:text="[현대백화점 신촌점]"
                     android:textColor="@color/black"
                     android:gravity="center"
@@ -78,7 +92,8 @@
                     app:layout_constraintTop_toBottomOf="@+id/issued_coupon_detail_location"
                     android:textStyle="bold"
                     android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:layout_marginTop="10dp"/>
 
             <TextView
                     android:id="@+id/issued_coupon_detail_expiration_date"
@@ -90,7 +105,7 @@
                     app:layout_constraintEnd_toEndOf="@+id/issued_coupon_detail_location"
                     app:layout_constraintTop_toBottomOf="@+id/issued_coupon_detail_coupon_name"
                     android:textColor="@color/purple"
-                    android:textSize="12sp"
+                    android:textSize="13sp"
                     android:textStyle="bold"
                     android:layout_marginTop="10sp" />
 
@@ -214,20 +229,25 @@
             android:id="@+id/issued_coupon_dismiss_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_back_arrow_24dp"
+            android:src="@drawable/ic_x_button_24dp"
             android:layout_margin="10sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    <ProgressBar
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/issued_coupon_skeleton_layout"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
+            android:visibility="gone"/>
+
+<!--    <ProgressBar-->
+<!--            android:id="@+id/issued_coupon_skeleton_layout"-->
+<!--            style="?android:attr/progressBarStyle"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            />-->
+    <include
+            android:id="@+id/issued_coupon_detail_shimmer_container"
+            layout="@layout/fragment_issued_coupon_detail_bottom_dialog_shimmer"
+            android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

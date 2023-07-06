@@ -77,6 +77,7 @@ dependencies {
     implementation 'androidx.drawerlayout:drawerlayout:1.2.0'
     implementation "androidx.viewpager2:viewpager2:1.0.0"
     implementation 'androidx.preference:preference:1.2.0'
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
 
 
     testImplementation 'junit:junit:4.13.2'
