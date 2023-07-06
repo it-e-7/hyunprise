@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.hyunprise.android.HomeActivity
@@ -99,14 +100,21 @@ class LoginActivity : AppCompatActivity() {
                 RetrofitConfig.patchAuthorizationHeader(token)
                 MemberService().updateLoggedInMemberData(this@LoginActivity)
                 MemberSharedPreferences(this@LoginActivity).saveOAuthProvider(provider)
+                setProgressBar(false)
+                withContext(Dispatchers.Main) {
+                    Log.d("login.log", "Moving in to HomeActivity")
+                    val intent = Intent(baseContext, HomeActivity::class.java)
+                    startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+                    finish()
+                }
+            } ?: run {
+                setProgressBar(false)
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(this@LoginActivity, "로그인에 실패했습니다.", Toast.LENGTH_SHORT).show()
+                }
+                Log.d("login.log", "Login Failed.")
             }
-            setProgressBar(false)
-            withContext(Dispatchers.Main) {
-                Log.d("login.log", "Moving in to HomeActivity")
-                val intent = Intent(baseContext, HomeActivity::class.java)
-                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
-                finish()
-            }
+
         }
     }
 
