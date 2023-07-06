@@ -35,4 +35,10 @@ class IssuedCouponService {
             issuedCouponClient.getOneIssuedCoupon(issuedCouponUUID)
         } ?: CouponDetail()
     }
+
+    suspend fun getAvailableIssuedCouponCount(memberUUID: String) : Int {
+        return ApiHandler.safeAPICall {
+            issuedCouponClient.getAvailableIssuedCouponCount(memberUUID)
+        } ?: -1
+    }
 }

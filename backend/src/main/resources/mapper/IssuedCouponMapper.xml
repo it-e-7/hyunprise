@@ -35,9 +35,7 @@
             c.terms_and_conditions,
             c.usage_instruction,
             c.equivalent_point,
-
             ic.coupon_uuid,
-
             ic.status,
             ic.coupon_code,
             ic.issue_date,
@@ -63,4 +61,11 @@
             #{issuedCouponUUID, mode=OUT, jdbcType=VARCHAR})
         }
     </insert>
+
+    <select id="selectAvailableIssuedCouponCount" parameterType="String" resultType="Integer">
+        SELECT
+            count(issued_coupon_uuid)
+        FROM issued_coupon
+        WHERE member_uuid = #{memberUUID} AND status &lt;= 2
+    </select>
 </mapper>

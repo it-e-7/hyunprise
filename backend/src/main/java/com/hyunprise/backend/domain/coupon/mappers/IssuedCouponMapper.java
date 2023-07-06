@@ -16,5 +16,7 @@ public interface IssuedCouponMapper {
 
     Integer createOneIssuedCoupon(Map<String, String> map);
 
+    Integer selectAvailableIssuedCouponCount(String memberUUID);
+
     
 }

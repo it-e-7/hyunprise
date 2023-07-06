@@ -29,4 +29,9 @@ public class IssuedCouponController {
     public String postOneCoupon(@RequestBody IssuedCoupon issuedCoupon) {
         return issuedCouponService.createOneIssuedCoupon(issuedCoupon);
     }
+
+    @GetMapping("/count")
+    public Integer getAvailableIssuedCouponCount(@RequestParam String memberUUID) {
+        return issuedCouponService.getAvailableIssuedCouponCount(memberUUID);
+    }
 }
