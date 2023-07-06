@@ -27,4 +27,9 @@ public class CouponController {
     public Coupon getOneCoupon(@PathVariable String couponUUID) {
         return couponService.selectOneCoupon(couponUUID);
     }
+
+    @GetMapping("/admin/{sellerUUID}")
+    public List<Coupon> getAllAdminIssuedCoupons(@PathVariable String sellerUUID) {
+        return couponService.selectAllAdminIssuedCoupons(sellerUUID);
+    }
 }

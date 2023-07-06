@@ -21,4 +21,10 @@ class CouponService {
             couponClient.postOneCoupon(coupon)
         } ?: -1
     }
+
+    suspend fun getAllAdminIssuedCoupons(sellerUUID: String) : List<Coupon>? {
+        return ApiHandler.safeAPICall {
+            couponClient.getAllAdminIssuedCoupons(sellerUUID)
+        } ?: null
+    }
 }
