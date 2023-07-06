@@ -1,234 +1,238 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/admin_issued_coupon_detail_bottom_dialog"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/admin_issued_coupon_detail_bottom_dialog"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    tools:context=".ui.member.coupon.fragments.IssuedCouponDetailDialogFragment"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/background_bottom_dialog"
+    >
+
+    <View
+        android:id="@+id/admin_issued_coupon_detail_dialog_bar"
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/background_dialog_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20sp" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/admin_issued_coupon_detail_container_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
-        tools:context=".ui.member.coupon.fragments.IssuedCouponDetailDialogFragment"
-        android:orientation="vertical"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/background_bottom_dialog" >
-
-        <View
-                android:id="@+id/admin_issued_coupon_detail_dialog_bar"
-                android:layout_width="40dp"
-                android:layout_height="4dp"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/background_dialog_bar"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="20sp" />
-
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/admin_issued_coupon_detail_container_scroll_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_dialog_bar"
-            android:layout_marginTop="70sp" >
+        app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_dialog_bar"
+        android:layout_marginTop="70sp"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginHorizontal="30sp"
-                >
+            android:id="@+id/admin_issud_coupon_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="30sp"
+            >
 
             <ImageView
-                    android:id="@+id/admin_issued_coupon_detail_coupon_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_launcher"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    />
+                android:id="@+id/admin_issued_coupon_detail_coupon_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
 
             <TextView
-                    android:id="@+id/admin_issued_coupon_brand_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_coupon_image"
-                    app:layout_constraintStart_toStartOf="@+id/admin_issued_coupon_detail_coupon_image"
-                    app:layout_constraintEnd_toEndOf="@+id/admin_issued_coupon_detail_coupon_image"
-                    android:text="[현대백화점 신촌점]"
-                    android:textColor="@color/black"
-                    android:gravity="center"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
-                    android:layout_marginTop="20sp"
-                    />
+                android:id="@+id/admin_issued_coupon_detail_brand_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_coupon_image"
+                app:layout_constraintStart_toStartOf="@+id/admin_issued_coupon_detail_coupon_image"
+                app:layout_constraintEnd_toEndOf="@+id/admin_issued_coupon_detail_coupon_image"
+                android:text="[현대백화점 신촌점]"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginTop="20sp"
+                />
 
             <TextView
-                    android:id="@+id/admin_issued_coupon_detail_coupon_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="웰컴음료 1잔 이용권"
-                    android:gravity="center"
-                    app:layout_constraintStart_toStartOf="@+id/admin_issued_coupon_brand_name"
-                    app:layout_constraintEnd_toEndOf="@+id/admin_issued_coupon_brand_name"
-                    app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_brand_name"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                android:id="@+id/admin_issued_coupon_detail_coupon_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="웰컴음료 1잔 이용권"
+                android:gravity="center"
+                app:layout_constraintStart_toStartOf="@+id/admin_issued_coupon_detail_brand_name"
+                app:layout_constraintEnd_toEndOf="@+id/admin_issued_coupon_detail_brand_name"
+                app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_brand_name"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
             <TextView
-                    android:id="@+id/admin_issued_coupon_detail_creation_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text= "발급 일자 | 2023.06.23"
-                    android:gravity="center"
-                    app:layout_constraintStart_toStartOf="@+id/admin_issued_coupon_brand_name"
-                    app:layout_constraintEnd_toEndOf="@+id/admin_issued_coupon_brand_name"
-                    app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_coupon_name"
-                    android:textColor="@color/purple"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="10sp" />
-            
+                android:id="@+id/admin_issued_coupon_detail_creation_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text= "발급 일자 | 2023.06.23"
+                android:gravity="center"
+                app:layout_constraintStart_toStartOf="@+id/admin_issued_coupon_detail_brand_name"
+                app:layout_constraintEnd_toEndOf="@+id/admin_issued_coupon_detail_brand_name"
+                app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_coupon_name"
+                app:layout_constraintBottom_toTopOf="@id/admin_issued_coupon_qr_iv"
+                android:textColor="@color/purple"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:layout_marginTop="10sp" />
+
             <ImageView
                 android:id="@+id/admin_issued_coupon_qr_iv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@id/admin_issued_coupon_brand_name"
-                app:layout_constraintEnd_toEndOf="@id/admin_issued_coupon_brand_name"
-                app:layout_constraintTop_toBottomOf="@id/admin_issued_coupon_detail_creation_date"
                 app:layout_constraintBottom_toTopOf="@id/admin_issued_coupon_detail_divider"
-                />
+                app:layout_constraintEnd_toEndOf="@id/admin_issud_coupon_container"
+                app:layout_constraintStart_toStartOf="@id/admin_issud_coupon_container"
+                app:layout_constraintTop_toBottomOf="@id/admin_issued_coupon_detail_creation_date"
+                android:layout_marginTop="30dp"/>
 
 
             <View
-                    android:id="@+id/admin_issued_coupon_detail_divider"
-                    style="@style/style_item_divider"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_creation_date"
-                    android:layout_marginTop="30sp"
-                    />
+                android:id="@+id/admin_issued_coupon_detail_divider"
+                style="@style/style_item_divider"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_qr_iv"
+                android:layout_marginTop="30sp"
+                />
 
             <TextView
-                    android:id="@+id/admin_issued_coupon_detail_title_expiration_period"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="발급 가능 기한"
-                    app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_divider"
-                    app:layout_constraintStart_toStartOf="@+id/admin_issued_coupon_detail_divider"
-                    android:layout_marginTop="30sp"
+                android:id="@+id/admin_issued_coupon_detail_title_expiration_period"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="발급 가능 기한"
+                app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_divider"
+                app:layout_constraintStart_toStartOf="@+id/admin_issued_coupon_detail_divider"
+                android:layout_marginTop="30sp"
 
-                    />
-
-            <TextView
-                    android:id="@+id/admin_issued_coupon_detail_expiration_period"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="2023.06.01 - 2023.06.31"
-                    app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_title_expiration_period"
-                    android:textSize="12sp"
-                    android:layout_marginTop="10sp"
-                    app:layout_constraintStart_toStartOf="@+id/admin_issued_coupon_detail_title_expiration_period" />
+                />
 
             <TextView
-                    android:id="@+id/admin_issued_coupon_detail_title_retailer_location"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="[사용처]"
-                    app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_expiration_period"
-                    android:layout_marginTop="20sp"
-                    android:textSize="13sp"
-                    app:layout_constraintStart_toStartOf="@+id/admin_issued_coupon_detail_title_expiration_period" />
+                android:id="@+id/admin_issued_coupon_detail_expiration_period"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2023.06.01 - 2023.06.31"
+                app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_title_expiration_period"
+                android:textSize="12sp"
+                android:layout_marginTop="10sp"
+                app:layout_constraintStart_toStartOf="@+id/admin_issued_coupon_detail_title_expiration_period" />
 
             <TextView
-                    android:id="@+id/admin_issued_coupon_detail_retailer_location"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="현대백화점 신촌점 본관 11F Cafe H"
-                    app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_title_retailer_location"
-                    android:textSize="13sp"
-                    app:layout_constraintStart_toStartOf="@+id/admin_issued_coupon_detail_title_expiration_period" />
+                android:id="@+id/admin_issued_coupon_detail_title_retailer_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="[사용처]"
+                app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_expiration_period"
+                android:layout_marginTop="20sp"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="@+id/admin_issued_coupon_detail_title_expiration_period" />
 
             <TextView
-                    android:id="@+id/admin_issued_coupon_detail_title_usage_instruction"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="[사용방법]"
-                    app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_retailer_location"
-                    android:layout_marginTop="20sp"
-                    android:textSize="13sp"
-                    app:layout_constraintStart_toStartOf="@+id/admin_issued_coupon_detail_title_expiration_period" />
-
+                android:id="@+id/admin_issued_coupon_detail_retailer_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="현대백화점 신촌점 본관 11F Cafe H"
+                app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_title_retailer_location"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="@+id/admin_issued_coupon_detail_title_expiration_period" />
 
             <TextView
-                    android:id="@+id/admin_issued_coupon_detail_coupon_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="무료음료 한 잔"
-                    app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_title_coupon_description"
-                    android:textSize="13sp"
-                    app:layout_constraintStart_toStartOf="@+id/admin_issued_coupon_detail_title_expiration_period" />
+                android:id="@+id/admin_issued_coupon_detail_title_usage_instruction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="[사용방법]"
+                app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_retailer_location"
+                android:layout_marginTop="20sp"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="@+id/admin_issued_coupon_detail_title_expiration_period" />
 
 
             <TextView
-                    android:id="@+id/admin_issued_coupon_detail_title_coupon_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="[혜택내용]"
-                    app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_usage_instruction"
-                    android:layout_marginTop="20sp"
-                    android:textSize="13sp"
-                    app:layout_constraintStart_toStartOf="@+id/admin_issued_coupon_detail_title_expiration_period" />
+                android:id="@+id/admin_issued_coupon_detail_coupon_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="무료음료 한 잔"
+                app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_title_coupon_description"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="@+id/admin_issued_coupon_detail_title_expiration_period" />
+
 
             <TextView
-                    android:id="@+id/admin_issued_coupon_detail_usage_instruction"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="직원에게 제시"
-                    app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_title_usage_instruction"
-                    app:layout_constraintStart_toStartOf="@+id/admin_issued_coupon_detail_title_expiration_period"
-                    android:textSize="13sp" />
+                android:id="@+id/admin_issued_coupon_detail_title_coupon_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="[혜택내용]"
+                app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_usage_instruction"
+                android:layout_marginTop="20sp"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="@+id/admin_issued_coupon_detail_title_expiration_period" />
 
             <TextView
-                    android:id="@+id/admin_issued_coupon_detail_title_terms_and_conditions"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="[유의사항]"
-                    app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_coupon_description"
-                    android:textColor="@color/red"
-                    android:layout_marginTop="50sp"
-                    android:textSize="13sp"
-                    app:layout_constraintStart_toStartOf="@+id/admin_issued_coupon_detail_title_expiration_period" />
+                android:id="@+id/admin_issued_coupon_detail_usage_instruction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="직원에게 제시"
+                app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_title_usage_instruction"
+                app:layout_constraintStart_toStartOf="@+id/admin_issued_coupon_detail_title_expiration_period"
+                android:textSize="13sp" />
 
             <TextView
-                    android:id="@+id/admin_issued_coupon_detail_terms_and_conditions"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_title_terms_and_conditions"
-                    app:layout_constraintStart_toStartOf="@+id/admin_issued_coupon_detail_title_expiration_period"
-                    android:lineBreakStyle="strict"
-                    android:text="본 쿠폰은 현대백화점 신촌점에서만 사용 가능합니다."
-                    android:textColor="@color/red"
-                    android:textSize="13sp"
-                    />
+                android:id="@+id/admin_issued_coupon_detail_title_terms_and_conditions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="[유의사항]"
+                app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_coupon_description"
+                android:textColor="@color/red"
+                android:layout_marginTop="50sp"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="@+id/admin_issued_coupon_detail_title_expiration_period" />
+
+            <TextView
+                android:id="@+id/admin_issued_coupon_detail_terms_and_conditions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_title_terms_and_conditions"
+                app:layout_constraintStart_toStartOf="@+id/admin_issued_coupon_detail_title_expiration_period"
+                android:lineBreakStyle="strict"
+                android:text="본 쿠폰은 현대백화점 신촌점에서만 사용 가능합니다."
+                android:textColor="@color/red"
+                android:textSize="13sp"
+                />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
 
     <ImageView
-            android:id="@+id/admin_issued_coupon_dismiss_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_back_arrow_24dp"
-            android:layout_margin="10sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/admin_issued_coupon_dismiss_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_back_arrow_24dp"
+        android:layout_margin="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <include
-            android:id="@+id/admin_coupon_detail_shimmer_container"
-            layout="@layout/fragment_bottom_dialog_shimmer"
-            android:visibility="gone"/>
+        android:id="@+id/admin_coupon_detail_shimmer_container"
+        layout="@layout/fragment_bottom_dialog_shimmer"
+        android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

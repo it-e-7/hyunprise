@@ -60,6 +60,7 @@
         {call insert_issued_coupon(
             #{memberUUID},
             #{couponUUID},
+            #{membershipPoint, mode=IN, jdbcType=NUMERIC},
             #{issuedCouponUUID, mode=OUT, jdbcType=VARCHAR})
         }
     </insert>

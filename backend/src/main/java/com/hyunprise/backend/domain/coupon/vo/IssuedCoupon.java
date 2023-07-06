@@ -18,4 +18,5 @@ public class IssuedCoupon {
     private Integer status;
     private Timestamp issueDate;
     private Timestamp expirationDate;
+    private Integer membershipPoint;
 }

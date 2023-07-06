@@ -10,7 +10,8 @@ data class IssuedCoupon(
     val couponCode: String = "defaultCode",
     val status: Int = 0,
     val issueDate: Timestamp? = null,
-    val expirationDate: Timestamp?= null
+    val expirationDate: Timestamp?= null,
+    val membershipPoint: Int? = 0
 ) {
     constructor(memberUUID: String, couponUUID: String)
             : this(
