@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import com.hyunprise.android.HomeActivity
 import com.hyunprise.android.R
 import com.hyunprise.android.api.RetrofitConfig
+import com.hyunprise.android.api.member.services.MemberService
 import com.hyunprise.android.api.oauth.vo.OAuthProvider
 import com.hyunprise.android.databinding.ActivityLoginBinding
 import com.hyunprise.android.api.oauth.managers.AuthManagerResolver
@@ -93,12 +94,11 @@ class LoginActivity : AppCompatActivity() {
         setProgressBar(true)
         lifecycleScope.launch(Dispatchers.IO) {
             val oAuthResult = AuthManagerResolver.resolve(provider).authorize()
-            Log.d("login.log", "Got oAuthResult $oAuthResult")
+            Log.d("login.log", "${provider.name} authorization result $oAuthResult")
             oAuthResult.accessToken?.let { token ->
                 RetrofitConfig.patchAuthorizationHeader(token)
-                Log.d("login.log", "Header token successfully patched")
+                MemberService().updateLoggedInMemberData(this@LoginActivity)
                 MemberSharedPreferences(this@LoginActivity).saveOAuthProvider(provider)
-                Log.d("login.log", "Provider saved to preference")
             }
             setProgressBar(false)
             withContext(Dispatchers.Main) {

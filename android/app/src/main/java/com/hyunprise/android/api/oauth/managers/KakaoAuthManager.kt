@@ -90,6 +90,6 @@ object KakaoAuthManager: AuthManager {
 
     override suspend fun authorize(): OAuthResult {
         val oAuth = makeOAuth()
-        return OAuthService().authroizeKakao(oAuth)
+        return OAuthService().getOAuthResult(oAuth)
     }
 }

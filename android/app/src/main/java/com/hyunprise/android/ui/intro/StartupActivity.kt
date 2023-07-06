@@ -10,11 +10,14 @@ import android.util.Log
 import androidx.lifecycle.lifecycleScope
 import com.hyunprise.android.HomeActivity
 import com.hyunprise.android.api.RetrofitConfig
+import com.hyunprise.android.api.member.services.MemberService
 import com.hyunprise.android.api.oauth.managers.AuthManagerResolver
 import com.hyunprise.android.databinding.ActivityStartupBinding
 import com.hyunprise.android.store.MemberSharedPreferences
 import com.hyunprise.android.ui.auth.LoginActivity
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class StartupActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,14 +37,15 @@ class StartupActivity : AppCompatActivity() {
         val context = this
         Log.d("login.log", "[Intro] start callback")
         MemberSharedPreferences(this).getSavedOAuthProvider()?.let { provider ->
-            val authManager = AuthManagerResolver.resolve(provider)
             Log.d("login.log", "[Intro] preference found, $provider")
             lifecycleScope.launch {
-                val oAuthResult = authManager.authorize()
-                Log.d("login.log", "[Intro] oAuthResult $oAuthResult")
+                val oAuthResult = AuthManagerResolver.resolve(provider).authorize()
+                Log.d("login.log", "${provider.name} authorization result $oAuthResult")
                 oAuthResult.accessToken?.let { token ->
                     RetrofitConfig.patchAuthorizationHeader(token)
-                    Log.d("login.log", "[Intro] Header token successfully patched")
+                    MemberService().updateLoggedInMemberData(this@StartupActivity)
+                }
+                withContext(Dispatchers.Main) {
                     toHomeActivity(context)
                 }
             }

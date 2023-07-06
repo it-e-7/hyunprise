@@ -6,4 +6,6 @@ public interface MemberService {
     Member selectOneMemberByMemberUUID(String memberUUID);
     Member selectOneMemberByMemberEmail(String email);
     int upsertOneMember(Member member);
+
+    Member getMemberFromJwt(String header);
 }
