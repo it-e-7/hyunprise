@@ -14,6 +14,7 @@ import com.hyunprise.android.api.coupon.services.CouponService
 import com.hyunprise.android.api.coupon.vo.Coupon
 import com.hyunprise.android.databinding.ActivityCouponGenerateBinding
 import com.hyunprise.android.databinding.CouponGenerateNumberPickerBinding
+import com.hyunprise.android.store.MemberSharedPreferences
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -109,7 +110,7 @@ class CouponGenerateActivity : AppCompatActivity() {
 
             val coupon = Coupon()
 
-            coupon.sellerUUID = getSellerUUID()
+            coupon.sellerUUID = MemberSharedPreferences(this).getMemberUUID()
             coupon.couponName = binding.couponGenerateTargetItemEt.text.toString()
             coupon.couponDescription = binding.couponGenerateCouponDescriptionEt.text.toString()
             coupon.discountType = discountType
@@ -168,9 +169,6 @@ class CouponGenerateActivity : AppCompatActivity() {
         return months*30 + weeks*7 + days
     }
 
-    private fun getSellerUUID(): String {   // 카카오 땡겨오기
-        return "FFB8508C0599302DE0530400A8C0E652"
-    }
 
     fun couponConditionDisplay(discountAmount: Int, discountLimit: Int, minimumPurchase: Int, conditionGroup: Int) {
         binding.couponGenerateDiscountAmountEt.visibility = discountAmount
