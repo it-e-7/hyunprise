@@ -33,7 +33,6 @@ class IssuedCouponRecyclerViewAdaptor(private val available: Boolean):
         else {
             holder.issuedCouponItemExpirationDate.text =
                 IssuedCouponStatusConverter.getStatusString(dataSet[position].status)
-            holder.issuedCouponStatusIcon.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_back_arrow_24dp))
             holder.issuedCouponItemContainer.setBackgroundColor(ContextCompat.getColor(context, R.color.disabled))
         }
     }

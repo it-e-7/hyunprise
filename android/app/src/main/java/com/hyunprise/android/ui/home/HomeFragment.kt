@@ -18,10 +18,12 @@ import com.hyunprise.android.api.RetrofitConfig
 import com.hyunprise.android.databinding.FragmentHomeBinding
 import com.hyunprise.android.ui.admin.coupon.CouponGenerateActivity
 import com.hyunprise.android.api.oauth.managers.KakaoAuthManager
+import com.hyunprise.android.global.utils.AccountTypeChecker
 import com.hyunprise.android.store.MemberSharedPreferences
 import com.hyunprise.android.ui.auth.LoginActivity
 import com.hyunprise.android.ui.member.coupon.IssuedCouponContainerActivity
 import com.hyunprise.android.ui.member.point.PointActivity
+import com.hyunprise.android.ui.qrcode.PointAcquiredActivity
 import java.util.Timer
 import java.util.TimerTask
 
@@ -50,29 +52,32 @@ class HomeFragment : Fragment() {
 
         // 자동 슬라이드 시작
         startAutoSlide()
+        setHomeContents()
         initalizeHomeDrawer()
         setListeners()
 
-        var loginInfo: String = "admin"
-
-        val adminBtn = binding.homeAdminBtnContainer
-
-        if (loginInfo=="admin") {
-            adminBtn.visibility = View.VISIBLE
-
-            binding.adminHomeCouponIssuerBtn.setOnClickListener {
-                val intent = Intent(this@HomeFragment.activity, CouponGenerateActivity::class.java)
-                startActivity(intent)
-            }
-
-        } else {
-            adminBtn.visibility = View.GONE
-        }
 
         return binding.root
     }
 
-    fun initalizeHomeDrawer() {
+    private fun setHomeContents() {
+
+        val accountType = MemberSharedPreferences(requireContext()).getAccountType()
+        if (AccountTypeChecker.isMember(accountType)) {
+            binding.homeAdminBtnContainer.visibility = View.GONE
+        }
+        else {
+            binding.adminHomeCouponIssuerBtn.setOnClickListener {
+                val intent = Intent(this@HomeFragment.activity, CouponGenerateActivity::class.java)
+                startActivity(intent)
+            }
+            binding.adminHomeShowIssuedCouponsBtn.setOnClickListener {
+                val intent = Intent(this@HomeFragment.activity, PointAcquiredActivity::class.java)
+                startActivity(intent)
+            }
+        }
+    }
+    private fun initalizeHomeDrawer() {
         val memberName = MemberSharedPreferences(requireContext()).getMemberName()
         val helloMessage = resources.getString(R.string.home_drawer_placeholder_hello_message, memberName)
         binding.homeDrawer.homeDrawerHelloMessage.text = helloMessage
@@ -82,7 +87,7 @@ class HomeFragment : Fragment() {
         binding.homeDrawer.homeDrawerMemberPointTextView.text = pointMessage
     }
 
-    fun setListeners() {
+    private fun setListeners() {
         val homeFragment = binding.homeDrawerParent
 
         binding.menuBarButton.setOnClickListener {
@@ -94,9 +99,9 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
-        binding.homeDrawer.homeCloseDrawerButton.setOnClickListener {
-            homeFragment.closeDrawer(GravityCompat.START)
-        }
+//        binding.homeDrawer.homeCloseDrawerButton.setOnClickListener {
+//            homeFragment.closeDrawer(GravityCompat.START)
+//        }
 
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
