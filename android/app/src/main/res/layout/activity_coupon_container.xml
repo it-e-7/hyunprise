@@ -4,35 +4,37 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="15dp"
         tools:context=".ui.member.coupon.IssuedCouponContainerActivity">
 
-
-    <ImageButton
+    <LinearLayout
+        android:id="@+id/coupon_containter_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+        <Button
             android:id="@+id/coupon_back_button"
-            android:layout_width="wrap_content"
+            android:layout_width="20dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_back_arrow_24dp"
-            android:background="@null"
-            android:contentDescription="TODO"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="48dp"
-            android:layout_marginStart="28dp" />
+            android:background="@color/invisible"
+            android:drawableStart="@drawable/ic_back_arrow_24dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:text="나의 쿠폰함"/>
+    </LinearLayout>
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/coupon_title"
-            app:layout_constraintTop_toBottomOf="@+id/coupon_back_button"
-            app:layout_constraintStart_toStartOf="@+id/coupon_back_button"
-            android:layout_marginTop="24dp"
-            android:id="@+id/textView" />
 
     <com.google.android.material.tabs.TabLayout
             android:id="@+id/coupon_tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            android:layout_marginTop="30dp"
+            app:layout_constraintTop_toBottomOf="@+id/coupon_containter_header" />
 
     <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/coupon_view_pager"
