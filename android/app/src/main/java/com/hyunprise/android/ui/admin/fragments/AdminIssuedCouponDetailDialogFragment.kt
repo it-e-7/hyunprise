@@ -13,6 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.hyunprise.android.CodeGenerate
 import com.hyunprise.android.api.coupon.vo.CouponSummary
 import com.hyunprise.android.global.utils.DateFormatter
 import kotlinx.coroutines.Dispatchers
@@ -123,13 +124,15 @@ class AdminIssuedCouponDetailDialogFragment : BottomSheetDialogFragment() {
         val expirationDate = DateFormatter.timestampToYYYYMMDD(calendar.time as Timestamp) ?: "-"
 
         binding.adminIssuedCouponDetailCouponName.text = coupon.couponName
-        binding.adminIssuedCouponDetailExpirationDate.text = resources.getString(R.string.issued_coupon_placeholder_expiration_date, expirationDate)
+        binding.adminIssuedCouponDetailCreationDate.text = coupon.creationDate.toString()
         binding.adminIssuedCouponDetailExpirationPeriod.text = resources.getString(R.string.issued_coupon_placeholder_expiration_period, adminIssuedDate, expirationDate)
         binding.adminIssuedCouponDetailRetailerLocation.text = coupon.retailerLocation
         binding.adminIssuedCouponDetailUsageInstruction.text = coupon.usageInstruction
         binding.adminIssuedCouponDetailCouponDescription.text = coupon.couponDescription
         binding.adminIssuedCouponDetailTermsAndConditions.text = coupon.termsAndConditions
-
+        binding.adminIssuedCouponBrandName.text = coupon.brandName
+        val qrBitmap = CodeGenerate()
+        binding.adminIssuedCouponQrIv.setImageBitmap(qrBitmap.generateBitmapQRCode(coupon.couponCode.toString()))
         setLoadingSkeletonStatue(false)
     }
 
