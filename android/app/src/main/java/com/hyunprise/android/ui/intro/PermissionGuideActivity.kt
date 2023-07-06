@@ -10,6 +10,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.hyunprise.android.databinding.ActivityPermissionGuideBinding
 import com.hyunprise.android.store.EnvSharedPreferences
+import com.hyunprise.android.ui.auth.LoginActivity
 
 class PermissionGuideActivity : AppCompatActivity() {
     private val PERMISSION_REQUEST_CODE = 100
@@ -60,7 +61,7 @@ class PermissionGuideActivity : AppCompatActivity() {
     }
 
     private fun toStartupActivity() {
-        val intent = Intent(this, StartupActivity::class.java)
+        val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
         finish()
 
