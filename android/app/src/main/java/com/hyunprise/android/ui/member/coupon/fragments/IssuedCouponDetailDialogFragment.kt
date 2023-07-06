@@ -46,7 +46,7 @@ class IssuedCouponDetailDialogFragment : BottomSheetDialogFragment() {
     ): View {
         _binding =
             FragmentIssuedCouponDetailBottomDialogBinding.inflate(inflater, container, false)
-        showLoadingSkeleton()
+        setLoadingSkeletonStatue(true)
         fetchData()
         return binding.root
     }
@@ -66,7 +66,7 @@ class IssuedCouponDetailDialogFragment : BottomSheetDialogFragment() {
             bottomSheetDialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)?.let { view ->
                 setupFullHeight(view)
                 BottomSheetBehavior.from(view).state = BottomSheetBehavior.STATE_EXPANDED
-                disableScrollBehavior(view)
+//                disableScrollBehavior(view)
                 view.setBackgroundColor(Color.TRANSPARENT)
             }
         }
@@ -88,14 +88,23 @@ class IssuedCouponDetailDialogFragment : BottomSheetDialogFragment() {
         _binding = null
     }
 
-    private fun showLoadingSkeleton() {
-        binding.issuedCouponSkeletonLayout.visibility = View.VISIBLE
-        binding.issuedCouponDetailContainerScrollView.visibility = View.GONE
+    private fun setLoadingSkeletonStatue(status: Boolean) {
+        if (status) {
+
+            binding.issuedCouponDetailShimmerContainer.issuedCouponShimmerContainer.visibility = View.VISIBLE
+            binding.issuedCouponDetailShimmerContainer.issuedCouponShimmer.startShimmer()
+            binding.issuedCouponDetailContainerScrollView.visibility = View.GONE
+        }
+        else {
+            binding.issuedCouponDetailShimmerContainer.issuedCouponShimmerContainer.visibility = View.GONE
+            binding.issuedCouponDetailShimmerContainer.issuedCouponShimmer.stopShimmer()
+            binding.issuedCouponDetailContainerScrollView.visibility = View.VISIBLE
+        }
+
     }
 
     private fun updateViews(coupon: CouponDetail) {
 
-        binding.issuedCouponSkeletonLayout.visibility = View.GONE
         val issuedDate = coupon.issueDate?.let {
             DateFormatter.timestampToYYYYMMDD(it)
         } ?: "-"
@@ -110,7 +119,8 @@ class IssuedCouponDetailDialogFragment : BottomSheetDialogFragment() {
         binding.issuedCouponDetailUsageInstruction.text = coupon.usageInstruction
         binding.issuedCouponDetailCouponDescription.text = coupon.couponDescription
         binding.issuedCouponDetailTermsAndConditions.text = coupon.termsAndConditions
-        binding.issuedCouponDetailContainerScrollView.visibility = View.VISIBLE
+
+        setLoadingSkeletonStatue(false)
 
     }
 

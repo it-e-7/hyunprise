@@ -54,13 +54,11 @@ class MemberSharedPreferences(context: Context) {
     fun getMemberName(): String? {
         return getStringProperty(MemberKey.MEMBER_NAME)
     }
-    fun getAccountType(): Int? {
-        val value = getIntProperty(MemberKey.MEMBER_ACCOUNT_TYPE)
-        return if (value != -1) value else null
+    fun getAccountType(): Int {
+        return getIntProperty(MemberKey.MEMBER_ACCOUNT_TYPE)
     }
-    fun getMembershipPoint(): Int? {
-        val value = getIntProperty(MemberKey.H_POINT)
-        return if (value != -1) value else null
+    fun getMembershipPoint(): Int {
+        return getIntProperty(MemberKey.H_POINT)
     }
     fun clearMemberProperty() {
         editor.remove(MemberKey.LOGIN_TYPE.name)

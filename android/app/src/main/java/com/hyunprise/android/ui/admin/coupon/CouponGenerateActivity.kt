@@ -117,21 +117,21 @@ class CouponGenerateActivity : AppCompatActivity() {
 
             when (discountType) {
                 0-> {   // 고정 할인
-                    coupon.minimumPurchase = binding.couponGenerateMinimumPurchaseEt.text.toString().toInt()
+                    coupon.minimumPurchase = binding.couponGenerateMinimumPurchaseEt.text.toString().toIntOrNull() ?: 0
                     coupon.discountLimit = 0
-                    coupon.discountAmount = binding.couponGenerateDiscountAmountEt.text.toString().toInt()
+                    coupon.discountAmount = binding.couponGenerateDiscountAmountEt.text.toString().toIntOrNull() ?: 0
                 }
 
                 1-> {   // 비율 할인
-                    coupon.minimumPurchase = binding.couponGenerateMinimumPurchaseEt.text.toString().toInt()
-                    coupon.discountLimit = binding.couponGenerateDiscountLimitEt.text.toString().toInt()
-                    coupon.discountAmount = binding.couponGenerateDiscountAmountEt.text.toString().toInt()
+                    coupon.minimumPurchase = binding.couponGenerateMinimumPurchaseEt.text.toString().toIntOrNull() ?: 0
+                    coupon.discountLimit = binding.couponGenerateDiscountLimitEt.text.toString().toIntOrNull() ?: 0
+                    coupon.discountAmount = binding.couponGenerateDiscountAmountEt.text.toString().toIntOrNull() ?: 0
                 }
 
                 2-> {
                     coupon.minimumPurchase = 0
                     coupon.discountLimit = 0
-                    coupon.discountAmount = binding.couponGenerateDiscountAmountEt.text.toString().toInt()
+                    coupon.discountAmount = binding.couponGenerateDiscountAmountEt.text.toString().toIntOrNull() ?: 0
                 }
             }
 

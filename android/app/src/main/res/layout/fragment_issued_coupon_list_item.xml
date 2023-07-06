@@ -10,16 +10,31 @@
         android:paddingHorizontal="20sp"
         >
 
-    <ImageView
-            android:id="@+id/issued_coupon_item_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher"
+    <LinearLayout
+            android:id="@+id/issued_coupon_item_icon_container"
+            android:layout_height="60sp"
+            android:layout_width="60sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginTop="30sp"
-            android:layout_marginBottom="20sp" />
+            android:layout_marginVertical="30sp"
+            android:gravity="center"
+            android:background="@drawable/coupon_edge_circular"
+            >
+
+        <TextView
+                android:padding="5sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:text="CHANNEL"
+                android:maxLines="1"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="40sp"
+                android:autoSizeStepGranularity="5sp" />
+    </LinearLayout>
 
     <TextView
             android:id="@+id/issued_coupon_item_location"
@@ -30,10 +45,11 @@
             android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:layout_constraintTop_toTopOf="@+id/issued_coupon_item_icon"
-            app:layout_constraintStart_toEndOf="@+id/issued_coupon_item_icon"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/issued_coupon_item_icon_container"
+            android:layout_marginTop="20sp"
             android:layout_marginStart="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/issued_coupon_item_icon" />
+            />
 
     <TextView
             android:id="@+id/issued_coupon_item_name"
@@ -54,8 +70,9 @@
             android:gravity="center"
             android:text="2023.06.30 까지"
             android:textColor="@color/purple"
-            app:layout_constraintBottom_toBottomOf="@+id/issued_coupon_item_icon"
-            app:layout_constraintStart_toStartOf="@+id/issued_coupon_item_name" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/issued_coupon_item_name"
+            android:layout_marginBottom="20sp"/>
 
     <ImageView
             android:id="@+id/issued_coupon_status_icon"
@@ -63,8 +80,8 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_coupon_24dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/issued_coupon_item_icon"
-            app:layout_constraintBottom_toBottomOf="@+id/issued_coupon_item_icon" />
+            app:layout_constraintTop_toTopOf="@+id/issued_coupon_item_icon_container"
+            app:layout_constraintBottom_toBottomOf="@+id/issued_coupon_item_icon_container" />
 
     <View
             style="@style/style_item_divider"
