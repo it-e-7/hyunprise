@@ -247,7 +247,7 @@
 <!--            />-->
     <include
             android:id="@+id/issued_coupon_detail_shimmer_container"
-            layout="@layout/fragment_issued_coupon_detail_bottom_dialog_shimmer"
+            layout="@layout/fragment_bottom_dialog_shimmer"
             android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,7 +14,7 @@ class MemberService {
     private val memberClient = retrofit.create(MemberClient::class.java)
 
     suspend fun getMemberMe(): Member {
-        Log.d("login.log", "calling API Handler")
+        Log.d("log.login", "calling API Handler")
         return ApiHandler.safeAPICall {
             memberClient.getMemberMe()
         } ?: Member()
@@ -22,7 +22,7 @@ class MemberService {
 
     suspend fun updateLoggedInMemberData(context: Context) {
         val member = getMemberMe()
-        Log.d("login.log", "saving member info $member")
+        Log.d("log.login", "saving member info $member")
         MemberSharedPreferences(context).setMemberProperty(member)
     }
 

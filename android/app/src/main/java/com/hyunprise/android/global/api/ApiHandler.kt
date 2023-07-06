@@ -11,14 +11,14 @@ object ApiHandler {
             try {
                 val response = apiCall()
                 if (response.isSuccessful) {
-                    Log.d("sychoi", "Success. ${response.body()}")
+                    Log.d("log.apicall", "Success. ${response.body()}")
                     response.body()
                 } else {
-                    Log.d("sychoi", "Got response but failed. $response")
+                    Log.d("log.apicall", "Got response but failed. $response")
                     null
                 }
             } catch (e: Exception) {
-                Log.d("sychoi", "API call Error ${e.message}")
+                Log.d("log.apicall", "API call Error ${e.message}")
                 null
             }
         }

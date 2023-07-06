@@ -54,7 +54,7 @@ class IssuedCouponScrollingFragment() : Fragment() {
         }
 
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-            Log.d("login.log", "fetch coupons.")
+            Log.d("log.login", "fetch coupons.")
             val coupons = issuedCouponService.getAllCouponsOfMemberByStatus(memberUUID, available)
 
             withContext(Dispatchers.Main) {
