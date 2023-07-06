@@ -90,7 +90,6 @@ class IssuedCouponDetailDialogFragment : BottomSheetDialogFragment() {
 
     private fun setLoadingSkeletonStatue(status: Boolean) {
         if (status) {
-
             binding.issuedCouponDetailShimmerContainer.issuedCouponShimmerContainer.visibility = View.VISIBLE
             binding.issuedCouponDetailShimmerContainer.issuedCouponShimmer.startShimmer()
             binding.issuedCouponDetailContainerScrollView.visibility = View.GONE
@@ -100,7 +99,6 @@ class IssuedCouponDetailDialogFragment : BottomSheetDialogFragment() {
             binding.issuedCouponDetailShimmerContainer.issuedCouponShimmer.stopShimmer()
             binding.issuedCouponDetailContainerScrollView.visibility = View.VISIBLE
         }
-
     }
 
     private fun updateViews(coupon: CouponDetail) {

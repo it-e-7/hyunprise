@@ -28,19 +28,19 @@ class StartupActivity : AppCompatActivity() {
         // Create a ValueAnimator that will animate the progress from 0 to 100
 
         Handler(Looper.getMainLooper()).postDelayed({
-            Log.d("login.log", "[Intro] start looper")
+            Log.d("log.login", "[Intro] start looper")
             runAutoLoginOnStartup()
         }, 1000)
     }
 
     private val runAutoLoginOnStartup: () -> Unit = {
         val context = this
-        Log.d("login.log", "[Intro] start callback")
+        Log.d("log.login", "[Intro] start callback")
         MemberSharedPreferences(this).getSavedOAuthProvider()?.let { provider ->
-            Log.d("login.log", "[Intro] preference found, $provider")
+            Log.d("log.login", "[Intro] preference found, $provider")
             lifecycleScope.launch {
                 val oAuthResult = AuthManagerResolver.resolve(provider).authorize()
-                Log.d("login.log", "${provider.name} authorization result $oAuthResult")
+                Log.d("log.login", "${provider.name} authorization result $oAuthResult")
                 oAuthResult.accessToken?.let { token ->
                     RetrofitConfig.patchAuthorizationHeader(token)
                     MemberService().updateLoggedInMemberData(this@StartupActivity)
@@ -50,7 +50,7 @@ class StartupActivity : AppCompatActivity() {
                 }
             }
         } ?: run {
-            Log.d("login.log", "[Intro] Not Logged In")
+            Log.d("log.login", "[Intro] Not Logged In")
             toLoginActivity(context)
         }
     }

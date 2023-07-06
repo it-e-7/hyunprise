@@ -11,7 +11,7 @@ class OAuthService {
     private val retrofit = RetrofitConfig.retrofit_gson
     private val oAuthClient = retrofit.create(OAuthClient::class.java)
     suspend fun getOAuthResult(oAuth: OAuth): OAuthResult {
-        Log.d("login.log", "oAuth obj $oAuth")
+        Log.d("log.login", "oAuth obj $oAuth")
         return ApiHandler.safeAPICall {
             oAuthClient.authorize(oAuth)
         } ?: OAuthResult()
