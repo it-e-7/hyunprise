@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hyunprise.android.api.coupon.services.CouponService
 import com.hyunprise.android.api.coupon.vo.CouponSummary
+import com.hyunprise.android.databinding.FragmentAdminIssuedCouponListBinding
 import com.hyunprise.android.databinding.FragmentIssuedCouponListBinding
 import com.hyunprise.android.global.utils.DateFormatter
 import com.hyunprise.android.ui.admin.adaptors.AdminIssuedCouponRecyclerViewAdaptor
@@ -21,14 +22,13 @@ import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
-import kotlin.time.Duration.Companion.days
 
 class AdminIssuedCouponScrollingFragment() : Fragment() {
 
     private lateinit var sellerUUID: String
     private var available: Boolean = false
 
-    private var _binding: FragmentIssuedCouponListBinding? = null
+    private var _binding: FragmentAdminIssuedCouponListBinding? = null
     private val binding get() = _binding!!
 
     private var _adaptor: AdminIssuedCouponRecyclerViewAdaptor? = null
@@ -47,15 +47,15 @@ class AdminIssuedCouponScrollingFragment() : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentIssuedCouponListBinding.inflate(inflater, container, false)
+        _binding = FragmentAdminIssuedCouponListBinding.inflate(inflater, container, false)
         _adaptor = AdminIssuedCouponRecyclerViewAdaptor(available)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.issuedCouponRecyclerView.adapter = adaptor
-        binding.issuedCouponRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.adminIssuedCouponRecyclerView.adapter = adaptor
+        binding.adminIssuedCouponRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         if (available) {
             addAdminIssuedCouponItemListener()
         }
@@ -78,8 +78,8 @@ class AdminIssuedCouponScrollingFragment() : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        binding.issuedCouponRecyclerView.adapter = null
-        binding.issuedCouponRecyclerView.layoutManager = null
+        binding.adminIssuedCouponRecyclerView.adapter = null
+        binding.adminIssuedCouponRecyclerView.layoutManager = null
         _binding = null
         _adaptor = null
     }
@@ -88,23 +88,12 @@ class AdminIssuedCouponScrollingFragment() : Fragment() {
         val itemClickListener = object : RecyclerItemClickListener.OnItemClickListener {
             override fun onItemClick(view: View, position: Int) {
                 adaptor.getDataSet(position)?.let { couponSummary ->
-                    getCalDate(couponSummary).let {
-                        val cal = Calendar.getInstance()
-                        val df = SimpleDateFormat("yyyy.MM.dd", Locale("ko", "KR"))
-                        val currentDate = df.format(cal.time)
-
-                        if (it > currentDate )
-                            couponSummary.status = 0
-                        else
-                            couponSummary.status = 1
-                    }
-
                     AdminIssuedCouponDetailDialogFragment.withCouponSummary(couponSummary)
                         .show(parentFragmentManager, "dialog")
                 }
             }
         }
-        binding.issuedCouponRecyclerView.addOnItemTouchListener(
+        binding.adminIssuedCouponRecyclerView.addOnItemTouchListener(
             RecyclerItemClickListener(requireContext(), itemClickListener)
         )
     }

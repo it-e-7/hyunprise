@@ -28,8 +28,8 @@ class AdminIssuedCouponRecyclerViewAdaptor(private val available: Boolean):
         holder.adminIssuedCouponItemCouponName.text = dataSet[position].couponName
 
         if (available) {
-            holder.adminIssuedCouponItemCreationDate.text =
-                DateFormatter.toIssuedCouponExpireDateString(dataSet[position].creationDate)
+            holder.adminIssuedCouponItemCreationDate.text = "발급일자 | ${
+                DateFormatter.toIssuedCouponExpireDateString(dataSet[position].creationDate)}"
         }
         else {
             holder.adminIssuedCouponItemCreationDate.text =
