@@ -198,12 +198,34 @@
                     app:layout_constraintStart_toStartOf="@+id/issued_coupon_detail_title_expiration_period"
                     android:textSize="13sp" />
 
+
+            <TextView
+                    android:id="@+id/issued_coupon_detail_title_coupon_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="[쿠폰 코드]"
+                    android:layout_marginTop="20sp"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="@+id/issued_coupon_detail_title_expiration_period"
+                    app:layout_constraintTop_toBottomOf="@+id/issued_coupon_detail_coupon_description" />
+
+
+            <TextView
+                    android:id="@+id/issued_coupon_detail_coupon_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="00040420452450"
+                    app:layout_constraintTop_toBottomOf="@+id/issued_coupon_detail_title_coupon_code"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="@+id/issued_coupon_detail_title_expiration_period" />
+
+
             <TextView
                     android:id="@+id/issued_coupon_detail_title_terms_and_conditions"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="[유의사항]"
-                    app:layout_constraintTop_toBottomOf="@+id/issued_coupon_detail_coupon_description"
+                    app:layout_constraintTop_toBottomOf="@+id/issued_coupon_detail_coupon_code"
                     android:textColor="@color/red"
                     android:layout_marginTop="50sp"
                     android:textSize="13sp"
@@ -224,6 +246,20 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
+    <Button
+            android:id="@+id/issued_coupon_use_coupon_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/use"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/purple"
+            android:textColor="@color/white"
+            android:paddingVertical="20dp"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            />
 
     <ImageView
             android:id="@+id/issued_coupon_dismiss_button"
@@ -235,19 +271,11 @@
             app:layout_constraintTop_toTopOf="parent"
             android:visibility="gone"/>
 
-<!--    <ProgressBar-->
-<!--            android:id="@+id/issued_coupon_skeleton_layout"-->
-<!--            style="?android:attr/progressBarStyle"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            />-->
+
     <include
             android:id="@+id/issued_coupon_detail_shimmer_container"
             layout="@layout/fragment_bottom_dialog_shimmer"
             android:visibility="gone"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
