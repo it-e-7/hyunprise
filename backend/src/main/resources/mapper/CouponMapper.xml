@@ -79,6 +79,7 @@
         JOIN member m ON c.seller_uuid = m.member_uuid
         JOIN brand b ON m.brand_id = b.brand_id
         WHERE coupon_uuid = #{couponUUID}
+        ORDER BY c.creation_date
 
     </select>
 </mapper>

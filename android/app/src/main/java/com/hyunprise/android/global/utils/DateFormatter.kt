@@ -10,6 +10,6 @@ object DateFormatter {
         return dateFormat.format(timestamp)
     }
     fun toIssuedCouponExpireDateString(timestamp: Timestamp): String {
-        return "${timestampToYYYYMMDD(timestamp)} 까지"
+        return "${timestampToYYYYMMDD(timestamp)}"
     }
 }
