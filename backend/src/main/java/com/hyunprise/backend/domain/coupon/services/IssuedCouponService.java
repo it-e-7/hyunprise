@@ -16,4 +16,5 @@ public interface IssuedCouponService {
 
     String createOneIssuedCoupon(IssuedCoupon issuedCoupon);
 
+    Integer getAvailableIssuedCouponCount(String memberUUID);
 }

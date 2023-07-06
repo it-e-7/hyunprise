@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,19 +11,21 @@ import androidx.activity.addCallback
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import androidx.viewpager2.widget.ViewPager2
 import com.hyunprise.android.R
 import com.hyunprise.android.api.RetrofitConfig
+import com.hyunprise.android.api.coupon.services.IssuedCouponService
 import com.hyunprise.android.databinding.FragmentHomeBinding
 import com.hyunprise.android.ui.admin.coupon.CouponGenerateActivity
 import com.hyunprise.android.api.oauth.managers.KakaoAuthManager
 import com.hyunprise.android.global.utils.AccountTypeChecker
 import com.hyunprise.android.store.MemberSharedPreferences
-import com.hyunprise.android.ui.admin.fragments.AdminIssuedCouponScrollingFragment
 import com.hyunprise.android.ui.auth.LoginActivity
 import com.hyunprise.android.ui.member.coupon.IssuedCouponContainerActivity
 import com.hyunprise.android.ui.member.point.PointActivity
-import com.hyunprise.android.ui.qrcode.PointAcquiredActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.Timer
 import java.util.TimerTask
 
@@ -48,7 +49,6 @@ class HomeFragment : Fragment() {
         adapter = HomeFragmentAdapter(this.requireActivity())
 
         binding.homeViewPager.adapter = adapter
-        binding.homeViewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
 
         // 자동 슬라이드 시작
@@ -80,12 +80,21 @@ class HomeFragment : Fragment() {
 
     private fun initalizeHomeDrawer() {
         val memberName = MemberSharedPreferences(requireContext()).getMemberName()
-        val helloMessage = resources.getString(R.string.home_drawer_placeholder_hello_message, memberName)
-        binding.homeDrawer.homeDrawerHelloMessage.text = helloMessage
-
+        binding.homeDrawer.homeDrawerHelloMessage.text = memberName
+        binding.homeDrawerParent.bringToFront()
         val membershipPoint = MemberSharedPreferences(requireContext()).getMembershipPoint()
         val pointMessage = resources.getString(R.string.home_drawer_placeholder_member_point, membershipPoint)
         binding.homeDrawer.homeDrawerMemberPointTextView.text = pointMessage
+
+        CoroutineScope(Dispatchers.IO).launch {
+            MemberSharedPreferences(requireContext()).getMemberUUID()?.let{memberUUID ->
+                val count = IssuedCouponService().getAvailableIssuedCouponCount(memberUUID)
+                withContext(Dispatchers.Main) {
+                    val countMessage = resources.getString(R.string.home_drawer_placeholder_coupon_count, count)
+                    binding.homeDrawer.homeDrawerCouponCountText.text = countMessage
+                }
+            }
+        }
     }
 
     private fun setListeners() {
@@ -100,9 +109,9 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
-//        binding.homeDrawer.homeCloseDrawerButton.setOnClickListener {
-//            homeFragment.closeDrawer(GravityCompat.START)
-//        }
+        binding.homeDrawer.homeCloseDrawerButton.setOnClickListener {
+            homeFragment.closeDrawer(GravityCompat.START)
+        }
 
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
@@ -113,15 +122,9 @@ class HomeFragment : Fragment() {
                 requireActivity().onBackPressedDispatcher.onBackPressed()
             }
         }
-        // 쿠폰 페이지
-        binding.homeDrawer.drawerCouponBtn.setOnClickListener{
+        // 쿠폰 페이지로 이동
+        binding.homeDrawer.homeDrawerCouponGroup.setOnClickListener {
             val intent = Intent(activity, IssuedCouponContainerActivity::class.java)
-            startActivity(intent)
-        }
-
-        // 포인트 페이지
-        binding.homeDrawer.drawerPointBtn.setOnClickListener{
-            val intent = Intent(activity, PointActivity::class.java)
             startActivity(intent)
         }
 
@@ -180,7 +183,6 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         // 자동 슬라이드 중지
         stopAutoSlide()
-        Log.d("msg","HomeFragment 종료")
         _binding = null
     }
 }

@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layoutDirection="ltr"
+        android:layout_gravity="start"
+        android:background="@color/white"
+        >
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+<!--        헤더-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/point_top_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                >
+
+            <Button
+                    android:id="@+id/home_close_drawer_button"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/invisible"
+                    android:drawableStart="@drawable/ic_x_button_24dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginStart="15dp" />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="15sp"
+                    android:text="마이페이지"
+                    app:layout_constraintStart_toStartOf="@+id/point_back_button"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--        프로필 -->
+        <com.google.android.material.imageview.ShapeableImageView
+                android:layout_marginTop="30dp"
+                android:id="@+id/point_circle_user_profile_container_profile_container"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/profile"
+                app:shapeAppearanceOverlay="@style/Circular"
+                app:layout_constraintTop_toBottomOf="@+id/point_top_container"
+                app:layout_constraintEnd_toEndOf="@+id/point_top_container"
+                app:layout_constraintStart_toStartOf="@+id/point_top_container"
+                />
+<!--        ~~님-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/point_welcome_message_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/point_circle_user_profile_container_profile_container"
+                android:layout_marginTop="30dp"
+                app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                    android:id="@+id/home_drawer_hello_message"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="최승열"
+                    android:textAlignment="center"
+                    android:textColor="@color/myblack"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                    android:id="@+id/point_welcome_message_suffix"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="님"
+                    android:textAlignment="center"
+                    android:textColor="@color/myblack"
+                    android:textSize="25sp"
+                    app:layout_constraintStart_toEndOf="@+id/home_drawer_hello_message"
+                    app:layout_constraintTop_toTopOf="@+id/home_drawer_hello_message"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+<!--        쇼핑하기 좋은 날이에요-->
+        <TextView
+                android:id="@+id/point_user_thank_you_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="쇼핑하기 좋은 날이에요."
+                android:textAlignment="center"
+                android:textColor="@color/myblack"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/point_welcome_message_container"
+                app:layout_constraintTop_toBottomOf="@id/point_welcome_message_container"
+                app:layout_constraintEnd_toEndOf="@+id/point_welcome_message_container"
+                android:layout_marginTop="10dp"
+                />
+
+<!--        H 포인트-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/home_drawer_point_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="15dp"
+                android:paddingHorizontal="35dp"
+                app:layout_constraintTop_toBottomOf="@+id/point_user_thank_you_message"
+                android:layout_marginTop="20dp">
+
+            <TextView
+                    android:id="@+id/home_drawer_point_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="H.Point"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textSize="18sp" />
+
+            <Button
+                    android:id="@+id/home_drawer_member_point_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/zxing_transparent"
+                    android:text="4,321P"
+                    android:textColor="#371F78"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent">
+            </Button>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        
+<!--        사용가능 쿠폰 -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/home_drawer_coupon_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/home_drawer_point_container"
+                app:layout_constraintEnd_toEndOf="@+id/home_drawer_point_container"
+                app:layout_constraintStart_toStartOf="@+id/home_drawer_point_container"
+                android:background="@color/gray_100">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:background="@color/white"
+                    android:paddingVertical="20dp"
+                    
+                    >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/home_drawer_coupon_group"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/point_vertical_divider">
+
+                    <ImageView
+                            android:id="@+id/home_drawer_coupon_image"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_coupon_24dp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                            android:id="@+id/home_drawer_coupon_available_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="사용가능 쿠폰"
+                            app:layout_constraintTop_toBottomOf="@+id/home_drawer_coupon_image"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginTop="5dp" />
+
+                    <TextView
+                            android:id="@+id/home_drawer_coupon_count_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="4개"
+                            app:layout_constraintTop_toBottomOf="@+id/home_drawer_coupon_available_text"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginTop="10dp" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                        android:id="@+id/point_vertical_divider"
+                        android:layout_width="3dp"
+                        android:layout_height="0dp"
+                        android:background="@color/gray_100"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/home_drawer_ranking"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/point_vertical_divider"
+                        app:layout_constraintEnd_toEndOf="parent">
+
+                    <ImageView
+                            android:id="@+id/home_drawer_ranking_image"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_nav_qrcode_24dp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="오늘 찾은 보물"
+                            android:id="@+id/textView"
+                            app:layout_constraintTop_toBottomOf="@+id/home_drawer_ranking_image"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginTop="5dp" />
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1개"
+                            android:id="@+id/textView2"
+                            app:layout_constraintTop_toBottomOf="@+id/textView"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginTop="10dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--        메뉴 리스트-->
+        <androidx.constraintlayout.widget.ConstraintLayout 
+                android:id="@+id/point_order_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/home_drawer_coupon_container"
+                android:background="@color/gray_100"
+                >
+
+                <GridLayout
+                        android:id="@+id/point_order_menu_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:columnCount="1"
+                        android:rowCount="1"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:background="@color/gray_100">
+
+                    <TextView
+                            android:id="@+id/point_order_cart"
+                            android:layout_rowWeight="1"
+                            android:layout_columnWeight="1"
+                            android:text="장바구니"
+                            android:padding="15dp"
+                            android:background="@color/white" />
+
+                    <TextView
+                            android:id="@+id/point_order_history"
+                            android:layout_rowWeight="1"
+                            android:layout_columnWeight="1"
+                            android:text="주문 내역"
+                            android:padding="15dp"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="1dp"
+                            android:background="@color/white" />
+
+                    <TextView
+                            android:id="@+id/point_order_receipt"
+                            android:layout_rowWeight="1"
+                            android:layout_columnWeight="1"
+                            android:text="찜 목록"
+                            android:padding="15dp"
+                            android:layout_marginTop="1dp"
+                            android:background="@color/white" />
+
+                    <TextView
+                            android:id="@+id/point_order_like"
+                            android:layout_rowWeight="1"
+                            android:layout_columnWeight="1"
+                            android:text="모바일 영수증"
+                            android:padding="15dp"
+                            android:layout_marginTop="1dp"
+                            android:background="@color/white" />
+                </GridLayout>
+
+                <GridLayout
+                        android:id="@+id/point_payment_menu_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:columnCount="1"
+                        android:rowCount="1"
+                        app:layout_constraintTop_toBottomOf="@+id/point_order_menu_container"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/gray_100">
+
+                    <TextView
+                            android:id="@+id/point_payment_cart"
+                            android:layout_rowWeight="1"
+                            android:layout_columnWeight="1"
+                            android:text="결제수단 등록"
+                            android:padding="15dp"
+                            android:background="@color/white" />
+
+                    <TextView
+                            android:id="@+id/point_payment_history"
+                            android:layout_rowWeight="1"
+                            android:layout_columnWeight="1"
+                            android:text="현금영수증 발행"
+                            android:padding="15dp"
+                            android:layout_marginTop="1dp"
+                            android:background="@color/white" />
+
+                    <TextView
+                            android:id="@+id/point_payment_receipt"
+                            android:layout_rowWeight="1"
+                            android:layout_columnWeight="1"
+                            android:text="찜 목록"
+                            android:padding="15dp"
+                            android:layout_marginTop="1dp"
+                            android:background="@color/white" />
+
+                    <TextView
+                            android:id="@+id/point_payment_like"
+                            android:layout_rowWeight="1"
+                            android:layout_columnWeight="1"
+                            android:text="모바일 영수증"
+                            android:padding="15dp"
+                            android:layout_marginTop="1dp"
+                            android:background="@color/white" />
+
+                </GridLayout>
+
+                <GridLayout
+                        android:id="@+id/point_settting_menu_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:columnCount="1"
+                        android:rowCount="1"
+                        app:layout_constraintTop_toBottomOf="@+id/point_payment_menu_container"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/gray_100">
+
+                    <TextView
+                            android:layout_rowWeight="1"
+                            android:layout_columnWeight="1"
+                            android:text="배송주소록 관리"
+                            android:padding="15dp"
+                            android:background="@color/white" />
+
+                    <TextView
+                            android:layout_rowWeight="1"
+                            android:layout_columnWeight="1"
+                            android:text="앱 설정 관리"
+                            android:padding="15dp"
+                            android:layout_marginTop="1dp"
+                            android:background="@color/white" />
+
+                    <TextView
+                            android:layout_rowWeight="1"
+                            android:layout_columnWeight="1"
+                            android:text="고객센터/도움말"
+                            android:padding="15dp"
+                            android:layout_marginTop="1dp"
+                            android:background="@color/white" />
+
+                    <TextView
+                            android:id="@+id/home_drawer_logout_button"
+                            android:layout_rowWeight="1"
+                            android:layout_columnWeight="1"
+                            android:text="로그아웃"
+                            android:padding="15dp"
+                            android:layout_marginTop="1dp"
+                            android:background="@color/white" />
+
+                    <TextView
+                            android:id="@+id/home_drawer_unlink_button"
+                            android:layout_rowWeight="1"
+                            android:layout_columnWeight="1"
+                            android:text="연동해제"
+                            android:padding="15dp"
+                            android:layout_marginTop="1dp"
+                            android:background="@color/white" />
+                    <TextView
+                            android:layout_rowWeight="1"
+                            android:layout_columnWeight="1"
+                            android:padding="15dp"
+                            android:layout_marginTop="1dp"
+                            android:background="@color/gray_100" />
+                    <TextView
+                            android:layout_rowWeight="1"
+                            android:layout_columnWeight="1"
+                            android:padding="15dp"
+                            android:layout_marginTop="1dp"
+                            android:background="@color/gray_100" />
+                </GridLayout>
+            
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
