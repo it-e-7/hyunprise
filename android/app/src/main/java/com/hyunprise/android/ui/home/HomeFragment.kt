@@ -78,6 +78,10 @@ class HomeFragment : Fragment() {
             val intent = Intent(activity, PointActivity::class.java)
             startActivity(intent)
         }
+        binding.homeDrawerContent.drawerPointButton.setOnClickListener{
+            val intent = Intent(activity, PointActivity::class.java)
+            startActivity(intent)
+        }
 
         val homePointBtn = binding.barcodeButton
         homePointBtn.setOnClickListener{
@@ -98,10 +102,6 @@ class HomeFragment : Fragment() {
                     startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
                 }
             }
-        }
-        binding.homeDrawerContent.homeDrawerGotoLoginButton.setOnClickListener{
-            val intent = Intent(requireContext(), LoginActivity::class.java)
-            startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
         }
 
         binding.homeDrawerContent.homeDrawerLogoutButton.setOnClickListener{
