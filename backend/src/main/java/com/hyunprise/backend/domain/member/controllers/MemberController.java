@@ -19,6 +19,7 @@ public class MemberController {
     public ResponseEntity<Member> getMemberFromJWT(@RequestHeader("Authorization") String authorizationHeader) {
         Member member = memberService.getMemberFromJwt(authorizationHeader);
         return ResponseEntity.ok().body(member);
+
     }
     @GetMapping("/{memberUUID}")
     public ResponseEntity<Member> getMemberByMemberUUID(@PathVariable String memberUUID) {

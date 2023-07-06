@@ -9,7 +9,7 @@
             authentication_id,
             member_email,
             member_name,
-            h_point,
+            membership_point,
             gender,
             birthdate,
             address,
@@ -26,7 +26,7 @@
             authentication_id,
             member_email,
             member_name,
-            h_point,
+            membership_point,
             gender,
             birthdate,
             address,
@@ -44,7 +44,7 @@
         WHEN MATCHED THEN
             UPDATE SET m.member_name = p.member_name
         WHEN NOT MATCHED THEN
-            INSERT (member_email, member_name, gender, h_point, account_type)
+            INSERT (member_email, member_name, gender, membership_point, account_type)
             VALUES (p.member_email, p.member_name, p.gender, default, default)
 
         <selectKey keyColumn="memberUUID,accountType" keyProperty="memberUUID,accountType" resultType="Member" order="AFTER">
