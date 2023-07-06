@@ -11,8 +11,7 @@
         tools:context=".ui.member.coupon.fragments.IssuedCouponDetailDialogFragment"
         android:orientation="vertical"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/background_bottom_dialog"
-        >
+        android:background="@drawable/background_bottom_dialog" >
 
         <View
                 android:id="@+id/admin_issued_coupon_detail_dialog_bar"
@@ -25,13 +24,12 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="20sp" />
 
-    <androidx.core.widget.NestedScrollView
+        <androidx.core.widget.NestedScrollView
             android:id="@+id/admin_issued_coupon_detail_container_scroll_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_dialog_bar"
-            android:layout_marginTop="70sp"
-            >
+            android:layout_marginTop="70sp" >
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -53,7 +51,7 @@
                     />
 
             <TextView
-                    android:id="@+id/admin_issued_coupon_detail_location"
+                    android:id="@+id/admin_issued_coupon_brand_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_coupon_image"
@@ -73,21 +71,21 @@
                     android:layout_height="wrap_content"
                     android:text="웰컴음료 1잔 이용권"
                     android:gravity="center"
-                    app:layout_constraintStart_toStartOf="@+id/admin_issued_coupon_detail_location"
-                    app:layout_constraintEnd_toEndOf="@+id/admin_issued_coupon_detail_location"
-                    app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_location"
+                    app:layout_constraintStart_toStartOf="@+id/admin_issued_coupon_brand_name"
+                    app:layout_constraintEnd_toEndOf="@+id/admin_issued_coupon_brand_name"
+                    app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_brand_name"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
             <TextView
-                    android:id="@+id/admin_issued_coupon_detail_expiration_date"
+                    android:id="@+id/admin_issued_coupon_detail_creation_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text= "발급 일자 | 2023.06.23"
                     android:gravity="center"
-                    app:layout_constraintStart_toStartOf="@+id/admin_issued_coupon_detail_location"
-                    app:layout_constraintEnd_toEndOf="@+id/admin_issued_coupon_detail_location"
+                    app:layout_constraintStart_toStartOf="@+id/admin_issued_coupon_brand_name"
+                    app:layout_constraintEnd_toEndOf="@+id/admin_issued_coupon_brand_name"
                     app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_coupon_name"
                     android:textColor="@color/purple"
                     android:textSize="12sp"
@@ -98,9 +96,9 @@
                 android:id="@+id/admin_issued_coupon_qr_iv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@id/admin_issued_coupon_detail_location"
-                app:layout_constraintEnd_toEndOf="@id/admin_issued_coupon_detail_location"
-                app:layout_constraintTop_toBottomOf="@id/admin_issued_coupon_detail_expiration_date"
+                app:layout_constraintStart_toStartOf="@id/admin_issued_coupon_brand_name"
+                app:layout_constraintEnd_toEndOf="@id/admin_issued_coupon_brand_name"
+                app:layout_constraintTop_toBottomOf="@id/admin_issued_coupon_detail_creation_date"
                 app:layout_constraintBottom_toTopOf="@id/admin_issued_coupon_detail_divider"
                 />
 
@@ -110,7 +108,7 @@
                     style="@style/style_item_divider"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_expiration_date"
+                    app:layout_constraintTop_toBottomOf="@+id/admin_issued_coupon_detail_creation_date"
                     android:layout_marginTop="30sp"
                     />
 
