@@ -1,13 +1,13 @@
 package com.hyunprise.android.ui.member.coupon.fragments
 
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -21,6 +21,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import com.hyunprise.android.R
+import com.hyunprise.android.ui.member.coupon.UseCouponPopActivity
 
 const val ARG_ISSUED_COUPON_UUID = "uuid"
 
@@ -30,6 +31,8 @@ class IssuedCouponDetailDialogFragment : BottomSheetDialogFragment() {
     private val binding get() = _binding!!
 
     private val issuedCouponService = IssuedCouponService()
+
+    private lateinit var couponDetail: CouponDetail
 
     companion object {
         fun withCouponSummary(couponSummary: CouponSummary): IssuedCouponDetailDialogFragment =
@@ -48,15 +51,16 @@ class IssuedCouponDetailDialogFragment : BottomSheetDialogFragment() {
             FragmentIssuedCouponDetailBottomDialogBinding.inflate(inflater, container, false)
         setLoadingSkeletonStatue(true)
         fetchData()
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         binding.issuedCouponDismissButton.setOnClickListener {
             dismiss()
         }
+        binding.issuedCouponUseCouponButton.setOnClickListener {
+            val intent = Intent(requireContext(), UseCouponPopActivity::class.java)
+            intent.putExtra("couponCode", couponDetail.couponCode)
+            startActivity(intent)
+        }
 
+        return binding.root
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -79,9 +83,9 @@ class IssuedCouponDetailDialogFragment : BottomSheetDialogFragment() {
         bottomSheet.layoutParams = layoutParams
     }
 
-    private fun disableScrollBehavior(bottomSheet: View) {
-        (bottomSheet.layoutParams as CoordinatorLayout.LayoutParams).behavior = null
-    }
+//    private fun disableScrollBehavior(bottomSheet: View) {
+//        (bottomSheet.layoutParams as CoordinatorLayout.LayoutParams).behavior = null
+//    }
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -93,11 +97,13 @@ class IssuedCouponDetailDialogFragment : BottomSheetDialogFragment() {
             binding.issuedCouponDetailShimmerContainer.issuedCouponShimmerContainer.visibility = View.VISIBLE
             binding.issuedCouponDetailShimmerContainer.issuedCouponShimmer.startShimmer()
             binding.issuedCouponDetailContainerScrollView.visibility = View.GONE
+            binding.issuedCouponUseCouponButton.visibility = View.GONE
         }
         else {
             binding.issuedCouponDetailShimmerContainer.issuedCouponShimmerContainer.visibility = View.GONE
             binding.issuedCouponDetailShimmerContainer.issuedCouponShimmer.stopShimmer()
             binding.issuedCouponDetailContainerScrollView.visibility = View.VISIBLE
+            binding.issuedCouponUseCouponButton.visibility = View.VISIBLE
         }
     }
 
@@ -117,6 +123,7 @@ class IssuedCouponDetailDialogFragment : BottomSheetDialogFragment() {
         binding.issuedCouponDetailUsageInstruction.text = coupon.usageInstruction
         binding.issuedCouponDetailCouponDescription.text = coupon.couponDescription
         binding.issuedCouponDetailTermsAndConditions.text = coupon.termsAndConditions
+        binding.issuedCouponDetailCouponCode.text = coupon.couponCode
 
         setLoadingSkeletonStatue(false)
 
@@ -129,6 +136,7 @@ class IssuedCouponDetailDialogFragment : BottomSheetDialogFragment() {
             arguments.getString(ARG_ISSUED_COUPON_UUID)?.let { uuid ->
                 issuedCouponService.getIssuedCouponByIssuedCouponUUID(uuid).let { coupon ->
                     withContext(Dispatchers.Main) {
+                        couponDetail = coupon
                         updateViews(coupon)
                     }
                 }
