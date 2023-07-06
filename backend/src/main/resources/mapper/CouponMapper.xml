@@ -42,7 +42,22 @@
         )}
     </insert>
 
-    <select id="selectAllAdminIssuedCoupons" parameterType="String" resultType="Coupon">
+    <select id="selectAllAdminIssuedCoupons" parameterType="String" resultType="CouponSummary">
+        SELECT
+        c.coupon_uuid,
+        c.seller_uuid,
+        c.coupon_name,
+        c.creation_date,
+        c.expiration_days,
+        b.brand_name
+
+        FROM coupon c
+        JOIN member m ON c.seller_uuid = m.member_uuid
+        JOIN brand b ON m.brand_id = b.brand_id
+        WHERE seller_uuid = #{sellerUUID}
+    </select>
+
+    <select id="selectOneAdminCouponDetailByCouponUUID" parameterType="String" resultType="CouponDetail" >
         SELECT
         c.coupon_uuid,
         c.seller_uuid,
@@ -64,6 +79,7 @@
         FROM coupon c
         JOIN member m ON c.seller_uuid = m.member_uuid
         JOIN brand b ON m.brand_id = b.brand_id
-        WHERE seller_uuid = #{sellerUUID}
+        WHERE coupon_uuid = #{couponUUID}
+
     </select>
 </mapper>

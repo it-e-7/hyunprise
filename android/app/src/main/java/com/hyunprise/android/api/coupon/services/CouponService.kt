@@ -3,6 +3,8 @@ package com.hyunprise.android.api.coupon.services
 import com.hyunprise.android.api.RetrofitConfig
 import com.hyunprise.android.api.coupon.clients.CouponClient
 import com.hyunprise.android.api.coupon.vo.Coupon
+import com.hyunprise.android.api.coupon.vo.CouponDetail
+import com.hyunprise.android.api.coupon.vo.CouponSummary
 import com.hyunprise.android.global.api.ApiHandler
 
 class CouponService {
@@ -22,9 +24,16 @@ class CouponService {
         } ?: -1
     }
 
-    suspend fun getAllAdminIssuedCoupons(sellerUUID: String) : List<Coupon>? {
+    suspend fun getAllAdminIssuedCoupons(sellerUUID: String, available: Boolean) : List<CouponSummary>? {
         return ApiHandler.safeAPICall {
             couponClient.getAllAdminIssuedCoupons(sellerUUID)
-        } ?: null
+        } ?: emptyList()
     }
+
+    suspend fun getAdminIssuedCouponByCouponUUID(couponUUID: String) : CouponDetail {
+        return ApiHandler.safeAPICall {
+            couponClient.getAdminIssuedCouponByCouponUUID(couponUUID)
+        } ?: CouponDetail()
+    }
+
 }

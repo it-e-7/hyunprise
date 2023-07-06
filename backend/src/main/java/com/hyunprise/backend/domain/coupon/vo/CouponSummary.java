@@ -14,4 +14,10 @@ public class CouponSummary {
     private String couponName;
     private Integer status;
     private Timestamp expirationDate;
+
+    private String couponUUID;
+    private Integer expirationDays;
+    private Timestamp creationDate;
+    private String brandName;
+
 }

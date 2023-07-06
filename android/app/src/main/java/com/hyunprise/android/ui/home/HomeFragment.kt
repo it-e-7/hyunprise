@@ -65,6 +65,11 @@ class HomeFragment : Fragment() {
                 startActivity(intent)
             }
 
+            binding.adminHomeShowIssuedCouponsBtn.setOnClickListener {
+                val intent = Intent(this@HomeFragment.activity, IssuedCouponContainerActivity::class.java)
+                startActivity(intent)
+            }
+
         } else {
             adminBtn.visibility = View.GONE
         }

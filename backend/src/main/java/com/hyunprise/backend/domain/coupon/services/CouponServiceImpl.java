@@ -46,7 +46,12 @@ public class CouponServiceImpl implements CouponService {
     }
 
     @Override
-    public List<Coupon> selectAllAdminIssuedCoupons(String sellerUUID) {
+    public List<CouponSummary> selectAllAdminIssuedCoupons(String sellerUUID) {
         return couponMapper.selectAllAdminIssuedCoupons(sellerUUID);
+    }
+
+    @Override
+    public CouponDetail selectOneAdminCouponDetailByCouponUUID(String couponUUID) {
+        return couponMapper.selectOneAdminCouponDetailByCouponUUID(couponUUID);
     }
 }

@@ -9,6 +9,7 @@ import com.hyunprise.backend.domain.coupon.vo.IssuedCoupon;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.ws.rs.Path;
 import java.util.List;
 
 @RestController
@@ -29,7 +30,12 @@ public class CouponController {
     }
 
     @GetMapping("/admin/{sellerUUID}")
-    public List<Coupon> getAllAdminIssuedCoupons(@PathVariable String sellerUUID) {
+    public List<CouponSummary> getAllAdminIssuedCoupons(@PathVariable String sellerUUID) {
         return couponService.selectAllAdminIssuedCoupons(sellerUUID);
+    }
+
+    @GetMapping("/admin/detail/{couponUUID}")
+    public CouponDetail getOneAdminCouponDetailByCouponUUID(@PathVariable String couponUUID) {
+        return couponService.selectOneAdminCouponDetailByCouponUUID(couponUUID);
     }
 }

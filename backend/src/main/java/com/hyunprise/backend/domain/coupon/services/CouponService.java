@@ -10,5 +10,6 @@ import java.util.List;
 public interface CouponService {
     Coupon selectOneCoupon(String couponUUID);
     Integer createOneCoupon(Coupon coupon);
-    List<Coupon> selectAllAdminIssuedCoupons(String sellerUUID);
+    List<CouponSummary> selectAllAdminIssuedCoupons(String sellerUUID);
+    CouponDetail selectOneAdminCouponDetailByCouponUUID(String couponUUID);
 }

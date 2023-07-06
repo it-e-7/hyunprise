@@ -5,6 +5,11 @@ import java.sql.Timestamp
 data class CouponSummary (
     val issuedCouponUUID: String,
     val couponName: String,
-    val status: Int,
-    val expirationDate: Timestamp
+    var status: Int,
+    val expirationDate: Timestamp,
+
+    val couponUUID:String,
+    val expirationDays: Int,
+    val creationDate: Timestamp,
+    val brandName:String
 )

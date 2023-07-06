@@ -14,5 +14,7 @@ import java.util.Map;
 public interface CouponMapper {
     Coupon selectOneCoupon(String couponUUID);
     Integer createOneCoupon(Map<String, Object> coupon);
-    List<Coupon> selectAllAdminIssuedCoupons(String sellerUUID);
+    List<CouponSummary> selectAllAdminIssuedCoupons(String sellerUUID);
+    CouponDetail selectOneAdminCouponDetailByCouponUUID(String couponUUID);
+
 }

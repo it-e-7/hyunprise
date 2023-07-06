@@ -1,6 +1,7 @@
 package com.hyunprise.android.api.coupon.clients
 
 import com.hyunprise.android.api.coupon.vo.Coupon
+import com.hyunprise.android.api.coupon.vo.CouponDetail
 import com.hyunprise.android.api.coupon.vo.CouponSummary
 import com.hyunprise.android.api.coupon.vo.IssuedCoupon
 import retrofit2.Response
@@ -26,5 +27,12 @@ interface CouponClient {
     @GET("coupon/admin/{sellerUUID}")
     suspend fun getAllAdminIssuedCoupons(
         @Path("sellerUUID") sellerUUID: String
-    ): Response<List<Coupon>>
+    ): Response<List<CouponSummary>>
+
+    @Headers("Content-Type: application/json")
+    @GET("coupon/admin/detail/{couponUUID}")
+    suspend fun getAdminIssuedCouponByCouponUUID(
+        @Path("couponUUID") sellerUUID: String
+    ): Response<CouponDetail>
+
 }

@@ -24,6 +24,7 @@ class IntroPermissionActivity : AppCompatActivity() {
         if (ContextCompat.checkSelfPermission(this@IntroPermissionActivity, android.Manifest.permission.CAMERA)
             != PackageManager.PERMISSION_GRANTED) {
             // 권한이 허용되지 않았을 경우, 권한 요청
+            Toast(this)
             ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CAMERA), PERMISSION_REQUEST_CODE)
         } else {
             // 권한이 이미 허용되었을 경우, 로그인 프로세스 시작
