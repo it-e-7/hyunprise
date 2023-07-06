@@ -32,7 +32,8 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:background="#00FF0000"
-                android:src="@drawable/ic_barcode_32"
+                android:src="@drawable/ic_barcode_24px"
+                android:tint="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,7 +44,8 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:background="#00FF0000"
-                android:src="@drawable/ic_menu_32"
+                android:src="@drawable/ic_menu_24px"
+                android:tint="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
