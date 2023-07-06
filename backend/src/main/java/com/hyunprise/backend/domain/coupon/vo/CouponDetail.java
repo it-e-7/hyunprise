@@ -29,5 +29,5 @@ public class CouponDetail {
     private Integer equivalentPoint;
 
     private Timestamp creationDate;
-    private Integer exexpirationDays;
+    private Integer expirationDays;
 }

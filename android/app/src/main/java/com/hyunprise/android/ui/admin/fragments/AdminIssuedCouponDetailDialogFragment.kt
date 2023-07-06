@@ -32,7 +32,6 @@ class AdminIssuedCouponDetailDialogFragment : BottomSheetDialogFragment() {
 
     private var _binding: FragmentAdminIssuedCouponDetailBottomDialogBinding? = null
     private val binding get() = _binding!!
-
     private val couponService = CouponService()
 
     companion object {
@@ -52,7 +51,6 @@ class AdminIssuedCouponDetailDialogFragment : BottomSheetDialogFragment() {
             FragmentAdminIssuedCouponDetailBottomDialogBinding.inflate(inflater, container, false)
         setLoadingSkeletonStatue(true)
         fetchData()
-        Log.d("log.detail", "?‹¤?–‰?")
         return binding.root
     }
 
@@ -121,6 +119,7 @@ class AdminIssuedCouponDetailDialogFragment : BottomSheetDialogFragment() {
 
         var creationDate = "-"
         var expirationDate = "-"
+
         if (coupon.creationDate != null && coupon.expirationDays != null) {
             creationDate = DateFormatter.timestampToYYYYMMDD(coupon.creationDate)
             expirationDate = DateFormatter.timestampToYYYYMMDD(
@@ -129,13 +128,13 @@ class AdminIssuedCouponDetailDialogFragment : BottomSheetDialogFragment() {
         }
 
         binding.adminIssuedCouponDetailCouponName.text = coupon.couponName
-        binding.adminIssuedCouponDetailCreationDate.text = coupon.creationDate.toString()
-        binding.adminIssuedCouponDetailExpirationPeriod.text = resources.getString(R.string.issued_coupon_placeholder_expiration_period, creationDate, expirationDate)
+        binding.adminIssuedCouponDetailCreationDate.text = "ë°œê¸‰ ì¼ìž | ${creationDate}"
+        binding.adminIssuedCouponDetailExpirationPeriod.text = "${creationDate} ~ ${expirationDate}"
         binding.adminIssuedCouponDetailRetailerLocation.text = coupon.retailerLocation
         binding.adminIssuedCouponDetailUsageInstruction.text = coupon.usageInstruction
         binding.adminIssuedCouponDetailCouponDescription.text = coupon.couponDescription
         binding.adminIssuedCouponDetailTermsAndConditions.text = coupon.termsAndConditions
-        binding.adminIssuedCouponBrandName.text = coupon.adminIssuedCouponBrandName
+        binding.adminIssuedCouponDetailBrandName.text = coupon.brandName
 
         coupon.couponUUID?.let { uuid ->
             binding.adminIssuedCouponQrIv.setImageBitmap(CodeGenerate().generateBitmapQRCode(uuid))
@@ -148,7 +147,6 @@ class AdminIssuedCouponDetailDialogFragment : BottomSheetDialogFragment() {
             Thread.sleep(1000)
             val arguments = requireArguments()
             arguments.getString(ARG_COUPON_UUID)?.let { uuid ->
-                Log.d("log.detail.uuid", uuid)
                 couponService.getAdminIssuedCouponByCouponUUID(uuid).let { coupon ->
                     withContext(Dispatchers.Main) {
                         updateViews(coupon)
