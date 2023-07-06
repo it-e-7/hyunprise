@@ -84,7 +84,7 @@ class QRCodeActivity: AppCompatActivity() {
                         finish()
                         startActivity(intent)
                     }
-                }?. run {
+                }?: run {
                     Toast.makeText(this@QRCodeActivity, "알 수 없는 QR코드입니다", Toast.LENGTH_SHORT).show()
                 }
             }

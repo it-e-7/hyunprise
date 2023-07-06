@@ -136,8 +136,9 @@ class AdminIssuedCouponDetailDialogFragment : BottomSheetDialogFragment() {
         binding.adminIssuedCouponDetailCouponDescription.text = coupon.couponDescription
         binding.adminIssuedCouponDetailTermsAndConditions.text = coupon.termsAndConditions
         binding.adminIssuedCouponBrandName.text = coupon.brandName
-        val qrBitmap = CodeGenerate()
-        binding.adminIssuedCouponQrIv.setImageBitmap(qrBitmap.generateBitmapQRCode(coupon.couponCode.toString()))
+        coupon.couponUUID?.let { uuid ->
+            binding.adminIssuedCouponQrIv.setImageBitmap(CodeGenerate().generateBitmapQRCode(uuid))
+        }
         setLoadingSkeletonStatue(false)
     }
 
