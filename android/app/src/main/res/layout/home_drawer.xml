@@ -22,7 +22,7 @@
     <!-- 포인트 내역 확인 버튼 -->
 
     <ImageButton
-        android:id="@+id/btn_close_drawer1"
+        android:id="@+id/home_close_drawer_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#00FF0000"
@@ -32,16 +32,17 @@
         android:layout_marginTop="15dp"/>
 
     <TextView
-        android:id="@+id/drawer_textView_user"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="사용자 회원님"
-        android:textColor="@color/myblack"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+            android:id="@+id/home_drawer_hello_message"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="사용자 회원님"
+            android:textColor="@color/myblack"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/home_close_drawer_button" />
 
     <!-- 아이콘들 -->
 
@@ -51,7 +52,7 @@
         android:layout_height="60dp"
         android:columnCount="3"
         android:rowCount="1"
-        app:layout_constraintTop_toBottomOf="@+id/btn_close_drawer1"
+        app:layout_constraintTop_toBottomOf="@+id/home_close_drawer_button"
         android:layout_marginTop="10dp">
         <LinearLayout
             android:layout_width="0dp"
@@ -90,6 +91,7 @@
             android:layout_gravity="center_vertical"
             android:orientation="vertical">
             <TextView
+                    android:id="@+id/home_drawer_member_point_text_view"
                 android:layout_width="105dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"

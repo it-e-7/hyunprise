@@ -13,7 +13,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
-import com.hyunprise.android.HomeActivity
+import com.hyunprise.android.R
 import com.hyunprise.android.api.RetrofitConfig
 import com.hyunprise.android.databinding.FragmentHomeBinding
 import com.hyunprise.android.api.oauth.managers.KakaoAuthManager
@@ -21,7 +21,6 @@ import com.hyunprise.android.store.MemberSharedPreferences
 import com.hyunprise.android.ui.auth.LoginActivity
 import com.hyunprise.android.ui.member.coupon.IssuedCouponContainerActivity
 import com.hyunprise.android.ui.member.point.PointActivity
-import com.kakao.sdk.user.UserApiClient
 import java.util.Timer
 import java.util.TimerTask
 
@@ -47,78 +46,82 @@ class HomeFragment : Fragment() {
         binding.homeViewPager.adapter = adapter
         binding.homeViewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
+        initalizeHomeDrawer()
+
         // 버튼 클릭 리스너 설정
         // X 버튼 클릭 리스너 설정
-        val homeDrawer = binding.drawerLayout1
-        binding.homeDrawerContent.btnCloseDrawer1.setOnClickListener {
-            homeDrawer.closeDrawer(GravityCompat.START)
-        }
         // 메뉴 버튼 클릭 리스너 설정
+        setListeners()
+        // 자동 슬라이드 시작
+        startAutoSlide()
+
+
+        return binding.root
+    }
+
+    fun initalizeHomeDrawer() {
+        val memberName = MemberSharedPreferences(requireContext()).getMemberName()
+        val helloMessage = resources.getString(R.string.home_drawer_placeholder_hello_message, memberName)
+        binding.homeDrawer.homeDrawerHelloMessage.text = helloMessage
+
+        val membershipPoint = MemberSharedPreferences(requireContext()).getMembershipPoint()
+        val pointMessage = resources.getString(R.string.home_drawer_placeholder_member_point, membershipPoint)
+        binding.homeDrawer.homeDrawerMemberPointTextView.text = pointMessage
+    }
+
+    fun setListeners() {
+        val homeFragment = binding.homeDrawerParent
+
         binding.menuBarButton.setOnClickListener {
-            // 드로워 토글
-            toggleDrawerOpenStatus(homeDrawer)
+            toggleDrawerOpenStatus(homeFragment)
         }
 
+        binding.barcodeButton.setOnClickListener{
+            val intent = Intent(activity, PointActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.homeDrawer.homeCloseDrawerButton.setOnClickListener {
+            homeFragment.closeDrawer(GravityCompat.START)
+        }
+
+
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
-            if (homeDrawer.isDrawerOpen(GravityCompat.START)) {
-                homeDrawer.closeDrawer(GravityCompat.START)
+            if (homeFragment.isDrawerOpen(GravityCompat.START)) {
+                homeFragment.closeDrawer(GravityCompat.START)
             } else {
                 isEnabled = false
                 requireActivity().onBackPressedDispatcher.onBackPressed()
             }
         }
         // 쿠폰 페이지
-        binding.homeDrawerContent.drawerCouponBtn.setOnClickListener{
+        binding.homeDrawer.drawerCouponBtn.setOnClickListener{
             val intent = Intent(activity, IssuedCouponContainerActivity::class.java)
             startActivity(intent)
         }
 
         // 포인트 페이지
-        binding.homeDrawerContent.drawerPointBtn.setOnClickListener{
+        binding.homeDrawer.drawerPointBtn.setOnClickListener{
             val intent = Intent(activity, PointActivity::class.java)
             startActivity(intent)
         }
 
-        val homePointBtn = binding.barcodeButton
-        homePointBtn.setOnClickListener{
-            val intent = Intent(activity, PointActivity::class.java)
-            startActivity(intent)
-        }
-
-        // 자동 슬라이드 시작
-        startAutoSlide()
-
-        binding.homeDrawerContent.homeDrawerLogoutButton.setOnClickListener {
-            UserApiClient.instance.unlink { error ->
-                if (error != null) {
-                    Log.e("Hello", "로그아웃 실패. SDK에서 토큰 삭제됨", error)
-                } else {
-                    Log.i("Hello", "로그아웃 성공. SDK에서 토큰 삭제됨")
-                    val intent = Intent(requireContext(), LoginActivity::class.java)
-                    startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
-                }
-            }
-        }
-        binding.homeDrawerContent.homeDrawerGotoLoginButton.setOnClickListener{
-            val intent = Intent(requireContext(), LoginActivity::class.java)
-            startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
-        }
-
-        binding.homeDrawerContent.homeDrawerLogoutButton.setOnClickListener{
+        // 로그아웃
+        binding.homeDrawer.homeDrawerLogoutButton.setOnClickListener{
             KakaoAuthManager.logout {
                 clearClientAndLoginData()
                 gotoLoginPage()
             }
         }
-        binding.homeDrawerContent.homeDrawerUnlinkButton.setOnClickListener{
+
+        // 연동해제
+        binding.homeDrawer.homeDrawerUnlinkButton.setOnClickListener{
             KakaoAuthManager.unlink {
                 clearClientAndLoginData()
                 gotoLoginPage()
             }
         }
-        return binding.root
     }
-
 
     private fun toggleDrawerOpenStatus(drawer: DrawerLayout) {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -129,20 +132,14 @@ class HomeFragment : Fragment() {
     }
     private fun clearClientAndLoginData() {
         RetrofitConfig.resetRetrofitClient()
-        MemberSharedPreferences(requireContext()).clearLoginType()
+        MemberSharedPreferences(requireContext()).clearMemberProperty()
     }
+
     private fun gotoLoginPage() {
         val intent = Intent(requireContext(), LoginActivity::class.java)
         startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        // 자동 슬라이드 중지
-        stopAutoSlide()
-        Log.d("msg","HomeFragment 종료")
-        _binding = null
-    }
 
     private fun startAutoSlide() {
         timer = Timer()
@@ -159,5 +156,13 @@ class HomeFragment : Fragment() {
 
     private fun stopAutoSlide() {
         timer.cancel()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        // 자동 슬라이드 중지
+        stopAutoSlide()
+        Log.d("msg","HomeFragment 종료")
+        _binding = null
     }
 }
