@@ -20,6 +20,7 @@ import com.hyunprise.android.ui.admin.coupon.CouponGenerateActivity
 import com.hyunprise.android.api.oauth.managers.KakaoAuthManager
 import com.hyunprise.android.global.utils.AccountTypeChecker
 import com.hyunprise.android.store.MemberSharedPreferences
+import com.hyunprise.android.ui.admin.fragments.AdminIssuedCouponScrollingFragment
 import com.hyunprise.android.ui.auth.LoginActivity
 import com.hyunprise.android.ui.member.coupon.IssuedCouponContainerActivity
 import com.hyunprise.android.ui.member.point.PointActivity
@@ -71,7 +72,7 @@ class HomeFragment : Fragment() {
                 startActivity(intent)
             }
             binding.adminHomeShowIssuedCouponsBtn.setOnClickListener {
-                val intent = Intent(this@HomeFragment.activity, PointAcquiredActivity::class.java)
+                val intent = Intent(this@HomeFragment.activity, IssuedCouponContainerActivity::class.java)
                 startActivity(intent)
             }
         }

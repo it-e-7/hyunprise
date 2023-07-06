@@ -73,7 +73,6 @@
         c.equivalent_point,
         c.creation_date,
         c.expiration_days,
-        c.equivalent_point,
         b.brand_name
 
         FROM coupon c
