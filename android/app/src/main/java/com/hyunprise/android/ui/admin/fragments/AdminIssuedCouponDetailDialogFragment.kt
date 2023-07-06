@@ -23,11 +23,8 @@ import com.hyunprise.android.R
 import com.hyunprise.android.api.coupon.services.CouponService
 import com.hyunprise.android.api.coupon.vo.CouponDetail
 import com.hyunprise.android.databinding.FragmentAdminIssuedCouponDetailBottomDialogBinding
-import com.hyunprise.android.ui.member.coupon.fragments.ARG_ISSUED_COUPON_UUID
 import java.sql.Timestamp
-import java.text.SimpleDateFormat
 import java.util.Calendar
-import java.util.Locale
 
 const val ARG_COUPON_UUID = "couponUUID"
 
@@ -108,33 +105,41 @@ class AdminIssuedCouponDetailDialogFragment : BottomSheetDialogFragment() {
             binding.adminIssuedCouponDetailContainerScrollView.visibility = View.VISIBLE
         }
     }
+
+    private fun addDaysToTimestamp(timestamp: Timestamp, days: Int): Timestamp {
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = timestamp.time
+        calendar.add(Calendar.DAY_OF_MONTH, days)
+        calendar.set(Calendar.HOUR_OF_DAY, 23)
+        calendar.set(Calendar.MINUTE, 59)
+        calendar.set(Calendar.SECOND, 59)
+        calendar.set(Calendar.MILLISECOND, 999)
+        return Timestamp(calendar.timeInMillis)
+    }
+
     private fun updateViews(coupon: CouponDetail) {
 
-        val sdf = SimpleDateFormat("yyyy.MM.dd", Locale.KOREA)
-        val adminIssuedDateString = coupon.creationDate?.let {
-            DateFormatter.timestampToYYYYMMDD(it)
-        } ?: "-"
-        val adminIssuedDate = sdf.parse(adminIssuedDateString)
-
-        val calendar = Calendar.getInstance().apply {
-            time = adminIssuedDate
-            coupon.expirationDays?.let { add(Calendar.DAY_OF_MONTH, it) }
+        var creationDate = "-"
+        var expirationDate = "-"
+        if (coupon.creationDate != null && coupon.expirationDays != null) {
+            creationDate = DateFormatter.timestampToYYYYMMDD(coupon.creationDate)
+            expirationDate = DateFormatter.timestampToYYYYMMDD(
+                addDaysToTimestamp(coupon.creationDate, coupon.expirationDays)
+            )
         }
-
-        val expirationDate = DateFormatter.timestampToYYYYMMDD(calendar.time as Timestamp) ?: "-"
 
         binding.adminIssuedCouponDetailCouponName.text = coupon.couponName
         binding.adminIssuedCouponDetailCreationDate.text = coupon.creationDate.toString()
-        binding.adminIssuedCouponDetailExpirationPeriod.text = resources.getString(R.string.issued_coupon_placeholder_expiration_period, adminIssuedDate, expirationDate)
+        binding.adminIssuedCouponDetailExpirationPeriod.text = resources.getString(R.string.issued_coupon_placeholder_expiration_period, creationDate, expirationDate)
         binding.adminIssuedCouponDetailRetailerLocation.text = coupon.retailerLocation
         binding.adminIssuedCouponDetailUsageInstruction.text = coupon.usageInstruction
         binding.adminIssuedCouponDetailCouponDescription.text = coupon.couponDescription
         binding.adminIssuedCouponDetailTermsAndConditions.text = coupon.termsAndConditions
-        binding.adminIssuedCouponBrandName.text = coupon.brandName
-        val qrBitmap = CodeGenerate()
+        binding.adminIssuedCouponBrandName.text = coupon.adminIssuedCouponBrandName
 
-        binding.adminIssuedCouponQrIv.setImageBitmap(qrBitmap.generateBitmapQRCode(coupon.couponCode.toString()))
-
+        coupon.couponUUID?.let { uuid ->
+            binding.adminIssuedCouponQrIv.setImageBitmap(CodeGenerate().generateBitmapQRCode(uuid))
+        }
         setLoadingSkeletonStatue(false)
     }
 
@@ -143,7 +148,7 @@ class AdminIssuedCouponDetailDialogFragment : BottomSheetDialogFragment() {
             Thread.sleep(1000)
             val arguments = requireArguments()
             arguments.getString(ARG_COUPON_UUID)?.let { uuid ->
-                Log.d("log.detail.uuid", "${uuid}")
+                Log.d("log.detail.uuid", uuid)
                 couponService.getAdminIssuedCouponByCouponUUID(uuid).let { coupon ->
                     withContext(Dispatchers.Main) {
                         updateViews(coupon)
