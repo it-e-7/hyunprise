@@ -17,7 +17,7 @@ public class Member {
     private Long authenticationId;
     private String memberEmail;
     private String memberName;
-    private Integer hPoint;
+    private Integer membershipPoint;
     private Integer gender;
     private Timestamp birthdate;
     private String address;
