@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -71,7 +70,7 @@ class AdminIssuedCouponDetailDialogFragment : BottomSheetDialogFragment() {
             bottomSheetDialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)?.let { view ->
                 setupFullHeight(view)
                 BottomSheetBehavior.from(view).state = BottomSheetBehavior.STATE_EXPANDED
-                disableScrollBehavior(view)
+//                disableScrollBehavior(view)
                 view.setBackgroundColor(Color.TRANSPARENT)
             }
         }
@@ -84,9 +83,9 @@ class AdminIssuedCouponDetailDialogFragment : BottomSheetDialogFragment() {
         bottomSheet.layoutParams = layoutParams
     }
 
-    private fun disableScrollBehavior(bottomSheet: View) {
-        (bottomSheet.layoutParams as CoordinatorLayout.LayoutParams).behavior = null
-    }
+//    private fun disableScrollBehavior(bottomSheet: View) {
+//        (bottomSheet.layoutParams as CoordinatorLayout.LayoutParams).behavior = null
+//    }
 
     override fun onDestroyView() {
         super.onDestroyView()

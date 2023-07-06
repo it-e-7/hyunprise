@@ -20,7 +20,7 @@ class CodeGenerate {
 
     fun generateBitmapBarCode(couponCode: String): Bitmap {
         val width = 700
-        val height = 350
+        val height = 300
 
         val hintMap: MutableMap<EncodeHintType, Any> = EnumMap(EncodeHintType::class.java)
         hintMap[EncodeHintType.CHARACTER_SET] = "UTF-8"
@@ -34,16 +34,24 @@ class CodeGenerate {
         val barcodeBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565)
 
         for (x in 0 until width) {
-            for (y in 0 until height) {
+            for (y in 0 until 250) {
                 barcodeBitmap.setPixel(x, y, if (bitMatrix.get(x, y)) Color.BLACK else Color.WHITE)
+            }
+        }
+
+        for (x in 0 until width) {
+            for (y in 250 until 300) {
+                barcodeBitmap.setPixel(x, y, Color.WHITE)
             }
         }
 
         val canvas = Canvas(barcodeBitmap)
         val paint = Paint()
-        paint.textSize = 20f
-        canvas.drawText(couponCode, 0f, 350.toFloat(), paint)
-
+        paint.textSize = 40f
+        paint.textAlign = Paint.Align.CENTER
+        val formattedCouponCode = couponCode.chunked(4).joinToString(" ")
+        val xPos = canvas.width / 2
+        canvas.drawText(formattedCouponCode, xPos.toFloat(), height.toFloat(), paint)
 
         return barcodeBitmap
     }
