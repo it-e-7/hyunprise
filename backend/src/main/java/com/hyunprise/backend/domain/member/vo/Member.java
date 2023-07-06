@@ -14,7 +14,6 @@ import java.sql.Timestamp;
 @Builder
 public class Member {
     private String memberUUID;
-    private Long authenticationId;
     private String memberEmail;
     private String memberName;
     private Integer membershipPoint;

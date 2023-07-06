@@ -6,7 +6,6 @@
     <select id="selectOneMemberByMemberUUID" parameterType="String" resultType="Member">
         SELECT
             member_uuid,
-            authentication_id,
             member_email,
             member_name,
             membership_point,
@@ -23,7 +22,6 @@
     <select id="selectOneMemberByMemberEmail" parameterType="String" resultType="Member">
         SELECT
             member_uuid,
-            authentication_id,
             member_email,
             member_name,
             membership_point,
