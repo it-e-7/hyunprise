@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.google.android.material.tabs.TabLayoutMediator
 import com.hyunprise.android.databinding.ActivityCouponContainerBinding
 import com.hyunprise.android.global.CouponConsts
+import com.hyunprise.android.global.utils.AccountTypeChecker
 import com.hyunprise.android.store.MemberSharedPreferences
 import com.hyunprise.android.ui.admin.adaptors.AdminIssuedCouponTabAdaptor
 import com.hyunprise.android.ui.admin.fragments.AdminIssuedCouponScrollingFragment
@@ -27,17 +28,29 @@ class IssuedCouponContainerActivity : AppCompatActivity() {
         _binding = ActivityCouponContainerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val memberType = "admin"
+        val accountType =
+            MemberSharedPreferences(this@IssuedCouponContainerActivity).getAccountType()
 
-        if (memberType=="member") {
+        if (AccountTypeChecker.isMember(accountType)) {
             _adaptor = IssuedCouponTabAdaptor(this)
 
             adaptor.clearFragment()
 
-            MemberSharedPreferences(this@IssuedCouponContainerActivity).getMemberUUID()?.let { memberUUID ->
-                adaptor.addFragment(IssuedCouponScrollingFragment.newInstance(memberUUID, CouponConsts.ISSUED_COUPON_AVAILABLE), "MY 쿠폰")
-                adaptor.addFragment(IssuedCouponScrollingFragment.newInstance(memberUUID, CouponConsts.ISSUED_COUPON_UNAVAILABLE), "사용한 쿠폰")
-            }
+            MemberSharedPreferences(this@IssuedCouponContainerActivity).getMemberUUID()
+                ?.let { memberUUID ->
+                    adaptor.addFragment(
+                        IssuedCouponScrollingFragment.newInstance(
+                            memberUUID,
+                            CouponConsts.ISSUED_COUPON_AVAILABLE
+                        ), "MY 쿠폰"
+                    )
+                    adaptor.addFragment(
+                        IssuedCouponScrollingFragment.newInstance(
+                            memberUUID,
+                            CouponConsts.ISSUED_COUPON_UNAVAILABLE
+                        ), "사용한 쿠폰"
+                    )
+                }
             binding.couponViewPager.adapter = adaptor
             TabLayoutMediator(binding.couponTabLayout, binding.couponViewPager) { tab, position ->
                 tab.text = adaptor.getTabTitle(position)
@@ -46,24 +59,24 @@ class IssuedCouponContainerActivity : AppCompatActivity() {
             binding.couponBackButton.setOnClickListener {
                 onBackPressedDispatcher.onBackPressed()
             }
-        }
-        else {
+        } else {
             _adminAdaptor = AdminIssuedCouponTabAdaptor(this)
 
             adminAdaptor.clearFragment()
-            val sellerUUID = "FF1342115E46E60FE05304001CACF958"
-            adminAdaptor.addFragment(
-                AdminIssuedCouponScrollingFragment.newInstance(
-                    sellerUUID,
-                    CouponConsts.ISSUED_COUPON_AVAILABLE
-                ), "발급 쿠폰"
-            )
-            adminAdaptor.addFragment(
-                AdminIssuedCouponScrollingFragment.newInstance(
-                    sellerUUID,
-                    CouponConsts.ISSUED_COUPON_UNAVAILABLE
-                ), "만기 쿠폰"
-            )
+            MemberSharedPreferences(this).getMemberUUID()?.let { sellerUUID ->
+                adminAdaptor.addFragment(
+                    AdminIssuedCouponScrollingFragment.newInstance(
+                        sellerUUID,
+                        CouponConsts.ISSUED_COUPON_AVAILABLE
+                    ), "발급 쿠폰"
+                )
+                adminAdaptor.addFragment(
+                    AdminIssuedCouponScrollingFragment.newInstance(
+                        sellerUUID,
+                        CouponConsts.ISSUED_COUPON_UNAVAILABLE
+                    ), "만기 쿠폰"
+                )
+            }
             binding.couponViewPager.adapter = adminAdaptor
 
             TabLayoutMediator(binding.couponTabLayout, binding.couponViewPager) { tab, position ->
@@ -74,16 +87,14 @@ class IssuedCouponContainerActivity : AppCompatActivity() {
                 onBackPressedDispatcher.onBackPressed()
             }
         }
-
+    }
 
     override fun onDestroy() {
-        Log.d("login.log", "onDestroy")
         super.onDestroy()
         binding.couponViewPager.adapter = null
         _binding = null
         _adaptor = null
         _adminAdaptor = null
     }
-
 
 }
