@@ -4,7 +4,6 @@ import java.sql.Timestamp
 
 data class Member (
     val memberUUID: String? = null,
-    val authenticationId: Long? = null,
     val memberEmail: String? = null,
     val memberName: String? = null,
     val membershipPoint: Int? = null,
