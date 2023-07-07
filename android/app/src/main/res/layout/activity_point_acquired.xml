@@ -8,13 +8,21 @@
     android:orientation="vertical"
     android:backgroundTint="@color/white">
 
+    <nl.dionsegijn.konfetti.xml.KonfettiView
+        android:id="@+id/konfettiView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
         android:id="@+id/point_aqcuired_toolbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -41,6 +49,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:text="보물 획득!"
+        android:gravity="center"
+        android:textColor="@color/purple"
         android:textSize="40dp"
         android:textStyle="bold"
 
@@ -63,7 +73,7 @@
             android:layout_height="wrap_content"
             android:text="500 포인트"
             android:textColor="@color/black"
-            android:textSize="20dp"
+            android:textSize="50sp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -83,11 +93,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
+            android:layout_marginHorizontal="10dp"
             android:orientation="vertical">
 
             <ImageView
                 android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_height="wrap_content"
                 android:src="@drawable/ic_coupon_24dp" />
 
             <TextView
