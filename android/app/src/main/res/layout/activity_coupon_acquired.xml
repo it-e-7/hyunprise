@@ -8,6 +8,15 @@
     android:orientation="vertical"
     android:backgroundTint="@color/white">
 
+    <nl.dionsegijn.konfetti.xml.KonfettiView
+        android:id="@+id/konfettiView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
         android:id="@+id/coupon_acquired_toolbar"
         android:layout_width="match_parent"
@@ -42,6 +51,8 @@
         android:text="보물 획득!"
         android:textSize="40dp"
         android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@color/purple"
         android:layout_marginLeft="20dp"
 
         app:layout_constraintBottom_toTopOf="@id/coupon_acquired_tv_group"
