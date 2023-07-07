@@ -39,9 +39,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="보물 발견!"
+        android:gravity="center"
         android:textSize="25dp"
         android:textStyle="bold"
-        android:textColor="@color/black"
+        android:textColor="@color/purple"
         android:layout_marginLeft="20dp"
 
         app:layout_constraintEnd_toEndOf="parent"

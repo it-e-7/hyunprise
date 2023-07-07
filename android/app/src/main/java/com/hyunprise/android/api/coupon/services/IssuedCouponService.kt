@@ -27,7 +27,7 @@ class IssuedCouponService {
     suspend fun postIssuedCoupon(issuedCoupon: IssuedCoupon) : String {
         return ApiHandler.safeAPICall {
             issuedCouponClient.postOneIssuedCoupon(issuedCoupon)
-        } ?: toString()
+        } ?: String()
     }
 
     suspend fun getIssuedCoupon(issuedCouponUUID: String) : CouponDetail {
