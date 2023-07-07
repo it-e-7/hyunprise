@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="15dp"
     tools:context=".ui.admin.coupon.CouponGenerateActivity">
 
     <LinearLayout
@@ -93,7 +92,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="대상 품목"
+                android:text="쿠폰명"
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="10dp" />
 
@@ -101,7 +100,7 @@
                 android:id="@+id/coupon_generate_target_item_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="아메리카노 교환권"
+                android:hint="쿠폰명을 작성하세요"
                 android:textAlignment="textEnd"
                 android:background="@drawable/coupon_edge"
                 android:padding="15dp"
@@ -129,7 +128,7 @@
                 android:id="@+id/coupon_generate_coupon_description_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="무료 음료 한잔 증정"
+                android:hint="쿠폰 내용을 자세히 작성하세요"
                 android:textAlignment="textEnd"
                 android:background="@drawable/coupon_edge"
                 android:padding="15dp"
@@ -164,14 +163,14 @@
                 <RadioButton
                     android:id="@+id/coupon_generate_fixed_discount_rb"
                     android:layout_weight="1"
-                    android:text="고정할인"
+                    android:text="고정"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"/>
 
                 <RadioButton
                     android:id="@+id/coupon_generate_percentage_discount_rb"
                     android:layout_weight="1"
-                    android:text="비율할인"
+                    android:text="비율"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"/>
 
@@ -216,7 +215,7 @@
                     android:layout_weight="1"
                     android:textAlignment="center"
                     android:inputType="number"
-                    android:hint="할인한도" />
+                    android:hint="할인 한도" />
 
                 <EditText
                     android:id="@+id/coupon_generate_minimum_purchase_et"
@@ -225,7 +224,7 @@
                     android:layout_weight="1"
                     android:textAlignment="center"
                     android:inputType="number"
-                    android:hint="최소금액" />
+                    android:hint="최소 금액" />
 
                 <EditText
                     android:id="@+id/coupon_generate_discount_amount_et"
@@ -234,7 +233,7 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     android:inputType="number"
-                    android:hint="할인금액"/>
+                    android:hint="할인 값"/>
 
             </LinearLayout>
         </LinearLayout>
