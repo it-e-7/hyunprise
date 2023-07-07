@@ -66,16 +66,16 @@
                 <Button
                     android:id="@+id/admin_home_coupon_issuer_btn"
                     android:layout_width="250dp"
-                    android:layout_height="80dp"
+                    android:layout_height="70dp"
                     android:backgroundTint="@color/purple"
                     android:text="쿠폰 발급하기"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"/>
 
                 <Button
                     android:id="@+id/admin_home_show_issued_coupons_btn"
                     android:layout_width="250dp"
-                    android:layout_height="80dp"
-                    android:backgroundTint="@color/purple"
+                    android:layout_height="70dp"
+                    android:backgroundTint="@color/light_purple"
                     android:text="쿠폰 발급현황 보기"
                     android:textColor="@color/white" />
 

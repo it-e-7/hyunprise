@@ -37,7 +37,6 @@ public class IssuedCouponServiceImpl implements IssuedCouponService {
         Map<String, Object> map = new HashMap<>();
         map.put("memberUUID", issuedCoupon.getMemberUUID());
         map.put("couponUUID", issuedCoupon.getCouponUUID());
-        map.put("membershipPoint", issuedCoupon.getMembershipPoint());
         map.put("issuedCouponUUID", null);
         issuedCouponMapper.createOneIssuedCoupon(map);
 
