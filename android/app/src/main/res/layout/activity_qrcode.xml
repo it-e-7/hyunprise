@@ -66,7 +66,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="50dp"
             android:text="곳곳에 숨겨져 있는 QR코드를 스캔해보세요"
             android:textAlignment="center" />
 
@@ -74,7 +74,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="어떤 보물이 기다리고 있을까요?"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:layout_marginTop="20dp"/>
     </LinearLayout>
 
 

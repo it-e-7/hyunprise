@@ -54,7 +54,6 @@
         android:gravity="center"
         android:textColor="@color/purple"
         android:layout_marginLeft="20dp"
-        android:textColor="@color/black"
 
         app:layout_constraintBottom_toTopOf="@id/coupon_acquired_tv_group"
         app:layout_constraintEnd_toEndOf="parent"

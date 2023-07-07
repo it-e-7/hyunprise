@@ -215,6 +215,7 @@
                 android:text="본 쿠폰은 현대백화점 신촌점에서만 사용 가능합니다."
                 android:textColor="@color/red"
                 android:textSize="13sp"
+                android:layout_marginBottom="20dp"
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

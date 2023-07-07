@@ -37,15 +37,17 @@
         <activity
                 android:name=".ui.qrcode.CouponAcquiredActivity"
                 android:exported="true" >
+
+        </activity>
+        <activity
+                android:name=".ui.intro.StartupActivity"
+                android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-                android:name=".ui.intro.StartupActivity"
-                android:exported="true"/>
         <activity
                 android:name=".ui.member.point.PointActivity"
                 android:exported="true" />
