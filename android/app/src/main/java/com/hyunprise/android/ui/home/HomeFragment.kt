@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -54,7 +55,7 @@ class HomeFragment : Fragment() {
         // 자동 슬라이드 시작
         startAutoSlide()
         setHomeContents()
-        initalizeHomeDrawer()
+        initializeHomeDrawer()
         setListeners()
 
         return binding.root
@@ -78,13 +79,13 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun initalizeHomeDrawer() {
+    private fun initializeHomeDrawer() {
         val memberName = MemberSharedPreferences(requireContext()).getMemberName()
         binding.homeDrawer.homeDrawerHelloMessage.text = memberName
         binding.homeDrawerParent.bringToFront()
         val membershipPoint = MemberSharedPreferences(requireContext()).getMembershipPoint()
         val pointMessage = resources.getString(R.string.home_drawer_placeholder_member_point, membershipPoint)
-        binding.homeDrawer.homeDrawerMemberPointTextView.text = pointMessage
+        binding.homeDrawer.homeDrawerMemberPointButton.text = pointMessage
 
         CoroutineScope(Dispatchers.IO).launch {
             MemberSharedPreferences(requireContext()).getMemberUUID()?.let{memberUUID ->
@@ -128,6 +129,12 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
+        // 포인트 페이지로 이동
+        binding.homeDrawer.homeDrawerMemberPointButton.setOnClickListener {
+            val intent = Intent(activity, PointActivity::class.java)
+            startActivity(intent)
+        }
+
         // 로그아웃
         binding.homeDrawer.homeDrawerLogoutButton.setOnClickListener{
             KakaoAuthManager.logout {
@@ -144,6 +151,7 @@ class HomeFragment : Fragment() {
             }
         }
     }
+
     private fun toggleDrawerOpenStatus(drawer: DrawerLayout) {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START)
@@ -183,6 +191,7 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         // 자동 슬라이드 중지
         stopAutoSlide()
+        Log.d("log.fragmentTest", "destory Home Fragment")
         _binding = null
     }
 }

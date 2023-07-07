@@ -37,7 +37,7 @@
                 android:name=".ui.qrcode.CouponAcquiredActivity"
                 android:exported="true"/>
         <activity
-                android:name=".ui.intro.StartupActivity"
+                android:name=".ui.intro.PermissionGuideActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -61,9 +61,6 @@
                 android:exported="true"/>
         <activity
                 android:name=".ui.auth.LoginActivity"
-                android:exported="true"/>
-        <activity
-                android:name=".ui.intro.PermissionGuideActivity"
                 android:exported="true"/>
         <activity
                 android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"

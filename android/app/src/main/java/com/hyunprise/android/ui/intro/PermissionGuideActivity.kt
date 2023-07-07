@@ -19,7 +19,7 @@ class PermissionGuideActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         if (EnvSharedPreferences(this).getPermissionGuideShown()) {
-            toStartupActivity()
+            toLoginActivity()
         }
         val binding = ActivityPermissionGuideBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -36,7 +36,7 @@ class PermissionGuideActivity : AppCompatActivity() {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), PERMISSION_REQUEST_CODE)
         } else {
             // 권한이 이미 허용되었을 경우, 로그인 프로세스 시작
-            toStartupActivity()
+            toLoginActivity()
         }
     }
 
@@ -56,11 +56,13 @@ class PermissionGuideActivity : AppCompatActivity() {
                     Toast.makeText(this, "Permission is required", Toast.LENGTH_SHORT).show()
                 }
             }
-            toStartupActivity()
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 
-    private fun toStartupActivity() {
+    private fun toLoginActivity() {
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
         finish()

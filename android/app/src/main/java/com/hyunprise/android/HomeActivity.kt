@@ -1,18 +1,11 @@
 package com.hyunprise.android
 
-import android.content.ClipData.Item
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.Button
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.hyunprise.android.databinding.ActivityCouponContainerBinding
 import com.hyunprise.android.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {

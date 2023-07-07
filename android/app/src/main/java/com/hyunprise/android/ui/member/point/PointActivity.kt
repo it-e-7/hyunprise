@@ -3,7 +3,9 @@ package com.hyunprise.android.ui.member.point
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.hyunprise.android.CodeGenerate
+import com.hyunprise.android.R
 import com.hyunprise.android.databinding.ActivityPointBinding
+import com.hyunprise.android.store.MemberSharedPreferences
 
 class PointActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,6 +22,10 @@ class PointActivity : AppCompatActivity() {
         binding.pointBackButton.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
+
+        val membershipPoint = MemberSharedPreferences(this).getMembershipPoint()
+        val pointMessage = resources.getString(R.string.home_drawer_placeholder_member_point, membershipPoint)
+        binding.pointMemberPointTextView.text = pointMessage
 
     }
 }
