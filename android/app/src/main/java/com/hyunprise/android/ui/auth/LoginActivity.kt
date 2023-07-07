@@ -51,6 +51,7 @@ class LoginActivity : AppCompatActivity() {
 
         binding.loginButtonKakaoLogin.setOnClickListener {
             val manager = AuthManagerResolver.resolve(OAuthProvider.KAKAO)
+
             manager.attemptLogin(this, sendMemberInfoAndFinish)
         }
 
