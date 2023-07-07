@@ -44,4 +44,8 @@ public class IssuedCouponServiceImpl implements IssuedCouponService {
         return map.get("issuedCouponUUID").toString();
     }
 
+    @Override
+    public Integer getAvailableIssuedCouponCount(String memberUUID) {
+        return issuedCouponMapper.selectAvailableIssuedCouponCount(memberUUID);
+    }
 }

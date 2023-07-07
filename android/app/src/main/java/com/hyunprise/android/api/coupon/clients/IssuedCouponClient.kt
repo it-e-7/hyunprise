@@ -1,6 +1,5 @@
 package com.hyunprise.android.api.coupon.clients
 
-import com.hyunprise.android.api.coupon.vo.Coupon
 import com.hyunprise.android.api.coupon.vo.CouponDetail
 import com.hyunprise.android.api.coupon.vo.CouponSummary
 import com.hyunprise.android.api.coupon.vo.IssuedCoupon
@@ -19,6 +18,11 @@ interface IssuedCouponClient {
         @Query("memberUUID") memberUUID: String,
         @Query("available") available: Boolean
     ): Response<List<CouponSummary>>
+
+    @GET("issued_coupon/count")
+    suspend fun getAvailableIssuedCouponCount (
+        @Query("memberUUID") memberUUID: String
+    ): Response<Int>
 
     @Headers("Content-Type: application/json")
     @GET("issued_coupon/{uuid}")

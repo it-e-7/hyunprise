@@ -1,5 +1,6 @@
 package com.hyunprise.android.ui.auth
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -17,6 +18,7 @@ import com.hyunprise.android.api.oauth.vo.OAuthProvider
 import com.hyunprise.android.databinding.ActivityLoginBinding
 import com.hyunprise.android.api.oauth.managers.AuthManagerResolver
 import com.hyunprise.android.store.MemberSharedPreferences
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -42,7 +44,9 @@ class LoginActivity : AppCompatActivity() {
         _binding = ActivityLoginBinding.inflate(layoutInflater)
         binding.loginProgressOverlay.bringToFront()
         binding.loginProgressOverlay.isClickable = true
-        setProgressBar(false)
+        setProgressBar(true)
+        runAutoLoginOnStartup()
+
         setContentView(binding.root)
 
         binding.loginButtonKakaoLogin.setOnClickListener {
@@ -90,7 +94,31 @@ class LoginActivity : AppCompatActivity() {
 //            }
 //        })
     }
-
+    private val runAutoLoginOnStartup: () -> Unit = {
+        Log.d("log.login", "[Intro] start runAutoLogin")
+        MemberSharedPreferences(this).getSavedOAuthProvider()?.let { provider ->
+            Log.d("log.login", "[Intro] preference found, $provider")
+            CoroutineScope(Dispatchers.IO).launch {
+                val oAuthResult = AuthManagerResolver.resolve(provider).authorize()
+                Log.d("log.login", "${provider.name} authorization result $oAuthResult")
+                oAuthResult.accessToken?.let { token ->
+                    RetrofitConfig.patchAuthorizationHeader(token)
+                    MemberService().updateLoggedInMemberData(this@LoginActivity)
+                }
+                withContext(Dispatchers.Main) {
+                    toHomeActivity(this@LoginActivity)
+                }
+            }
+        } ?: run {
+            Log.d("log.login", "[Intro] Not Logged In")
+            setProgressBar(false)
+        }
+    }
+    private fun toHomeActivity(context: Context) {
+        val intent = Intent(context, HomeActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
     private val sendMemberInfoAndFinish: (OAuthProvider) -> Unit = { provider ->
         setProgressBar(true)
         lifecycleScope.launch(Dispatchers.IO) {

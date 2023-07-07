@@ -24,6 +24,7 @@
 
     <string name="home_drawer_placeholder_hello_message">안녕하세요, %s님</string>
     <string name="home_drawer_placeholder_member_point">%,dP</string>
+    <string name="home_drawer_placeholder_coupon_count">%d개</string>
 
     <string name="coupon_found_receive_points_btn">%,d 포인트 받기</string>
 </resources>
